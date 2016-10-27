@@ -32,7 +32,7 @@ public class ThreadCase {
         Stopwatch sw = Stopwatch.createStarted();
         List<TaskAction<Integer>> tasks = new ArrayList<>();
         try {
-            for(int i=3;i<100;i++){
+            for(int i=0;i<100;i++){
                 final int k=i;
                 TaskAction<Integer> serverTask = new TaskAction<Integer>() {
                     @Override
@@ -63,7 +63,7 @@ public class ThreadCase {
         Stopwatch sw = Stopwatch.createStarted();
         List<TaskAction<Integer>> tasks = new ArrayList<>();
         try {
-            for(int i=3;i<100;i++){
+            for(int i=0;i<100;i++){
                 final int k=i;
                 TaskAction<Integer> serverTask = new TaskAction<Integer>() {
                     @Override
@@ -86,8 +86,13 @@ public class ThreadCase {
         logger.error("this fuction cost time:,{}", sw.toString());
     }
 
-    private int costSecondServer(int iStart) throws InterruptedException {
-        logger.info("this thread is "+iStart);     
+    private int costSecondServer(int iStart) throws InterruptedException { 
+        if(Thread.currentThread().getId()!=1){
+            logger.info("this thread-id is "+Thread.currentThread().getId());
+        }else{
+            logger.info("this is main thread");
+        }
+                 
         return iStart;
     }
 

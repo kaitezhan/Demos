@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.UUID;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
@@ -19,6 +20,8 @@ import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.google.common.base.Stopwatch;
 
 /**
  * 异步任务执行器
@@ -53,7 +56,7 @@ public class TaskProcess {
      * 初始化
      */
     private void init() {
-        // 线程工厂创建后台运行线程
+        // 线程工厂创建后台运行线程       
         ThreadFactory factory = new ThreadFactory() {
             @Override
             public Thread newThread(Runnable r) {
@@ -248,10 +251,13 @@ public class TaskProcess {
             Future<T> future = executor.submit(new Callable<T>() {
                 @Override
                 public T call() throws Exception {
+                    //Stopwatch sw=Stopwatch.createStarted();
                     try {
                         return runnable.doInAction();
                     } finally {
                         latch.countDown();
+//                        sw.stop();
+//                        logger.info("cost time:{}",sw.toString());
                     }
 
                 }
@@ -356,7 +362,13 @@ public class TaskProcess {
             Future<T> future = executor.submit(new Callable<T>() {
                 @Override
                 public T call() throws Exception {
-                    return runnable.doInAction();
+                    //Stopwatch sw=Stopwatch.createStarted();
+                    try {
+                        return runnable.doInAction();
+                    } finally {
+                        //sw.stop();
+                        //logger.info("cost time:{}",sw.toString());
+                    }
                 }
             });
             futures.add(future);

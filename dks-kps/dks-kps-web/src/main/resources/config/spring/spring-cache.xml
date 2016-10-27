@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+    <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxIdle" value="${redis.maxIdle}"/>
+        <property name="maxTotal" value="${redis.maxTotal}"/>
+        <property name="maxWaitMillis" value="${redis.maxWaitMillis}"/>
+        <property name="testOnBorrow" value="${redis.testOnBorrow}"/>
+    </bean>
+
+    <bean id="jedisPool" class="com.boneix.base.cache.pool.ShardedPool">
+        <constructor-arg index="0" ref="poolConfig"/>
+        <constructor-arg index="1">
+            <list>
+                <bean class="redis.clients.jedis.JedisShardInfo">
+                    <constructor-arg name="host" value="${redis.host}"/>
+                    <constructor-arg name="port" value="${redis.port}"/>
+                    <constructor-arg name="timeout" value="${redis.timeout}"/>
+                </bean>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean name="cacheClientImpl" class="com.boneix.base.cache.client.CacheClientImpl">
+        <constructor-arg index="0" ref="jedisPool"/>
+        <!-- 使用第一个redis的db -->
+        <constructor-arg index="1" value="0"/>
+    </bean>
+
+    <!--<bean id="connectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">-->
+    <!--<property name="hostName" value="${redis.host}"/>-->
+    <!--<property name="port" value="${redis.port}"/>-->
+    <!--<property name="password" value="${redis.password}"/>-->
+    <!--<property name="poolConfig" ref="poolConfig"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">-->
+    <!--<property name="connectionFactory" ref="connectionFactory"/>-->
+    <!--</bean>-->
+
+
+</beans>

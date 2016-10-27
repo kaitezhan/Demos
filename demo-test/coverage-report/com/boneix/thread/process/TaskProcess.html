@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JMockit Coverage Report - TaskProcess.java</title>
+  <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+  <link rel='stylesheet' type='text/css' href='../../../../coverage.css'/>
+  <link rel='shortcut icon' type='image/png' href='../../../../logo.png'/>
+  <script type='text/javascript' src='../../../../coverage.js'></script>
+  <script type='text/javascript' src='../../../../prettify.js'></script>
+</head>
+<body onload='prettyPrint()'>
+  <table cellpadding='0' cellspacing='1'>
+    <caption>demo-test\src\main\java\com\boneix\thread\process\TaskProcess.java</caption>
+    <tr>
+      <td class='line'>1</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>package com.boneix.thread.process;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td><pre class='imports prettyprint' onclick='showHideLines(this)'><div>import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.UUID;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Callable;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.google.common.base.Stopwatch;
+</div><span>import ...</span></pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>/**
+ * 异步任务执行器
+ * 
+ * @author wangchong
+ */</div><span>/*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>31</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>public class TaskProcess {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>32</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l32s0'>    private static Logger <span class='static uncovered' title='Reads: 0 Writes: 0'>logger</span> = LoggerFactory.getLogger(TaskProcess.class);</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>    /**
+     * concurrent执行器
+     */</div><span>    /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>37</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    private ExecutorService <span class='instance uncovered' title='Reads: 0 Writes: 0'>executor</span>;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>    /**
+     * 核心线程数
+     */</div><span>    /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>42</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    private int <span class='instance uncovered' title='Reads: 0 Writes: 0'>coreSize</span>;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>    /**
+     * 线程池数
+     */</div><span>    /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>47</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    private int <span class='instance uncovered' title='Reads: 0 Writes: 0'>poolSize</span>;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>49</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l49s0'>    TaskProcess(int coreSize, int poolSize) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>50</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l50s0'>        this.coreSize = coreSize;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>51</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l51s0'>        this.poolSize = poolSize;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>52</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l52s0'>        init();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>53</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l53s0'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>    /**
+     * 初始化
+     */</div><span>    /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>58</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    private void init() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>59</td><td>&nbsp;</td>
+      <td><pre class='comment'>        // 线程工厂创建后台运行线程       </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>60</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l60s0'>        ThreadFactory factory = new ThreadFactory() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>61</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>            @Override</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>62</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>            public Thread newThread(Runnable r) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>63</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l63s0'>                Thread t = new Thread(r, "Taskprocess-Thread");</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>64</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l64s0'>                t.setDaemon(true);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>65</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l65s0'>                return t;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>66</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>            }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>67</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        };</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>68</td><td>&nbsp;</td>
+      <td><pre class='comment'>        // 有界队列</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>69</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l69s0'>        BlockingQueue&lt;Runnable> queue = new LinkedBlockingQueue&lt;Runnable>(coreSize);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>70</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l70s0'>        executor = new ThreadPoolExecutor(coreSize, poolSize, 60, TimeUnit.SECONDS, queue, factory,</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>71</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                new ThreadPoolExecutor.CallerRunsPolicy());</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>73</td><td>&nbsp;</td>
+      <td><pre class='comment'>        // JDK回调钩子</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>74</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l74s0'>        Runtime.getRuntime().addShutdownHook(new Thread() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>75</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>            @Override</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>76</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>            public void run() {</pre></td>
+    </tr>
+    <tr>
+      <td></td><td class='count'>0</td>
+      <td class='paths'>
+        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/2</span>
+        <span class='uncovered' onclick="showPath(this,'l77s0 l78s0')">A: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l77s0 l81s0 l86s0')">B: 0</span>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>77</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>                <span id='l77s0' title='Executions: 0' class='uncovered'>if (executor == null)</span> <span id='l77s1' title='Executions: 0' class='uncovered'>{</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>78</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l78s0'>                    return;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>79</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>80</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                try {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>81</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l81s0'>                    executor.shutdown();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>82</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l82s0'>                    executor.awaitTermination(5, TimeUnit.MINUTES);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>83</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l83s0'>                } catch (InterruptedException e) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>84</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l84s0'>                    logger.warn("interrupted when shuting down the process executor:\n{}", e);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>85</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l85s0'>                }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>86</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l86s0'>            }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>87</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        });</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>88</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l88s0'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>    /**
+     * 执行TaskAction并等待执行结果
+     * 
+     * @param tasks
+     * @return 执行结果
+     */</div><span>    /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>96</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    @SuppressWarnings("unchecked")</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>97</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    public &lt;T> List&lt;T> executeTask(List&lt;TaskAction&lt;T>> tasks) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>98</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l98s0'>        TaskAction&lt;T>[] actions = new TaskAction[tasks.size()];</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>99</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>        <span id='l99s0' title='Executions: 0' class='uncovered'>for (int i = 0; i &lt; tasks.size(); i++) {</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>100</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l100s0'>            actions[i] = tasks.get(i);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>101</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>102</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l102s0'>        return executeTask(actions);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>103</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>105</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    public &lt;T> Holder&lt;T> syncExecuteWaiting(final TaskAction&lt;T> task) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>106</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l106s0'>        final CountDownLatch latch = new CountDownLatch(1);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>107</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l107s0'>        Future&lt;T> future = executor.submit(new Callable&lt;T>() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>108</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>            @Override</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>109</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>            public T call() throws Exception {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>110</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                try {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>111</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l111s0'>                    return task.doInAction();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>112</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l112s0'>                } catch (Exception e) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>113</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l113s0'>                    throw new RuntimeException(e);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>114</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                } finally {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>115</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l115s0'>                    latch.countDown();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>116</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>117</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>            }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>118</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        });</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>119</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l119s0'>        return new Holder&lt;T>(latch, future);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>120</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>    /**
+     * 异步执行TaskAction，无须等待执行结果
+     * 
+     * @param tasks
+     */</div><span>    /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>127</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    public void asyncExecuteTask(List&lt;TaskAction&lt;?>> tasks) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>128</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l128s0'>        TaskAction&lt;?>[] actions = new TaskAction[tasks.size()];</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>129</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>        <span id='l129s0' title='Executions: 0' class='uncovered'>for (int i = 0; i &lt; tasks.size(); i++) {</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>130</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l130s0'>            actions[i] = tasks.get(i);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>131</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>132</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l132s0'>        asyncExecuteTask(actions);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>133</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l133s0'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>    /**
+     * 异步执行TaskAction，无须等待执行结果
+     * 
+     * @param tasks
+     */</div><span>    /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>140</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    public void asyncExecuteTask(TaskAction&lt;?>... tasks) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>141</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>        <span id='l141s0' title='Executions: 0' class='uncovered'>for (final TaskAction&lt;?> runnable</span> : <span id='l141s1' title='Executions: 0' class='uncovered'>tasks)</span> </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>142</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l142s0'>            executor.execute(new Runnable() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>143</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                @Override</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>144</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                public void run() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>145</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                    try {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>146</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l146s0'>                        runnable.doInAction();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>147</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l147s0'>                    } catch (Exception e) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>148</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l148s0'>                        throw new RuntimeException(e);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>149</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l149s0'>                    }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>150</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l150s0'>                }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>151</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>            });</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>152</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>153</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l153s0'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>155</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    @SuppressWarnings("unchecked")</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>156</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    public &lt;T> List&lt;T> exeucteTaskByConcurrentControl(final int concurrentCount, List&lt;TaskAction&lt;T>> tasks) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>157</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l157s0'>        TaskAction&lt;T>[] actions = new TaskAction[tasks.size()];</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>158</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>        <span id='l158s0' title='Executions: 0' class='uncovered'>for (int i = 0; i &lt; tasks.size(); i++) {</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>159</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l159s0'>            actions[i] = tasks.get(i);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>160</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>161</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l161s0'>        return exeucteTaskByConcurrentControl(concurrentCount, actions);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>162</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>164</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    private &lt;T> List&lt;Future&lt;T>> barrier(final int concurrentCount, TaskAction&lt;T>... tasks) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>165</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l165s0'>        List&lt;Future&lt;T>> futures = new ArrayList&lt;Future&lt;T>>(tasks.length);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>166</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>        <span id='l166s0' title='Executions: 0' class='uncovered'>int lacth = tasks.length &lt; concurrentCount ? tasks.length</span> : <span id='l166s1' title='Executions: 0' class='uncovered'>concurrentCount;</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>167</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>        <span id='l167s0' title='Executions: 0' class='uncovered'>int devide = tasks.length / concurrentCount == 0 ? 1</span> : <span id='l167s1' title='Executions: 0' class='uncovered'>tasks.length / concurrentCount;</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>168</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>        <span id='l168s0' title='Executions: 0' class='uncovered'>for (int i = 0; i &lt; devide; i++)</span> <span id='l168s1' title='Executions: 0' class='uncovered'>{</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>169</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l169s0'>            TaskAction&lt;T>[] newTaskActionAry = Arrays</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>170</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l170s0'>                    .copyOfRange(tasks, i * concurrentCount, (i + 1) * concurrentCount);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>171</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l171s0'>            final CountDownLatch latch = new CountDownLatch(lacth);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>172</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>            <span id='l172s0' title='Executions: 0' class='uncovered'>for (final TaskAction&lt;T> action</span> : <span id='l172s1' title='Executions: 0' class='uncovered'>newTaskActionAry)</span> </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>173</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>                <span id='l173s0' title='Executions: 0' class='uncovered'>if (action == null)</span> <span id='l173s1' title='Executions: 0' class='uncovered'>{</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>174</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l174s0'>                    continue;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>175</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>176</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l176s0'>                Future&lt;T> future = executor.submit(new Callable&lt;T>() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>177</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                    @Override</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>178</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                    public T call() throws Exception {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>179</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                        try {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>180</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l180s0'>                            return action.doInAction();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>181</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                        } finally {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>182</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l182s0'>                            latch.countDown();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>183</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                        }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>184</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                    }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>185</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                });</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>186</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l186s0'>                futures.add(future);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>187</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>            }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>188</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>            try {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>189</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l189s0'>                latch.await();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>190</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l190s0'>            } catch (InterruptedException e) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>191</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l191s0'>                logger.info("Executing Task is interrupt.");</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>192</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l192s0'>            }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>193</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>194</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l194s0'>        return futures;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>195</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>    /**
+     * 并发控制任务执行
+     * 
+     * @param concurrentCount 并行任务数
+     * @param tasks
+     * @return
+     */</div><span>    /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>204</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    public &lt;T> List&lt;T> exeucteTaskByConcurrentControl(int concurrentCount, TaskAction&lt;T>... tasks) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>205</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l205s0'>        int modTaskCount = tasks.length;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>206</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>        <span id='l206s0' title='Executions: 0' class='uncovered'>if (concurrentCount > coreSize)</span> <span id='l206s1' title='Executions: 0' class='uncovered'>{</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>207</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l207s0'>            concurrentCount = coreSize;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>208</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>209</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l209s0'>        int remainTaskCount = tasks.length % concurrentCount;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>210</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l210s0'>        List&lt;T> resultList = new ArrayList&lt;T>(modTaskCount);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>211</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l211s0'>        List&lt;Future&lt;T>> futures = new ArrayList&lt;Future&lt;T>>(tasks.length);</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>213</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l213s0'>        Map&lt;Integer, TaskAction&lt;T>[]> currentTaskMap = new HashMap&lt;Integer, TaskAction&lt;T>[]>(2);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>214</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l214s0'>        currentTaskMap.put(concurrentCount, Arrays.copyOf(tasks, modTaskCount));</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>216</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>        <span id='l216s0' title='Executions: 0' class='uncovered'>if (remainTaskCount != 0</span> && <span id='l216s1' title='Executions: 0' class='uncovered'>remainTaskCount != modTaskCount)</span> <span id='l216s2' title='Executions: 0' class='uncovered'>{</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>217</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l217s0'>            modTaskCount = tasks.length - remainTaskCount;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>218</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l218s0'>            currentTaskMap.put(concurrentCount, Arrays.copyOf(tasks, modTaskCount));</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>219</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l219s0'>            currentTaskMap.put(remainTaskCount, Arrays.copyOfRange(tasks, modTaskCount, tasks.length));</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>220</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>221</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>        <span id='l221s0' title='Executions: 0' class='uncovered'>for (Entry&lt;Integer, TaskAction&lt;T>[]> entry</span> : <span id='l221s1' title='Executions: 0' class='uncovered'>currentTaskMap.entrySet()) {</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>222</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l222s0'>            futures.addAll(barrier(entry.getKey(), entry.getValue()));</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>223</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l223s0'>        }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>225</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>        <span id='l225s0' title='Executions: 0' class='uncovered'>for (Future&lt;T> future</span> : <span id='l225s1' title='Executions: 0' class='uncovered'>futures)</span> </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>226</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>            try {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>227</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l227s0'>                T result = future.get();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>228</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>                <span id='l228s0' title='Executions: 0' class='uncovered'>if (result != null)</span> <span id='l228s1' title='Executions: 0' class='uncovered'>{</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>229</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l229s0'>                    resultList.add(result);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>230</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>231</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l231s0'>            } catch (Exception e) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>232</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l232s0'>                throw new RuntimeException(e);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>233</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l233s0'>            }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>234</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l234s0'>        }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>235</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l235s0'>        return resultList;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>236</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>    /**
+     * 执行TaskAction并等待执行结果
+     * 
+     * @param tasks
+     * @return 执行结果
+     */</div><span>    /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>244</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    public &lt;T> List&lt;T> executeTask(TaskAction&lt;T>... tasks) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>245</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l245s0'>        final CountDownLatch latch = new CountDownLatch(tasks.length);</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>247</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l247s0'>        List&lt;Future&lt;T>> futures = new ArrayList&lt;Future&lt;T>>();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>248</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l248s0'>        List&lt;T> resultList = new ArrayList&lt;T>();</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>250</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>        <span id='l250s0' title='Executions: 0' class='uncovered'>for (final TaskAction&lt;T> runnable</span> : <span id='l250s1' title='Executions: 0' class='uncovered'>tasks)</span> </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>251</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l251s0'>            Future&lt;T> future = executor.submit(new Callable&lt;T>() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>252</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                @Override</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>253</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                public T call() throws Exception {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>254</td><td>&nbsp;</td>
+      <td><pre class='comment'>                    //Stopwatch sw=Stopwatch.createStarted();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>255</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                    try {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>256</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l256s0'>                        return runnable.doInAction();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>257</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                    } finally {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>258</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l258s0'>                        latch.countDown();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>259</td><td>&nbsp;</td>
+      <td><pre class='comment'>//                        sw.stop();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>260</td><td>&nbsp;</td>
+      <td><pre class='comment'>//                        logger.info("cost time:{}",sw.toString());</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>261</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>263</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>264</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>            });</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>265</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l265s0'>            futures.add(future);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>266</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>268</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        try {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>269</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l269s0'>            latch.await();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>270</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l270s0'>        } catch (InterruptedException e) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>271</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l271s0'>            logger.info("Executing Task is interrupt.");</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>272</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l272s0'>        }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>274</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>        <span id='l274s0' title='Executions: 0' class='uncovered'>for (Future&lt;T> future</span> : <span id='l274s1' title='Executions: 0' class='uncovered'>futures)</span> </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>275</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>            try {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>276</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l276s0'>                T result = future.get();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>277</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>                <span id='l277s0' title='Executions: 0' class='uncovered'>if (result != null)</span> <span id='l277s1' title='Executions: 0' class='uncovered'>{</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>278</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l278s0'>                    resultList.add(result);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>279</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>280</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l280s0'>            } catch (Exception e) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>281</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l281s0'>                throw new RuntimeException(e);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>282</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l282s0'>            }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>283</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l283s0'>        }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>284</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l284s0'>        return resultList;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>285</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>    /**
+     * 标识性任务执行，等待执行结果，对任务执行结果分类
+     * 
+     * @param tasks
+     * @return
+     */</div><span>    /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>293</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    @SuppressWarnings("unchecked")</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>294</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    public &lt;T> Map&lt;String, T> executeIdentityTask(List&lt;IdentityTaskAction&lt;T>> tasks) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>295</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l295s0'>        IdentityTaskAction&lt;T>[] actions = new IdentityTaskAction[tasks.size()];</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>296</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>        <span id='l296s0' title='Executions: 0' class='uncovered'>for (int i = 0; i &lt; tasks.size(); i++) {</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>297</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l297s0'>            actions[i] = tasks.get(i);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>298</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>299</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l299s0'>        return executeIdentityTask(actions);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>300</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>    /**
+     * 标识性任务执行，等待执行结果，对任务执行结果分类
+     * 
+     * @param tasks
+     * @return
+     */</div><span>    /*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>308</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    public &lt;T> Map&lt;String, T> executeIdentityTask(IdentityTaskAction&lt;T>... tasks) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>309</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l309s0'>        final CountDownLatch latch = new CountDownLatch(tasks.length);</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>311</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l311s0'>        Map&lt;String, Future&lt;T>> futures = new HashMap&lt;String, Future&lt;T>>();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>312</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l312s0'>        Map&lt;String, T> resultMap = new HashMap&lt;String, T>();</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>314</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>        <span id='l314s0' title='Executions: 0' class='uncovered'>for (final IdentityTaskAction&lt;T> runnable</span> : <span id='l314s1' title='Executions: 0' class='uncovered'>tasks)</span> </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>315</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l315s0'>            Future&lt;T> future = executor.submit(new Callable&lt;T>() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>316</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                @Override</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>317</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                public T call() throws Exception {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>318</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l318s0'>                    long time = System.currentTimeMillis();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>319</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                    try {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>320</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l320s0'>                        return runnable.doInAction();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>321</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                    } finally {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>322</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l322s0'>                        logger.debug("Executing Task : {} ,time :{}", runnable.identity(), System.currentTimeMillis()</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>323</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                                - time);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>324</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l324s0'>                        latch.countDown();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>325</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>327</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>328</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>            });</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>329</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l329s0'>            futures.put(runnable.identity(), future);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>330</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>332</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        try {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>333</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l333s0'>            latch.await();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>334</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l334s0'>        } catch (InterruptedException e) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>335</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l335s0'>            logger.info("Executing Task is interrupt.");</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>336</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l336s0'>        }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>338</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l338s0'>        Iterator&lt;Entry&lt;String, Future&lt;T>>> it = futures.entrySet().iterator();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>339</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>        <span id='l339s0' title='Executions: 0' class='uncovered'>while (it.hasNext()) {</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>340</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l340s0'>            Entry&lt;String, Future&lt;T>> entry = it.next();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>341</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>            try {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>342</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l342s0'>                T result = entry.getValue().get();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>343</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l343s0'>                resultMap.put(entry.getKey(), result);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>344</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l344s0'>            } catch (Exception e) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>345</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l345s0'>                throw new RuntimeException(e);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>346</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l346s0'>            }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>347</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l347s0'>        }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>348</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l348s0'>        return resultMap;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>349</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>351</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    @SuppressWarnings("unchecked")</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>352</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    public &lt;T> List&lt;T> executeFutureTask(List&lt;TaskAction&lt;T>> tasks) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>353</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l353s0'>        TaskAction&lt;T>[] actions = new TaskAction[tasks.size()];</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>354</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>        <span id='l354s0' title='Executions: 0' class='uncovered'>for (int i = 0; i &lt; tasks.size(); i++) {</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>355</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l355s0'>            actions[i] = tasks.get(i);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>356</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>358</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l358s0'>        List&lt;Future&lt;T>> futures = new ArrayList&lt;Future&lt;T>>();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>359</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l359s0'>        List&lt;T> resultList = new ArrayList&lt;T>();</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>361</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>        <span id='l361s0' title='Executions: 0' class='uncovered'>for (final TaskAction&lt;T> runnable</span> : <span id='l361s1' title='Executions: 0' class='uncovered'>actions)</span> </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>362</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l362s0'>            Future&lt;T> future = executor.submit(new Callable&lt;T>() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>363</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                @Override</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>364</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                public T call() throws Exception {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>365</td><td>&nbsp;</td>
+      <td><pre class='comment'>                    //Stopwatch sw=Stopwatch.createStarted();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>366</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                    try {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>367</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l367s0'>                        return runnable.doInAction();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>368</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                    } finally {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>369</td><td>&nbsp;</td>
+      <td><pre class='comment'>                        //sw.stop();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>370</td><td>&nbsp;</td>
+      <td><pre class='comment'>                        //logger.info("cost time:{}",sw.toString());</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>371</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                    }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>372</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>373</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>            });</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>374</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l374s0'>            futures.add(future);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>375</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>377</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>        <span id='l377s0' title='Executions: 0' class='uncovered'>for (Future&lt;T> future</span> : <span id='l377s1' title='Executions: 0' class='uncovered'>futures)</span> </pre></td>
+    </tr>
+    <tr>
+      <td class='line'>378</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>            try {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>379</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l379s0'>                T result = future.get();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>380</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>                <span id='l380s0' title='Executions: 0' class='uncovered'>if (result != null)</span> <span id='l380s1' title='Executions: 0' class='uncovered'>{</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>381</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l381s0'>                    resultList.add(result);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>382</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>383</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l383s0'>            } catch (Exception e) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>384</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l384s0'>                throw new RuntimeException(e);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>385</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l385s0'>            }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>386</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l386s0'>        }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>387</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l387s0'>        return resultList;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>388</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>390</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>}</pre></td>
+    </tr>
+  </table>
+</body>
+</html>

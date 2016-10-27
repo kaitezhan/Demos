@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boneix.dks.domain.SysInfo">
+    <resultMap type="com.boneix.dks.domain.SysInfo" id="SysInfo">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="sysName" column="sys_name" jdbcType="VARCHAR"/>
+        <result property="deleteFlag" column="delete_flag" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="base_Column_List">
+		id,
+		sys_name,
+		delete_flag,
+		create_time
+	</sql>
+
+
+    <select id="selectById" parameterType="Integer" resultMap="SysInfo">
+        select
+        <include refid="base_Column_List"/>
+        from
+        sys_info where id = #{sysId}
+    </select>
+
+
+    <update id="updateById" parameterType="SysInfo">
+        UPDATE
+        sys_info
+        <set>
+            <if test="sysName != null">
+                sys_name = #{sysName}
+            </if>
+        </set>
+        <where>
+            <trim prefixOverrides="and">
+                and id = #{sysId}
+                AND delete_flag=0
+            </trim>
+        </where>
+    </update>
+
+    <update id="deleteById" parameterType="Integer">
+        UPDATE
+        sys_info
+        <set>
+            delete_flag = 1
+        </set>
+        <where>
+            <trim prefixOverrides="and">
+                and id = #{sysId}
+            </trim>
+        </where>
+    </update>
+
+    <insert id="insertByName" parameterType="String" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO sys_info
+        <trim prefix="(" suffix=")" prefixOverrides=",">
+            sys_name
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" prefixOverrides=",">
+            #{sysName}
+        </trim>
+    </insert>
+
+    <select id="querySystemCount" parameterType="Integer" resultType="Long">
+        select
+        COUNT(1)
+        from
+        sys_info where id = #{sysId}
+    </select>
+</mapper>
