@@ -4,12 +4,15 @@ import com.boneix.dks.dao.InitInfoDao;
 import com.boneix.dks.dao.SysInfoDao;
 import com.boneix.dks.domain.InitInfo;
 import com.boneix.dks.domain.SysInfo;
+import com.boneix.dks.domain.SystemsInfoVo;
 import com.boneix.dks.service.DBService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by zhangrong5 on 2016/10/27.
@@ -26,7 +29,7 @@ public class DBServiceImpl implements DBService {
     private SysInfoDao sysInfoDao;
 
     @Override
-    public long insertInitInfo(int sysId, long newValue) {
+    public long insertInitInfo(long sysId, long newValue) {
         SysInfo sysInfo = sysInfoDao.selectById(sysId);
         long hits = 0;
         if (sysInfo != null) {
@@ -43,7 +46,7 @@ public class DBServiceImpl implements DBService {
     }
 
     @Override
-    public long deleteInitInfo(int sysId) {
+    public long deleteInitInfo(long sysId) {
         int tmpNum = initInfoDao.querySystemCount(sysId);
         int hits = 0;
         if (tmpNum > 0) {
@@ -55,7 +58,7 @@ public class DBServiceImpl implements DBService {
     }
 
     @Override
-    public long updateInitInfo(int sysId, long newValue) {
+    public long updateInitInfo(long sysId, long newValue) {
         int tmpNum = initInfoDao.querySystemCount(sysId);
         int hits = 0;
         if (tmpNum > 0) {
@@ -67,28 +70,28 @@ public class DBServiceImpl implements DBService {
     }
 
     @Override
-    public long queryCurrentValue(int sysId) {
+    public long queryCurrentValue(long sysId) {
         return initInfoDao.queryCurrentValue(sysId);
     }
 
     @Override
-    public long insertSysInfo(String sysName) {
-        int sysId = sysInfoDao.insertByName(sysName);
+    public long insertSysInfo(SysInfo sysInfo) {
+        sysInfoDao.insertByName(sysInfo);
         InitInfo initInfo = new InitInfo();
-        initInfo.setSystemName(sysName);
-        initInfo.setSysId(sysId);
-        long hits = initInfoDao.insert(initInfo);
+        initInfo.setSystemName(sysInfo.getSystemName());
+        initInfo.setSysId(sysInfo.getId());
+        initInfoDao.insert(initInfo);
 
-        return sysId;
+        return sysInfo.getId();
     }
 
     @Override
-    public long deleteSysInfo(int sysId) {
+    public long deleteSysInfo(long sysId) {
         return sysInfoDao.deleteById(sysId);
     }
 
     @Override
-    public long updateSysInfo(int sysId, String sysName) {
+    public long updateSysInfo(long sysId, String sysName) {
         long tmpNum = sysInfoDao.querySystemCount(sysId);
         long hits = 0;
         if (tmpNum > 0) {
@@ -100,5 +103,18 @@ public class DBServiceImpl implements DBService {
             LOG.info("未查询到此系统id:{}", sysId);
         }
         return hits;
+    }
+
+    @Override
+    public List<SystemsInfoVo> selectSystemsInfo() {
+        List<SystemsInfoVo> SystemsInfoList = new ArrayList<>();
+        List<SysInfo> sysList = sysInfoDao.selectAll();
+        for (SysInfo sysInfo : sysList) {
+            SystemsInfoVo systemsInfoVo = SystemsInfoVo.superClone(sysInfo);
+            systemsInfoVo.setCurrentValue(initInfoDao.queryCurrentValue(sysInfo.getId()));
+            SystemsInfoList.add(systemsInfoVo);
+        }
+
+        return SystemsInfoList;
     }
 }

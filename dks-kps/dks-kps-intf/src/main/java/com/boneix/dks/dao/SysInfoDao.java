@@ -7,7 +7,7 @@ import com.boneix.dks.domain.SysInfo;
  * Created by zhangrong5 on 2016/10/27.
  */
 public interface SysInfoDao extends BaseDao<SysInfo> {
-    int insertByName(String sysName);
+    int insertByName(SysInfo sysInfo);
 
-    long querySystemCount(int sysId);
+    long querySystemCount(long sysId);
 }

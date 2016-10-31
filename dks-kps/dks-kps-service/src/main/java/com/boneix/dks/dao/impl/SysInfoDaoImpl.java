@@ -11,12 +11,12 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class SysInfoDaoImpl extends BaseDaoImpl<SysInfo> implements SysInfoDao {
     @Override
-    public int insertByName(String sysName) {
-        return sqlSessionTemplate.insert(getSqlName("insertByName"), sysName);
+    public int insertByName(SysInfo sysInfo) {
+        return sqlSessionTemplate.insert(getSqlName("insertByName"), sysInfo);
     }
 
     @Override
-    public long querySystemCount(int sysId) {
+    public long querySystemCount(long sysId) {
         return sqlSessionTemplate.selectOne(getSqlName("querySystemCount"), sysId);
     }
 }

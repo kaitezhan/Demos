@@ -15,12 +15,12 @@ import java.util.Map;
 public class InitInfoDaoImpl extends BaseDaoImpl<InitInfo> implements InitInfoDao {
 
     @Override
-    public long queryCurrentValue(int sysId) {
+    public long queryCurrentValue(long sysId) {
         return sqlSessionTemplate.selectOne(getSqlName("queryCurrentValue"), sysId);
     }
 
     @Override
-    public int updateCurrentValue(int sysId, long newValue) {
+    public int updateCurrentValue(long sysId, long newValue) {
         Map<String, Object> reqMap = new HashMap<>();
         reqMap.put("sysId", sysId);
         reqMap.put("newValue", newValue);
@@ -28,13 +28,13 @@ public class InitInfoDaoImpl extends BaseDaoImpl<InitInfo> implements InitInfoDa
     }
 
     @Override
-    public int deleteCurrentValue(int sysId) {
+    public int deleteCurrentValue(long sysId) {
         return sqlSessionTemplate.update(getSqlName("deleteCurrentValue"), sysId);
     }
 
 
     @Override
-    public int querySystemCount(int sysId) {
+    public int querySystemCount(long sysId) {
         return sqlSessionTemplate.selectOne(getSqlName("querySystemCount"), sysId);
     }
 }

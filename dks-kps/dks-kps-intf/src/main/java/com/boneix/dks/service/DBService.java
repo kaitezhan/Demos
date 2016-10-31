@@ -1,21 +1,28 @@
 package com.boneix.dks.service;
 
+import com.boneix.dks.domain.SysInfo;
+import com.boneix.dks.domain.SystemsInfoVo;
+
+import java.util.List;
+
 /**
  * Created by zhangrong5 on 2016/10/27.
  */
 public interface DBService {
 
-    long insertInitInfo(int sysId, long newValue);
+    long insertInitInfo(long sysId, long newValue);
 
-    long deleteInitInfo(int sysId);
+    long deleteInitInfo(long sysId);
 
-    long updateInitInfo(int sysId, long newValue);
+    long updateInitInfo(long sysId, long newValue);
 
-    long queryCurrentValue(int sysId);
+    long queryCurrentValue(long sysId);
 
-    long insertSysInfo(String sysName);
+    long insertSysInfo(SysInfo sysInfo);
 
-    long deleteSysInfo(int sysId);
+    long deleteSysInfo(long sysId);
 
-    long updateSysInfo(int sysId, String sysName);
+    long updateSysInfo(long sysId, String sysName);
+
+    List<SystemsInfoVo> selectSystemsInfo();
 }

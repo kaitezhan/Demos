@@ -7,8 +7,30 @@
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
     http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <mvc:annotation-driven/>
-    <context:component-scan base-package="com.boneix.kps"/>
+    <mvc:annotation-driven>
+        <mvc:argument-resolvers>
+            <!-- 配置Fastjson注解 @Json -->
+            <bean class="com.boneix.base.resolver.FastJsonArgumentResolver"/>
+        </mvc:argument-resolvers>
+        <!-- 根据业务需求来配置Fastjson支持 @ResponseBody -->
+        <mvc:message-converters register-defaults="true">
+            <bean class="com.boneix.base.converter.FastJsonMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/html;charset=UTF-8</value>
+                        <value>application/json</value>
+                    </list>
+                </property>
+                <property name="features">
+                    <list>
+                        <value>WriteMapNullValue</value>
+                        <value>QuoteFieldNames</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+    <context:component-scan base-package="com.boneix.dks"/>
     <context:annotation-config/>
 
     <!-- 处理下系统引用的property文件-->
@@ -16,6 +38,7 @@
         <property name="locations">
             <list>
                 <value>classpath:config/resource/config.properties</value>
+                <value>classpath:config/resource/jdbc.properties</value>
             </list>
         </property>
 

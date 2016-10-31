@@ -10,7 +10,7 @@ public class InitInfo extends BaseEntity {
 
     private long currentValue;
 
-    private int sysId;
+    private long sysId;
 
     private String systemName;
 
@@ -30,11 +30,11 @@ public class InitInfo extends BaseEntity {
     }
 
 
-    public int getSysId() {
+    public long getSysId() {
         return sysId;
     }
 
-    public void setSysId(int sysId) {
+    public void setSysId(long sysId) {
         this.sysId = sysId;
     }
 

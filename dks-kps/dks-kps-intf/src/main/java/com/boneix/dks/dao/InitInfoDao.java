@@ -8,11 +8,11 @@ import com.boneix.dks.domain.InitInfo;
  */
 public interface InitInfoDao extends BaseDao<InitInfo> {
 
-    long queryCurrentValue(int sysId);
+    long queryCurrentValue(long sysId);
 
-    int updateCurrentValue(int sysId, long newValue);
+    int updateCurrentValue(long sysId, long newValue);
 
-    int deleteCurrentValue(int sysId);
+    int deleteCurrentValue(long sysId);
 
-    int querySystemCount(int sysId);
+    int querySystemCount(long sysId);
 }

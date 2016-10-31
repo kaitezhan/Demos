@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.boneix.dks.domain.InitInfo">
-    <resultMap type="com.boneix.dks.domain.InitInfo" id="InitInfo">
+    <resultMap type="com.boneix.dks.domain.InitInfo" id="initInfo">
         <id property="id" column="id" jdbcType="INTEGER"/>
         <result property="currentValue" column="current_value" jdbcType="INTEGER"/>
         <result property="deleteFlag" column="delete_flag" jdbcType="INTEGER"/>
@@ -16,14 +16,14 @@
 	</sql>
 
 
-    <select id="queryCurrentValue" parameterType="Integer" resultType="Long">
+    <select id="queryCurrentValue" parameterType="Long" resultType="Long">
 		select
 		current_value
 		from
 		init_info where sys_id = #{sysId}
 	</select>
 
-    <select id="querySystemCount" parameterType="Integer" resultType="Long">
+    <select id="querySystemCount" parameterType="Long" resultType="Long">
         select
         COUNT(1)
         from
@@ -46,7 +46,7 @@
         </where>
     </update>
 
-    <update id="deleteById" parameterType="Integer">
+    <update id="deleteById" parameterType="Long">
         UPDATE
         init_info
         <set>
@@ -59,25 +59,25 @@
         </where>
     </update>
 
-    <insert id="insert" parameterMap="InitInfo" keyProperty="id" useGeneratedKeys="true">
+    <insert id="insert" parameterType="com.boneix.dks.domain.InitInfo" keyProperty="id" useGeneratedKeys="true">
         INSERT INTO init_info
-        <trim prefix="(" suffix=")" prefixOverrides=",">
+        <trim prefix="(" suffix=")" prefixOverrides="," suffixOverrides=",">
             sys_id,
-            <if test="sysName != null">
+            <if test="systemName != null">
                 sys_name,
             </if>
-            <if test="currentValue != null">
+            <if test="currentValue != null and currentValue != 0 ">
                 current_value,
             </if>
         </trim>
         VALUES
-        <trim prefix="(" suffix=")" prefixOverrides=",">
+        <trim prefix="(" suffix=")" prefixOverrides="," suffixOverrides=",">
             #{sysId},
-            <if test="sysName != null">
-                #{sysName},
+            <if test="systemName != null">
+                #{systemName},
             </if>
-            <if test="currentValue != null">
-                #{newValue},
+            <if test="currentValue != null and currentValue != 0">
+                #{currentValue},
             </if>
         </trim>
     </insert>

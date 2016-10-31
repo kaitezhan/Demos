@@ -149,6 +149,12 @@
             <artifactId>jsp-api</artifactId>
             <version>2.2</version>
         </dependency>
+        <!-- jstl -->
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
         <!-- commons -->
         <dependency>
             <groupId>commons-codec</groupId>
