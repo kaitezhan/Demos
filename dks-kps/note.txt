@@ -10,9 +10,9 @@ http://localhost:8080/opt/systemAdd
 {"systemName":"PCS"}
 
 申请生成key
-http://localhost:8080/key/init
+http://localhost:8080/key/produce
 {"id":2,"currentValue":100000,"usedValue":98880,"authorityCode":"c6acf1c2c5f96af518cb98a7ca68dbd6"}
 
 获取key
-http://localhost:8080/key/apply
+http://localhost:8080/key/consume
 {"id":2,"authorityCode":"c6acf1c2c5f96af518cb98a7ca68dbd6"}
