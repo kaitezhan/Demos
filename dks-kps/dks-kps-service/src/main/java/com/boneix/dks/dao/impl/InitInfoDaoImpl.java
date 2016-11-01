@@ -3,6 +3,7 @@ package com.boneix.dks.dao.impl;
 import com.boneix.base.dao.impl.BaseDaoImpl;
 import com.boneix.dks.dao.InitInfoDao;
 import com.boneix.dks.domain.InitInfo;
+import com.boneix.dks.domain.SystemsInfoVo;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
@@ -36,5 +37,10 @@ public class InitInfoDaoImpl extends BaseDaoImpl<InitInfo> implements InitInfoDa
     @Override
     public int querySystemCount(long sysId) {
         return sqlSessionTemplate.selectOne(getSqlName("querySystemCount"), sysId);
+    }
+
+    @Override
+    public int confirmSystem(SystemsInfoVo systemsInfoVo) {
+        return sqlSessionTemplate.selectOne(getSqlName("confirmSystem"),systemsInfoVo);
     }
 }

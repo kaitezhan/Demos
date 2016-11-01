@@ -35,11 +35,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="InitOperateController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="InitOperateController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dks-kps-web/src/main/java/com/boneix/dks/controller/InitOperateController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.4061697">
-              <caret line="70" column="19" selection-start-line="70" selection-start-column="19" selection-end-line="70" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="65" column="38" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -48,24 +48,26 @@
       <file leaf-file-name="InitInfoMapper.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dks-kps-web/src/main/resources/config/mybatis/initInfo/InitInfoMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.631579">
-              <caret line="78" column="64" selection-start-line="78" selection-start-column="64" selection-end-line="78" selection-end-column="64" />
+            <state vertical-scroll-proportion="-1.9298246">
+              <caret line="32" column="29" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="29" />
               <folding>
-                <marker date="1477916071153" expanded="true" signature="761:826" placeholder="select from ..user_info..." />
-                <marker date="1477916071153" expanded="true" signature="921:999" placeholder="select COUNT..init_info..." />
+                <marker date="1477977776578" expanded="true" signature="761:826" placeholder="select from ..user_info..." />
+                <marker date="1477977776578" expanded="true" signature="924:1002" placeholder="select COUNT..init_info..." />
+                <marker date="1477977776578" expanded="true" signature="1131:1327" placeholder="select COUNT..init_info..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DBServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dks-kps-service/src/main/java/com/boneix/dks/service/impl/DBServiceImpl.java">
+      <file leaf-file-name="KeyOperateController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dks-kps-web/src/main/java/com/boneix/dks/controller/KeyOperateController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="73" column="44" selection-start-line="73" selection-start-column="27" selection-end-line="73" selection-end-column="44" />
+            <state vertical-scroll-proportion="0.632312">
+              <caret line="70" column="17" selection-start-line="70" selection-start-column="17" selection-end-line="70" selection-end-column="17" />
               <folding>
-                <element signature="e#2023#2024#0" expanded="true" />
-                <element signature="e#2082#2083#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#3837#3838#0" expanded="true" />
+                <element signature="e#3890#3891#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -75,68 +77,42 @@
         <entry file="file://$PROJECT_DIR$/dks-kps-service/src/main/java/com/boneix/dks/dao/impl/InitInfoDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="18" column="73" selection-start-line="18" selection-start-column="56" selection-end-line="18" selection-end-column="73" />
+              <caret line="43" column="69" selection-start-line="43" selection-start-column="56" selection-end-line="43" selection-end-column="69" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DBService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dks-kps-intf/src/main/java/com/boneix/dks/service/DBService.java">
+      <file leaf-file-name="DBServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dks-kps-service/src/main/java/com/boneix/dks/service/impl/DBServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+              <caret line="126" column="45" selection-start-line="126" selection-start-column="32" selection-end-line="126" selection-end-column="45" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SysInfoDaoImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dks-kps-service/src/main/java/com/boneix/dks/dao/impl/SysInfoDaoImpl.java">
+      <file leaf-file-name="RedisService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dks-kps-intf/src/main/java/com/boneix/dks/service/RedisService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="72" selection-start-line="11" selection-start-column="72" selection-end-line="11" selection-end-column="72" />
+              <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#406#407#0" expanded="true" />
-                <element signature="e#491#492#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SysInfoDao.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dks-kps-intf/src/main/java/com/boneix/dks/dao/SysInfoDao.java">
+      <file leaf-file-name="RedisServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dks-kps-service/src/main/java/com/boneix/dks/service/impl/RedisServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="36" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SysInfoMapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dks-kps-web/src/main/resources/config/mybatis/sysInfo/SysInfoMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.2105262">
-              <caret line="64" column="56" selection-start-line="64" selection-start-column="56" selection-end-line="64" selection-end-column="56" />
+              <caret line="51" column="9" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
               <folding>
-                <marker date="1477915338703" expanded="true" signature="719:819" placeholder="select from ..sys_info..." />
-                <marker date="1477915338703" expanded="true" signature="913:1013" placeholder="select curre..init_info..." />
-                <marker date="1477915338703" expanded="true" signature="913:1031" placeholder="select from ..sys_info..." />
-                <marker date="1477915338703" expanded="true" signature="2191:2264" placeholder="select COUNT..sys_info..." />
-                <marker date="1477915338703" expanded="true" signature="2191:2283" placeholder="select COUNT..sys_info..." />
+                <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SysInfo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dks-kps-intf/src/main/java/com/boneix/dks/domain/SysInfo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="29" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="29" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -159,11 +135,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/dks-kps-service/pom.xml" />
-        <option value="$PROJECT_DIR$/dks-kps-base/src/main/java/com.boneix.base/environment/LogConfigurerSupportMultiEnvironment.java" />
-        <option value="$PROJECT_DIR$/dks-kps-base/src/main/java/com/boneix/base/cache/factory/CacheClientFactoryBean.java" />
-        <option value="$PROJECT_DIR$/dks-kps-base/src/main/java/com/boneix/base/cache/pool/HostPair.java" />
-        <option value="$PROJECT_DIR$/dks-kps-base/src/main/java/com/boneix/base/cache/template/CacheCallback.java" />
         <option value="$PROJECT_DIR$/dks-kps-base/src/main/java/com/boneix/base/cache/util/Commands.java" />
         <option value="$PROJECT_DIR$/dks-kps-base/src/main/java/com/boneix/base/cache/util/CacheClientUtils.java" />
         <option value="$PROJECT_DIR$/dks-kps-web/src/main/resources/config/spring/spring-redis.xml" />
@@ -183,19 +154,14 @@
         <option value="$PROJECT_DIR$/dks-kps-base/src/main/java/com/boneix/base/domain/BaseModelEntity.java" />
         <option value="$PROJECT_DIR$/dks-kps-base/src/main/java/com/boneix/base/util/DateFormatUtils.java" />
         <option value="$PROJECT_DIR$/dks-kps-base/src/main/java/com/boneix/base/cache/jmx/CacheMonitor.java" />
-        <option value="$PROJECT_DIR$/dks-kps-intf/src/main/java/com/boneix/dks/domain/SysInfo.java" />
         <option value="$PROJECT_DIR$/dks-kps-intf/src/main/java/com/boneix/dks/domain/SystemsInfoQueryVo.java" />
-        <option value="$PROJECT_DIR$/dks-kps-intf/src/main/java/com/boneix/dks/domain/SystemsInfoVo.java" />
         <option value="$PROJECT_DIR$/dks-kps-web/src/main/resources/config/mybatis/sysInfo/sysInfoMapper.xml" />
         <option value="$PROJECT_DIR$/dks-kps-base/src/main/java/com/boneix/base/resolver/FastJsonArgumentResolver.java" />
         <option value="$PROJECT_DIR$/dks-kps-base/src/main/java/com/boneix/base/filter/Base64JsonDecodingFilter.java" />
-        <option value="$PROJECT_DIR$/dks-kps-intf/src/main/java/com/boneix/dks/dao/InitInfoDao.java" />
         <option value="$PROJECT_DIR$/dks-kps-intf/src/main/java/com/boneix/dks/domain/InitInfo.java" />
-        <option value="$PROJECT_DIR$/dks-kps-service/src/main/java/com/boneix/dks/dao/impl/InitInfoDaoImpl.java" />
         <option value="$PROJECT_DIR$/dks-kps-web/pom.xml" />
         <option value="$PROJECT_DIR$/dks-kps-web/src/main/resources/config/resource/jdbc.properties" />
         <option value="$PROJECT_DIR$/dks-kps-web/src/main/resources/config/spring/spring-cache.xml" />
-        <option value="$PROJECT_DIR$/dks-kps-web/src/main/resources/config/resource/system_param_init_dev.properties" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/dks-kps-web/webapp/WEB-INF/config/dispatcher-servlet.xml" />
         <option value="$PROJECT_DIR$/dks-kps-web/src/main/java/com/boneix/dks/controller/ViewController.java" />
@@ -203,13 +169,23 @@
         <option value="$PROJECT_DIR$/dks-kps-web/src/main/resources/config/spring/spring-web.xml" />
         <option value="$PROJECT_DIR$/dks-kps-web/webapp/WEB-INF/jsp/urlRest.jsp" />
         <option value="$PROJECT_DIR$/dks-kps-web/webapp/assets/js/urlRest.js" />
-        <option value="$PROJECT_DIR$/dks-kps-web/src/main/resources/config/mybatis/sysInfo/SysInfoMapper.xml" />
-        <option value="$PROJECT_DIR$/dks-kps-service/src/main/java/com/boneix/dks/dao/impl/SysInfoDaoImpl.java" />
-        <option value="$PROJECT_DIR$/dks-kps-intf/src/main/java/com/boneix/dks/dao/SysInfoDao.java" />
+        <option value="$PROJECT_DIR$/dks-kps-intf/src/main/java/com/boneix/dks/property/SystemParamInit.java" />
+        <option value="$PROJECT_DIR$/dks-kps-web/src/main/resources/config/spring/spring-init.xml" />
+        <option value="$PROJECT_DIR$/dks-kps-intf/src/main/java/com/boneix/dks/domain/SysInfo.java" />
+        <option value="$PROJECT_DIR$/dks-kps-intf/src/main/java/com/boneix/dks/domain/SystemsInfoVo.java" />
+        <option value="$PROJECT_DIR$/dks-kps-intf/src/main/java/com/boneix/dks/dao/InitInfoDao.java" />
+        <option value="$PROJECT_DIR$/dks-kps-service/src/main/java/com/boneix/dks/dao/impl/InitInfoDaoImpl.java" />
+        <option value="$PROJECT_DIR$/dks-kps-web/src/main/resources/config/resource/system_param_init_dev.properties" />
+        <option value="$PROJECT_DIR$/dks-kps-web/src/main/resources/config/mybatis/initInfo/InitInfoMapper.xml" />
         <option value="$PROJECT_DIR$/dks-kps-intf/src/main/java/com/boneix/dks/service/DBService.java" />
         <option value="$PROJECT_DIR$/dks-kps-service/src/main/java/com/boneix/dks/service/impl/DBServiceImpl.java" />
-        <option value="$PROJECT_DIR$/dks-kps-web/src/main/resources/config/mybatis/initInfo/InitInfoMapper.xml" />
+        <option value="$PROJECT_DIR$/dks-kps-intf/src/main/java/com/boneix/dks/dao/SysInfoDao.java" />
+        <option value="$PROJECT_DIR$/dks-kps-service/src/main/java/com/boneix/dks/dao/impl/SysInfoDaoImpl.java" />
+        <option value="$PROJECT_DIR$/dks-kps-web/src/main/resources/config/mybatis/sysInfo/SysInfoMapper.xml" />
+        <option value="$PROJECT_DIR$/dks-kps-intf/src/main/java/com/boneix/dks/service/RedisService.java" />
         <option value="$PROJECT_DIR$/dks-kps-web/src/main/java/com/boneix/dks/controller/InitOperateController.java" />
+        <option value="$PROJECT_DIR$/dks-kps-web/src/main/java/com/boneix/dks/controller/KeyOperateController.java" />
+        <option value="$PROJECT_DIR$/dks-kps-service/src/main/java/com/boneix/dks/service/impl/RedisServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -243,9 +219,9 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-448" />
-    <option name="y" value="133" />
-    <option name="width" value="1936" />
+    <option name="x" value="136" />
+    <option name="y" value="109" />
+    <option name="width" value="1863" />
     <option name="height" value="942" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -602,88 +578,6 @@
               <option name="myItemId" value="webapp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dks-kps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dks-kps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dks-kps-web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jsp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dks-kps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dks-kps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dks-kps-web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dks-kps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dks-kps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dks-kps-web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -700,40 +594,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dks-kps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dks-kps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dks-kps-web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="spring" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -891,19 +751,19 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/dks-kps-web" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\gitCode\Demos\dks-kps\dks-kps-web\webapp\assets\js" />
-      <recent name="D:\gitCode\Demos\dks-kps\dks-kps-web\webapp\assets" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.boneix.dks.domain" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\gitCode\Demos\dks-kps\dks-kps-web\src\main\resources\config\spring" />
       <recent name="D:\gitCode\Demos\dks-kps\dks-kps-web\webapp\WEB-INF\js" />
       <recent name="D:\gitCode\Demos\dks-kps\dks-kps-web\webapp\WEB-INF\jsp" />
       <recent name="D:\gitCode\Demos\dks-kps\dks-kps-base\src\main\java\com\boneix\base\filter" />
       <recent name="D:\gitCode\Demos\dks-kps\dks-kps-base\src\main\java\com\boneix\base\resolver" />
-      <recent name="D:\gitCode\Demos\dks-kps\dks-kps-base\src\main\java\com\boneix\base\domain" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.boneix.dks.domain" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\gitCode\Demos\dks-kps\dks-kps-web\webapp\assets\js" />
+      <recent name="D:\gitCode\Demos\dks-kps\dks-kps-web\webapp\assets" />
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.tomcat-dks">
@@ -1421,12 +1281,12 @@
       <workItem from="1477624429960" duration="18000" />
       <workItem from="1477883214132" duration="7449000" />
       <workItem from="1477895250077" duration="488000" />
-      <workItem from="1477895756223" duration="18185000" />
+      <workItem from="1477895756223" duration="34717000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49221000" />
+    <option name="totallyTimeSpent" value="65753000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1438,7 +1298,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-448" y="133" width="1936" height="942" extended-state="1" />
+    <frame x="136" y="109" width="1863" height="942" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1446,15 +1306,15 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32887402" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39910814" sideWeight="0.16577825" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4661558" sideWeight="0.16583472" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299712" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10501066" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10926234" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24946696" sideWeight="0.4935065" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25956738" sideWeight="0.4935065" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24946696" sideWeight="0.50664455" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1462,7 +1322,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24946696" sideWeight="0.5064935" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4661558" sideWeight="0.8342217" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4661558" sideWeight="0.8341653" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1520,7 +1380,7 @@
           <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="60" />
+      <option name="time" value="73" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1529,95 +1389,13 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/4.2.4.RELEASE/spring-beans-4.2.4.RELEASE-sources.jar!/org/springframework/beans/factory/support/DefaultListableBeanFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="749" column="0" selection-start-line="749" selection-start-column="0" selection-end-line="749" selection-end-column="0" />
-          <folding>
-            <element signature="e#28897#28905#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dks-kps-web/src/main/resources/config/resource/system_param_init_dev.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34100136">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dks-kps-web/src/main/resources/config/resource/jdbc.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="23" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dks-kps-web/src/main/resources/config/resource/config.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dks-kps-web/src/main/resources/config/spring/spring-amq.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dks-kps-web/src/main/resources/config/spring/spring-log.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.185185">
-          <caret line="156" column="21" selection-start-line="156" selection-start-column="21" selection-end-line="156" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dks-kps-web/src/main/resources/config/spring/spring-cache.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.2727273">
-          <caret line="19" column="63" selection-start-line="19" selection-start-column="58" selection-end-line="19" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.2.4.RELEASE/spring-webmvc-4.2.4.RELEASE-sources.jar!/org/springframework/web/servlet/handler/HandlerInterceptorAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3313253">
-          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.2.4.RELEASE/spring-web-4.2.4.RELEASE-sources.jar!/org/springframework/web/util/UrlPathHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3313253">
-          <caret line="158" column="0" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.2.4.RELEASE/spring-webmvc-4.2.4.RELEASE-sources.jar!/org/springframework/web/servlet/ModelAndView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="178" column="19" selection-start-line="178" selection-start-column="19" selection-end-line="178" selection-end-column="19" />
           <folding>
-            <element signature="e#5647#5648#0" expanded="true" />
-            <element signature="e#5680#5681#0" expanded="true" />
+            <element signature="e#5647#5648#0" expanded="false" />
+            <element signature="e#5680#5681#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1643,7 +1421,7 @@
         <state vertical-scroll-proportion="-0.8072289">
           <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
           <folding>
-            <element signature="e#2687#2688#0" expanded="true" />
+            <element signature="e#2687#2688#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1839,14 +1617,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dks-kps-web/src/main/resources/config/spring/spring-web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7969231">
-          <caret line="31" column="28" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dks-kps-web/webapp/assets/js/urlRest.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.577167">
@@ -1863,46 +1633,91 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dks-kps-intf/src/main/java/com/boneix/dks/domain/SystemsInfoVo.java">
+    <entry file="file://$PROJECT_DIR$/dks-kps-web/src/main/resources/config/spring/spring-web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.145454">
+          <caret line="31" column="28" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dks-kps-intf/src/main/java/com/boneix/dks/property/SystemParamInit.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="29" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="29" />
+          <caret line="9" column="36" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="36" />
+          <folding>
+            <element signature="e#233#234#0" expanded="true" />
+            <element signature="e#270#271#0" expanded="true" />
+            <element signature="e#334#335#0" expanded="true" />
+            <element signature="e#397#398#0" expanded="true" />
+            <element signature="e#442#443#0" expanded="true" />
+            <element signature="e#479#480#0" expanded="true" />
+            <element signature="e#543#544#0" expanded="true" />
+            <element signature="e#606#607#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dks-kps-web/src/main/resources/config/spring/spring-init.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16071428">
+          <caret line="4" column="69" selection-start-line="4" selection-start-column="69" selection-end-line="4" selection-end-column="69" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dks-kps-intf/src/main/java/com/boneix/dks/dao/InitInfoDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.5340314">
+          <caret line="19" column="21" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dks-kps-intf/src/main/java/com/boneix/dks/domain/SysInfo.java">
+    <entry file="file://$PROJECT_DIR$/dks-kps-base/src/main/java/com/boneix/base/cache/client/CacheClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="29" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="29" />
+        <state vertical-scroll-proportion="0.33161953">
+          <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dks-kps-service/src/main/java/com/boneix/dks/dao/impl/SysInfoDaoImpl.java">
+    <entry file="file://$PROJECT_DIR$/dks-kps-base/src/main/java/com/boneix/base/cache/client/CacheClientImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="72" selection-start-line="11" selection-start-column="72" selection-end-line="11" selection-end-column="72" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#406#407#0" expanded="true" />
-            <element signature="e#491#492#0" expanded="true" />
-          </folding>
+          <caret line="536" column="11" selection-start-line="536" selection-start-column="11" selection-end-line="536" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dks-kps-intf/src/main/java/com/boneix/dks/dao/SysInfoDao.java">
+    <entry file="file://$PROJECT_DIR$/dks-kps-web/src/main/resources/config/resource/config.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="36" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="36" />
+          <caret line="6" column="72" selection-start-line="6" selection-start-column="72" selection-end-line="6" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dks-kps-web/src/main/resources/config/resource/system_param_init_dev.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dks-kps-web/src/main/resources/config/spring/spring-cache.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.9454546">
+          <caret line="18" column="65" selection-start-line="18" selection-start-column="65" selection-end-line="18" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dks-kps-intf/src/main/java/com/boneix/dks/domain/SystemsInfoVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="42" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="42" />
           <folding />
         </state>
       </provider>
@@ -1910,60 +1725,119 @@
     <entry file="file://$PROJECT_DIR$/dks-kps-intf/src/main/java/com/boneix/dks/service/DBService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+          <caret line="28" column="25" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dks-kps-service/src/main/java/com/boneix/dks/service/impl/DBServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/dks-kps-intf/src/main/java/com/boneix/dks/dao/SysInfoDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="73" column="44" selection-start-line="73" selection-start-column="27" selection-end-line="73" selection-end-column="44" />
+          <caret line="8" column="27" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dks-kps-service/src/main/java/com/boneix/dks/dao/impl/SysInfoDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="67" selection-start-line="24" selection-start-column="56" selection-end-line="24" selection-end-column="67" />
           <folding>
-            <element signature="e#2023#2024#0" expanded="true" />
-            <element signature="e#2082#2083#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#704#705#0" expanded="true" />
+            <element signature="e#791#792#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dks-kps-web/src/main/resources/config/mybatis/sysInfo/SysInfoMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.2105262">
-          <caret line="64" column="56" selection-start-line="64" selection-start-column="56" selection-end-line="64" selection-end-column="56" />
+        <state vertical-scroll-proportion="-56.0">
+          <caret line="84" column="86" selection-start-line="84" selection-start-column="75" selection-end-line="84" selection-end-column="86" />
           <folding>
-            <marker date="1477915338703" expanded="true" signature="719:819" placeholder="select from ..sys_info..." />
-            <marker date="1477915338703" expanded="true" signature="913:1013" placeholder="select curre..init_info..." />
-            <marker date="1477915338703" expanded="true" signature="913:1031" placeholder="select from ..sys_info..." />
-            <marker date="1477915338703" expanded="true" signature="2191:2264" placeholder="select COUNT..sys_info..." />
-            <marker date="1477915338703" expanded="true" signature="2191:2283" placeholder="select COUNT..sys_info..." />
+            <marker date="1477978923403" expanded="true" signature="719:819" placeholder="select from ..sys_info..." />
+            <marker date="1477978923403" expanded="true" signature="913:1013" placeholder="select curre..init_info..." />
+            <marker date="1477978923403" expanded="true" signature="913:1031" placeholder="select from ..sys_info..." />
+            <marker date="1477978923403" expanded="true" signature="2226:2299" placeholder="select COUNT..sys_info..." />
+            <marker date="1477978923403" expanded="true" signature="2226:2318" placeholder="select COUNT..sys_info..." />
+            <marker date="1477978923403" expanded="true" signature="2439:2564" placeholder="select COUNT..sys_info..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dks-kps-intf/src/main/java/com/boneix/dks/domain/SysInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dks-kps-intf/src/main/java/com/boneix/dks/service/RedisService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dks-kps-service/src/main/java/com/boneix/dks/service/impl/DBServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="126" column="45" selection-start-line="126" selection-start-column="32" selection-end-line="126" selection-end-column="45" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dks-kps-service/src/main/java/com/boneix/dks/dao/impl/InitInfoDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="73" selection-start-line="18" selection-start-column="56" selection-end-line="18" selection-end-column="73" />
+          <caret line="43" column="69" selection-start-line="43" selection-start-column="56" selection-end-line="43" selection-end-column="69" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dks-kps-service/src/main/java/com/boneix/dks/service/impl/RedisServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="51" column="9" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dks-kps-web/src/main/resources/config/mybatis/initInfo/InitInfoMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.631579">
-          <caret line="78" column="64" selection-start-line="78" selection-start-column="64" selection-end-line="78" selection-end-column="64" />
+        <state vertical-scroll-proportion="-1.9298246">
+          <caret line="32" column="29" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="29" />
           <folding>
-            <marker date="1477916071153" expanded="true" signature="761:826" placeholder="select from ..user_info..." />
-            <marker date="1477916071153" expanded="true" signature="921:999" placeholder="select COUNT..init_info..." />
+            <marker date="1477977776578" expanded="true" signature="761:826" placeholder="select from ..user_info..." />
+            <marker date="1477977776578" expanded="true" signature="924:1002" placeholder="select COUNT..init_info..." />
+            <marker date="1477977776578" expanded="true" signature="1131:1327" placeholder="select COUNT..init_info..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dks-kps-web/src/main/java/com/boneix/dks/controller/InitOperateController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.4061697">
-          <caret line="70" column="19" selection-start-line="70" selection-start-column="19" selection-end-line="70" selection-end-column="19" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="65" column="38" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="38" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dks-kps-web/src/main/java/com/boneix/dks/controller/KeyOperateController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.632312">
+          <caret line="70" column="17" selection-start-line="70" selection-start-column="17" selection-end-line="70" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3837#3838#0" expanded="true" />
+            <element signature="e#3890#3891#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

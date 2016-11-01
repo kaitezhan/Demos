@@ -19,4 +19,9 @@ public class SysInfoDaoImpl extends BaseDaoImpl<SysInfo> implements SysInfoDao {
     public long querySystemCount(long sysId) {
         return sqlSessionTemplate.selectOne(getSqlName("querySystemCount"), sysId);
     }
+
+    @Override
+    public int existSystem(SysInfo sysInfo) {
+        return sqlSessionTemplate.selectOne(getSqlName("existSystem"), sysInfo);
+    }
 }

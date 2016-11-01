@@ -28,10 +28,10 @@ import java.util.List;
 @RequestMapping(value = "/opt")
 public class InitOperateController {
 
+    private static final Logger LOG = LoggerFactory.getLogger(InitOperateController.class);
+
     @Resource
     private DBService dbService;
-
-    private static final Logger LOG = LoggerFactory.getLogger(InitOperateController.class);
 
     @RequestMapping(value = "/systemsQuery", method = RequestMethod.POST)
     @ResponseBody
@@ -68,8 +68,8 @@ public class InitOperateController {
                     long currentValue = dbService.queryCurrentValue(sysId);
                     if (currentValue < 1) {
                         res = false;
-                    }else{
-                        responseVo.setData(sysId);
+                    } else {
+                        responseVo.setData(systemsInfoVo);
                     }
                 } else {
                     res = false;
@@ -77,11 +77,11 @@ public class InitOperateController {
             } else {
                 paramRes = false;
             }
-            if(!paramRes){
+            if (!paramRes) {
                 CommonError.setErrorCode(responseVo, CommonError.PARAM_ERROR);
                 responseVo.setMsg("添加系统信息失败 参数错误!");
                 LOG.info("添加系统信息失败  参数错误! {}", JsonUtils.toString(systemsInfoVo));
-            }else if (!res) {
+            } else if (!res) {
                 CommonError.setErrorCode(responseVo, CommonError.INSERT_ERROR);
                 responseVo.setMsg("添加系统信息失败!");
                 LOG.info("添加系统信息失败! {}", JsonUtils.toString(systemsInfoVo));
@@ -92,5 +92,6 @@ public class InitOperateController {
         }
         return responseVo;
     }
+
 
 }

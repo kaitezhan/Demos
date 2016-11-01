@@ -10,4 +10,6 @@ public interface SysInfoDao extends BaseDao<SysInfo> {
     int insertByName(SysInfo sysInfo);
 
     long querySystemCount(long sysId);
+
+    int existSystem(SysInfo sysInfo);
 }

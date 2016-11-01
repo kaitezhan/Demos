@@ -1,5 +1,7 @@
 package com.boneix.dks.service.impl;
 
+import com.boneix.base.util.EncryptUtils;
+import com.boneix.base.util.StringUtils;
 import com.boneix.dks.dao.InitInfoDao;
 import com.boneix.dks.dao.SysInfoDao;
 import com.boneix.dks.domain.InitInfo;
@@ -76,6 +78,7 @@ public class DBServiceImpl implements DBService {
 
     @Override
     public long insertSysInfo(SysInfo sysInfo) {
+        sysInfo.setAuthorityCode(EncryptUtils.MD5(sysInfo.getSystemName()));
         sysInfoDao.insertByName(sysInfo);
         InitInfo initInfo = new InitInfo();
         initInfo.setSystemName(sysInfo.getSystemName());
@@ -116,5 +119,26 @@ public class DBServiceImpl implements DBService {
         }
 
         return SystemsInfoList;
+    }
+
+    @Override
+    public boolean confirmSystem(SystemsInfoVo systemsInfoVo) {
+        boolean flag = StringUtils.isNotEmpty(systemsInfoVo.getAuthorityCode()) && (systemsInfoVo.getId() > 0) && (systemsInfoVo.getUsedValue() > 0) && (systemsInfoVo.getCurrentValue() - systemsInfoVo.getUsedValue() > 0);
+        if (flag && initInfoDao.confirmSystem(systemsInfoVo) > 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    @Override
+    public boolean existSystem(SysInfo sysInfo) {
+        boolean flag = StringUtils.isNotEmpty(sysInfo.getAuthorityCode()) && (sysInfo.getId() > 0);
+        if (flag && sysInfoDao.existSystem(sysInfo) > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

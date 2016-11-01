@@ -9,6 +9,9 @@ public class SystemsInfoVo extends SysInfo {
 
     private long currentValue;
 
+    private long usedValue;
+
+
     public SystemsInfoVo() {
     }
 
@@ -20,12 +23,21 @@ public class SystemsInfoVo extends SysInfo {
         this.currentValue = currentValue;
     }
 
+    public long getUsedValue() {
+        return usedValue;
+    }
+
+    public void setUsedValue(long usedValue) {
+        this.usedValue = usedValue;
+    }
+
     public static SystemsInfoVo superClone(SysInfo sysInfo) {
         SystemsInfoVo systemsInfoVo = new SystemsInfoVo();
         systemsInfoVo.setId(sysInfo.getId());
         systemsInfoVo.setSystemName(sysInfo.getSystemName());
         systemsInfoVo.setCreateTime(sysInfo.getCreateTime());
         systemsInfoVo.setDeleteFlag(sysInfo.getDeleteFlag());
+        systemsInfoVo.setAuthorityCode(sysInfo.getAuthorityCode());
         return systemsInfoVo;
     }
 }

@@ -12,6 +12,7 @@ CREATE TABLE `init_info` (
 CREATE TABLE `sys_info` (
   `id` int(20) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
   `sys_name` varchar(20) NOT NULL DEFAULT '' COMMENT '系统名称',
+  `authority_code` varchar(40) NOT NULL DEFAULT '' COMMENT '系统权限码',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `delete_flag` tinyint(2) NOT NULL DEFAULT '0' COMMENT '删除标记',
   PRIMARY KEY (`id`)

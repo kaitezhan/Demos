@@ -11,11 +11,21 @@ public class SysInfo extends BaseEntity {
 
     private String systemName;
 
+    private String authorityCode;
+
     public String getSystemName() {
         return systemName;
     }
 
     public void setSystemName(String systemName) {
         this.systemName = systemName;
+    }
+
+    public String getAuthorityCode() {
+        return authorityCode;
+    }
+
+    public void setAuthorityCode(String authorityCode) {
+        this.authorityCode = authorityCode;
     }
 }

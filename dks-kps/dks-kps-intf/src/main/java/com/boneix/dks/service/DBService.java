@@ -25,4 +25,8 @@ public interface DBService {
     long updateSysInfo(long sysId, String sysName);
 
     List<SystemsInfoVo> selectSystemsInfo();
+
+    boolean confirmSystem(SystemsInfoVo systemsInfoVo);
+
+    boolean existSystem(SysInfo sysInfo);
 }

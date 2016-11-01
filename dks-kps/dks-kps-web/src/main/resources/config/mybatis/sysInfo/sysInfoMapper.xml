@@ -63,18 +63,27 @@
     <insert id="insertByName" parameterType="com.boneix.dks.domain.SysInfo" keyProperty="id" useGeneratedKeys="true">
         INSERT INTO sys_info
         <trim prefix="(" suffix=")" prefixOverrides=",">
-            sys_name
+            sys_name,authority_code
         </trim>
         VALUES
         <trim prefix="(" suffix=")" prefixOverrides=",">
-            #{systemName}
+            #{systemName},#{authorityCode}
         </trim>
     </insert>
 
-    <select id="querySystemCount" parameterType="Long" resultType="Long">
+    <select id="querySystemCount" parameterType="Long" resultType="Integer">
         select
         COUNT(1)
         from
         sys_info where id = #{sysId}  AND delete_flag=0
     </select>
+
+    <select id="existSystem" parameterType="com.boneix.dks.domain.SysInfo" resultType="Integer">
+        select
+        COUNT(1)
+        from
+        sys_info where id = #{id} AND authority_code=#{authorityCode}  AND delete_flag=0
+    </select>
+
+
 </mapper>

@@ -23,12 +23,21 @@
 		init_info where sys_id = #{sysId}
 	</select>
 
-    <select id="querySystemCount" parameterType="Long" resultType="Long">
+    <select id="querySystemCount" parameterType="Long" resultType="Integer">
         select
         COUNT(1)
         from
         init_info where sys_id = #{sysId}
     </select>
+
+    <select id="confirmSystem" parameterType="com.boneix.dks.domain.SystemsInfoVo" resultType="Integer">
+        select
+        COUNT(1)
+        from
+        init_info ii left JOIN sys_info si on ii.sys_id=si.id AND ii.sys_id=#{id} AND ii.current_value=#{currentValue} WHERE si.authority_code=#{authorityCode}
+    </select>
+
+
 
     <update id="updateCurrentValue" parameterType="java.util.Map">
         UPDATE
