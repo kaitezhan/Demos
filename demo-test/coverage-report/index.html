@@ -12,8 +12,8 @@
   <table id='packages'>
     <caption>All Packages and Files<div style='font-size: smaller'>demo-test\src</div></caption>
     <tr>
-      <th style='cursor: col-resize' onclick='showHideAllFiles()'>Packages: 3</th>
-      <th onclick='location.reload()' style='cursor: n-resize' title='Click on the title for each metric to sort by size (total number of line segments, paths, or fields).'>Files: 12</th>
+      <th style='cursor: col-resize' onclick='showHideAllFiles()'>Packages: 4</th>
+      <th onclick='location.reload()' style='cursor: n-resize' title='Click on the title for each metric to sort by size (total number of line segments, paths, or fields).'>Files: 25</th>
       <th onclick='sortTables(1)' style='cursor: n-resize' title='Measures how much of the executable production code was exercised by tests.
 An executable line of code contains one or more executable segments.
 The percentages are calculated as 100*NE/NS, where NS is the number of segments and NE the number of executed segments.'>Line</th>
@@ -24,33 +24,109 @@ To be fully exercised, a field must have the last value assigned to it read by a
 The percentages are calculated as 100*NFE/NF, where NF is the number of non-final fields and NFE the number of fully exercised fields.'>Data</th>
     </tr>
     <tr>
-      <td class='package'>com.boneix.base.util</td>
+      <td class='package click' onclick='showHideFiles(this)'>com.boneix.base.util</td>
       <td>
         <table width='100%'>
           <tr>
+            <td class='file class'><a target='_blank' href='com/boneix/base/util/EncryptUtils.html'>EncryptUtils.java</a>      </td>
+            <td style='background-color:#dc2300' title='Line segments: 13/94'>14%</td>
+            <td style='background-color:#d42b00' title='Paths: 2/12'>17%</td>
+            <td class='nocode'>N/A</td>
+          </tr>
+          <tr>
             <td class='file class'><a target='_blank' href='com/boneix/base/util/JsonUtils.html'>JsonUtils.java</a>         </td>
-            <td style='background-color:#ff0000' title='Line segments: 0/54'>0%</td>
-            <td style='background-color:#ff0000' title='Paths: 0/17'>0%</td>
+            <td style='background-color:#d42b00' title='Line segments: 9/54'>17%</td>
+            <td style='background-color:#d22d00' title='Paths: 3/17'>18%</td>
             <td class='nocode'>N/A</td>
           </tr>
         </table>
       </td>
-      <td class='pt' style='background-color:#ff0000' title='Line segments: 0/54'>0%</td>
-      <td class='pt' style='background-color:#ff0000' title='Paths: 0/17'>0%</td>
+      <td class='pt' style='background-color:#d92600' title='Line segments: 22/148'>15%</td>
+      <td class='pt' style='background-color:#d32c00' title='Paths: 5/29'>17%</td>
       <td class='nocode'>N/A</td>
+    </tr>
+    <tr>
+      <td class='package click' onclick='showHideFiles(this)'>com.boneix.demo.client</td>
+      <td>
+        <table width='100%'>
+          <tr>
+            <td class='file class'><a target='_blank' href='com/boneix/demo/client/HttpClient.html'>HttpClient.java</a>        </td>
+            <td style='background-color:#ac5300' title='Line segments: 28/86'>33%</td>
+            <td style='background-color:#ec1300' title='Paths: 3/41'>7%</td>
+            <td style='background-color:#ff0000' title='Fields: 0/5'>0%</td>
+          </tr>
+          <tr>
+            <td class='file class'><a target='_blank' href='com/boneix/demo/client/RestClient.html'>RestClient.java</a>        </td>
+            <td style='background-color:#ff0000' title='Line segments: 0/15'>0%</td>
+            <td style='background-color:#ff0000' title='Paths: 0/6'>0%</td>
+            <td class='nocode'>N/A</td>
+          </tr>
+          <tr>
+            <td class='file class'><a target='_blank' href='com/boneix/demo/client/RestCodec.html'>RestCodec.java</a>         </td>
+            <td style='background-color:#ff0000' title='Line segments: 0/10'>0%</td>
+            <td style='background-color:#ff0000' title='Paths: 0/4'>0%</td>
+            <td class='nocode'>N/A</td>
+          </tr>
+          <tr>
+            <td class='file exception'><a target='_blank' href='com/boneix/demo/client/RestException.html'>RestException.java</a>     </td>
+            <td style='background-color:#ff0000' title='Line segments: 0/10'>0%</td>
+            <td style='background-color:#ff0000' title='Paths: 0/4'>0%</td>
+            <td class='nocode'>N/A</td>
+          </tr>
+          <tr>
+            <td class='file class'><a target='_blank' href='com/boneix/demo/client/RestMethod.html'>RestMethod.java</a>        </td>
+            <td style='background-color:#ff0000' title='Line segments: 0/1'>0%</td>
+            <td style='background-color:#ff0000' title='Paths: 0/1'>0%</td>
+            <td class='nocode'>N/A</td>
+          </tr>
+          <tr>
+            <td class='file class'><a target='_blank' href='com/boneix/demo/client/RestServer.html'>RestServer.java</a>        </td>
+            <td style='background-color:#ff0000' title='Line segments: 0/43'>0%</td>
+            <td style='background-color:#ff0000' title='Paths: 0/12'>0%</td>
+            <td style='background-color:#ff0000' title='Fields: 0/2'>0%</td>
+          </tr>
+        </table>
+      </td>
+      <td class='pt' style='background-color:#d42b00' title='Line segments: 28/165'>17%</td>
+      <td class='pt' style='background-color:#f40b00' title='Paths: 3/68'>4%</td>
+      <td class='pt' style='background-color:#ff0000' title='Fields: 0/7'>0%</td>
     </tr>
     <tr>
       <td class='package click' onclick='showHideFiles(this)'>com.boneix.demo.domain</td>
       <td>
         <table width='100%'>
           <tr>
+            <td class='file abstractClass'><a target='_blank' href='com/boneix/demo/domain/BaseEntity.html'>BaseEntity.java</a>        </td>
+            <td style='background-color:#59a600' title='Line segments: 13/20'>65%</td>
+            <td style='background-color:#6a9500' title='Paths: 7/12'>58%</td>
+            <td style='background-color:#aa5500' title='Fields: 1/3'>33%</td>
+          </tr>
+          <tr>
+            <td class='file enum'><a target='_blank' href='com/boneix/demo/domain/CommonError.html'>CommonError.java</a>       </td>
+            <td style='background-color:#a45b00' title='Line segments: 5/14'>36%</td>
+            <td style='background-color:#aa5500' title='Paths: 2/6'>33%</td>
+            <td style='background-color:#ff0000' title='Fields: 0/2'>0%</td>
+          </tr>
+          <tr>
+            <td class='file class'><a target='_blank' href='com/boneix/demo/domain/DistrKeyInfo.html'>DistrKeyInfo.java</a>      </td>
+            <td style='background-color:#27d800' title='Line segments: 11/13'>85%</td>
+            <td style='background-color:#1ce300' title='Paths: 8/9'>89%</td>
+            <td style='background-color:#bf4000' title='Fields: 1/4'>25%</td>
+          </tr>
+          <tr>
             <td class='file class'><a target='_blank' href='com/boneix/demo/domain/Guess.html'>Guess.java</a>             </td>
-            <td style='background-color:#609f00' title='Line segments: 15/24'>63%</td>
-            <td style='background-color:#aa5500' title='Paths: 3/9'>33%</td>
-            <td style='background-color:#33cc00' title='Fields: 4/5'>80%</td>
+            <td style='background-color:#ff0000' title='Line segments: 0/24'>0%</td>
+            <td style='background-color:#ff0000' title='Paths: 0/9'>0%</td>
+            <td style='background-color:#ff0000' title='Fields: 0/5'>0%</td>
           </tr>
           <tr>
             <td class='file interface'><a target='_blank' href='com/boneix/demo/domain/GuessDAO.html'>GuessDAO.java</a>          </td>
+            <td class='nocode'>N/A</td>
+            <td class='nocode'>N/A</td>
+            <td class='nocode'>N/A</td>
+          </tr>
+          <tr>
+            <td class='file interface'><a target='_blank' href='com/boneix/demo/domain/Identifiable.html'>Identifiable.java</a>      </td>
             <td class='nocode'>N/A</td>
             <td class='nocode'>N/A</td>
             <td class='nocode'>N/A</td>
@@ -67,11 +143,23 @@ The percentages are calculated as 100*NFE/NF, where NF is the number of non-fina
             <td style='background-color:#ff0000' title='Paths: 0/1'>0%</td>
             <td class='nocode'>N/A</td>
           </tr>
+          <tr>
+            <td class='file class'><a target='_blank' href='com/boneix/demo/domain/ResponseVo.html'>ResponseVo.java</a>        </td>
+            <td style='background-color:#30cf00' title='Line segments: 13/16'>81%</td>
+            <td style='background-color:#55aa00' title='Paths: 6/9'>67%</td>
+            <td style='background-color:#ff0000' title='Fields: 0/4'>0%</td>
+          </tr>
+          <tr>
+            <td class='file class'><a target='_blank' href='com/boneix/demo/domain/SysInfo.html'>SysInfo.java</a>           </td>
+            <td style='background-color:#00ff00' title='Line segments: 7/7'>100%</td>
+            <td style='background-color:#00ff00' title='Paths: 5/5'>100%</td>
+            <td style='background-color:#ff0000' title='Fields: 0/2'>0%</td>
+          </tr>
         </table>
       </td>
-      <td class='pt' style='background-color:#718e00' title='Line segments: 15/27'>56%</td>
-      <td class='pt' style='background-color:#bf4000' title='Paths: 3/12'>25%</td>
-      <td class='pt' style='background-color:#33cc00' title='Fields: 4/5'>80%</td>
+      <td class='pt' style='background-color:#7e8100' title='Line segments: 49/97'>51%</td>
+      <td class='pt' style='background-color:#788700' title='Paths: 28/53'>53%</td>
+      <td class='pt' style='background-color:#e51a00' title='Fields: 2/20'>10%</td>
     </tr>
     <tr>
       <td class='package click' onclick='showHideFiles(this)'>com.boneix.thread.process</td>
@@ -79,9 +167,9 @@ The percentages are calculated as 100*NFE/NF, where NF is the number of non-fina
         <table width='100%'>
           <tr>
             <td class='file class'><a target='_blank' href='com/boneix/thread/process/Executor.html'>Executor.java</a>          </td>
-            <td style='background-color:#ff0000' title='Line segments: 0/11'>0%</td>
-            <td style='background-color:#ff0000' title='Paths: 0/3'>0%</td>
-            <td style='background-color:#ff0000' title='Fields: 0/2'>0%</td>
+            <td style='background-color:#46b900' title='Line segments: 8/11'>73%</td>
+            <td style='background-color:#aa5500' title='Paths: 1/3'>33%</td>
+            <td style='background-color:#7f8000' title='Fields: 1/2'>50%</td>
           </tr>
           <tr>
             <td class='file class'><a target='_blank' href='com/boneix/thread/process/Holder.html'>Holder.java</a>            </td>
@@ -103,38 +191,38 @@ The percentages are calculated as 100*NFE/NF, where NF is the number of non-fina
           </tr>
           <tr>
             <td class='file class'><a target='_blank' href='com/boneix/thread/process/TaskProcess.html'>TaskProcess.java</a>       </td>
-            <td style='background-color:#ff0000' title='Line segments: 0/188'>0%</td>
-            <td style='background-color:#ff0000' title='Paths: 0/103'>0%</td>
-            <td style='background-color:#ff0000' title='Fields: 0/4'>0%</td>
+            <td style='background-color:#c33c00' title='Line segments: 44/188'>23%</td>
+            <td style='background-color:#e91600' title='Paths: 9/103'>9%</td>
+            <td style='background-color:#40bf00' title='Fields: 3/4'>75%</td>
           </tr>
           <tr>
             <td class='file class'><a target='_blank' href='com/boneix/thread/process/TaskProcessFactory.html'>TaskProcessFactory.java</a></td>
-            <td style='background-color:#ff0000' title='Line segments: 0/11'>0%</td>
-            <td style='background-color:#ff0000' title='Paths: 0/5'>0%</td>
-            <td style='background-color:#ff0000' title='Fields: 0/4'>0%</td>
+            <td style='background-color:#00ff00' title='Line segments: 11/11'>100%</td>
+            <td style='background-color:#00ff00' title='Paths: 5/5'>100%</td>
+            <td style='background-color:#7f8000' title='Fields: 2/4'>50%</td>
           </tr>
           <tr>
             <td class='file class'><a target='_blank' href='com/boneix/thread/process/TaskProcessManager.html'>TaskProcessManager.java</a></td>
-            <td style='background-color:#ff0000' title='Line segments: 0/22'>0%</td>
-            <td style='background-color:#ff0000' title='Paths: 0/9'>0%</td>
-            <td style='background-color:#ff0000' title='Fields: 0/2'>0%</td>
+            <td style='background-color:#46b900' title='Line segments: 16/22'>73%</td>
+            <td style='background-color:#e31c00' title='Paths: 1/9'>11%</td>
+            <td style='background-color:#7f8000' title='Fields: 1/2'>50%</td>
           </tr>
         </table>
       </td>
-      <td class='pt' style='background-color:#ff0000' title='Line segments: 0/248'>0%</td>
-      <td class='pt' style='background-color:#ff0000' title='Paths: 0/123'>0%</td>
-      <td class='pt' style='background-color:#ff0000' title='Fields: 0/14'>0%</td>
+      <td class='pt' style='background-color:#ae5100' title='Line segments: 79/248'>32%</td>
+      <td class='pt' style='background-color:#de2100' title='Paths: 16/123'>13%</td>
+      <td class='pt' style='background-color:#7f8000' title='Fields: 7/14'>50%</td>
     </tr>
     <tr class='total'>
       <td>Total</td><td>&nbsp;</td>
-      <td class='pt' style='background-color:#f30c00' title='Line segments: 15/329'>5%</td>
-      <td class='pt' style='background-color:#fa0500' title='Paths: 3/152'>2%</td>
-      <td class='pt' style='background-color:#c93600' title='Fields: 4/19'>21%</td>
+      <td class='pt' style='background-color:#ba4500' title='Line segments: 178/658'>27%</td>
+      <td class='pt' style='background-color:#ce3100' title='Paths: 52/273'>19%</td>
+      <td class='pt' style='background-color:#c73800' title='Fields: 9/41'>22%</td>
     </tr>
   </table>
   <p>
     <a href='http://code.google.com/p/jmockit'><img src='logo.png'></a>
-    Generated on Wed Oct 26 11:37:51 CST 2016
+    Generated on Fri Nov 11 17:22:03 CST 2016
   </p>
 </body>
 </html>

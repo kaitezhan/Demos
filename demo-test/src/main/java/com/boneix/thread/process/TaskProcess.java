@@ -60,7 +60,7 @@ public class TaskProcess {
         ThreadFactory factory = new ThreadFactory() {
             @Override
             public Thread newThread(Runnable r) {
-                Thread t = new Thread(r, "Taskprocess-Thread");
+                Thread t = new Thread(r);
                 t.setDaemon(true);
                 return t;
             }

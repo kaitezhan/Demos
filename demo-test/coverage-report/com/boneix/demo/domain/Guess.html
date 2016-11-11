@@ -34,38 +34,38 @@ import org.slf4j.LoggerFactory;
       <td><pre class='prettyprint'>public class Guess {</pre></td>
     </tr>
     <tr>
-      <td class='line'>10</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l10s0'>    private static Logger <span class='static covered' title='Reads: 1 Writes: 0'>logger</span> = LoggerFactory.getLogger(Guess.class);</pre></td>
+      <td class='line'>10</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l10s0'>    private static Logger <span class='static uncovered' title='Reads: 0 Writes: 0'>logger</span> = LoggerFactory.getLogger(Guess.class);</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
       <td class='line'>12</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>    private int <span class='instance covered' title='Reads: 7 Writes: 1'>maxTryTime</span>;                         // 最大重试次数</pre></td>
+      <td><pre class='prettyprint'>    private int <span class='instance uncovered' title='Reads: 0 Writes: 0'>maxTryTime</span>;                         // 最大重试次数</pre></td>
     </tr>
     <tr>
-      <td class='line'>13</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l13s0'>    private int <span class='instance uncovered' title='Reads: 7 Writes: 5'>tryTime</span> = 0;                        // 当前重试次数</pre></td>
+      <td class='line'>13</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l13s0'>    private int <span class='instance uncovered' title='Reads: 0 Writes: 0'>tryTime</span> = 0;                        // 当前重试次数</pre></td>
     </tr>
     <tr>
-      <td class='line'>14</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l14s0'>    private int <span class='instance covered' title='Reads: 1 Writes: 1'>number</span> = (int) (Math.random() * 6); // 目标数字</pre></td>
+      <td class='line'>14</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l14s0'>    private int <span class='instance uncovered' title='Reads: 0 Writes: 0'>number</span> = (int) (Math.random() * 6); // 目标数字</pre></td>
     </tr>
     <tr>
       <td class='line'>15</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>    private GuessDAO <span class='instance covered' title='Reads: 1 Writes: 0'>guessDAO</span>;                      // 持久化依赖</pre></td>
+      <td><pre class='prettyprint'>    private GuessDAO <span class='instance uncovered' title='Reads: 0 Writes: 0'>guessDAO</span>;                      // 持久化依赖</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>17</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l17s0'>    public Guess(int maxRetryTime) {</pre></td>
+      <td class='line'>17</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l17s0'>    public Guess(int maxRetryTime) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>18</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l18s0'>        this.maxTryTime = maxRetryTime;</pre></td>
+      <td class='line'>18</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l18s0'>        this.maxTryTime = maxRetryTime;</pre></td>
     </tr>
     <tr>
-      <td class='line'>19</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l19s0'>    }</pre></td>
+      <td class='line'>19</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l19s0'>    }</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -73,33 +73,33 @@ import org.slf4j.LoggerFactory;
       <td><pre class='prettyprint'>    public void doit() {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>1</td>
+      <td></td><td class='count'>0</td>
       <td class='paths'>
-        <span style='cursor:default; background-color:#aa5500' onclick='hidePath()'>Path coverage: 1/3</span>
+        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/3</span>
         <span class='uncovered' onclick="showPath(this,'l22s0 l23s0 l29s0')">A: 0</span>
         <span class='uncovered' onclick="showPath(this,'l22s0 l23s0 l23s1 l29s0')">B: 0</span>
-        <span class='covered' onclick="showPath(this,'l22s0 l23s0 l23s1 l25s0 l29s0')">C: 1</span>
+        <span class='uncovered' onclick="showPath(this,'l22s0 l23s0 l23s1 l25s0 l29s0')">C: 0</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>22</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l22s0'>        logger.info("调用方法doit");</pre></td>
+      <td class='line'>22</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l22s0'>        logger.info("调用方法doit");</pre></td>
     </tr>
     <tr>
-      <td class='line'>23</td><td class='count'>4</td>
-      <td><pre class='prettyprint jmp'>        <span id='l23s0' title='Executions: 4' class='covered'>while (tryTime++ &lt; maxTryTime</span> && <span id='l23s1' title='Executions: 3' class='covered'>!tryIt()) {</span></pre></td>
+      <td class='line'>23</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>        <span id='l23s0' title='Executions: 0' class='uncovered'>while (tryTime++ &lt; maxTryTime</span> && <span id='l23s1' title='Executions: 0' class='uncovered'>!tryIt()) {</span></pre></td>
     </tr>
     <tr>
       <td class='line'>24</td><td>&nbsp;</td>
       <td><pre class='comment'>            // 到达最大尝试次数仍不成功则调用handle</pre></td>
     </tr>
     <tr>
-      <td class='line'>25</td><td class='count'>3</td>
-      <td><pre class='prettyprint covered' id='l25s0'>            if (tryTime == maxTryTime) {</pre></td>
+      <td class='line'>25</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l25s0'>            if (tryTime == maxTryTime) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>26</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l26s0'>                failHandle();</pre></td>
+      <td class='line'>26</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l26s0'>                failHandle();</pre></td>
     </tr>
     <tr>
       <td class='line'>27</td><td>&nbsp;</td>
@@ -110,8 +110,8 @@ import org.slf4j.LoggerFactory;
       <td><pre class='prettyprint'>        }</pre></td>
     </tr>
     <tr>
-      <td class='line'>29</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l29s0'>    }</pre></td>
+      <td class='line'>29</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l29s0'>    }</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -164,12 +164,12 @@ import org.slf4j.LoggerFactory;
       <td><pre class='prettyprint'>    public void failHandle() {                      // 失败处理，猜不中时调用</pre></td>
     </tr>
     <tr>
-      <td class='line'>42</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l42s0'>        guessDAO.saveResult(false, number);</pre></td>
+      <td class='line'>42</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l42s0'>        guessDAO.saveResult(false, number);</pre></td>
     </tr>
     <tr>
-      <td class='line'>43</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l43s0'>    }</pre></td>
+      <td class='line'>43</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l43s0'>    }</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>

@@ -13,8 +13,8 @@ public class Executor {
 
     private static TaskProcessFactory taskProcessFactory = new TaskProcessFactory();
     static {
-        taskProcessFactory.setCoreSize(2);
-        taskProcessFactory.setPoolSize(2);
+        taskProcessFactory.setCoreSize(100);
+        taskProcessFactory.setPoolSize(1000);
     }
 
     private static TaskProcessFactory concurrentTaskProcessFactory = new TaskProcessFactory();

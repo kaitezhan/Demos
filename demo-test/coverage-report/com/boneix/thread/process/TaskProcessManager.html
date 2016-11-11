@@ -58,8 +58,8 @@ import java.util.concurrent.ConcurrentHashMap;
      */</div><span>    /*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>22</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l22s0'>    private static final String DEFAULT_BUSINESS_DOMAIN = TaskProcessManager.class.getName();</pre></td>
+      <td class='line'>22</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l22s0'>    private static final String DEFAULT_BUSINESS_DOMAIN = TaskProcessManager.class.getName();</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -70,8 +70,8 @@ import java.util.concurrent.ConcurrentHashMap;
      */</div><span>    /*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>28</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l28s0'>    private static Map&lt;String, TaskProcess> <span class='static uncovered' title='Reads: 0 Writes: 0'>taskProcessContainer</span> = new ConcurrentHashMap&lt;String, TaskProcess>();</pre></td>
+      <td class='line'>28</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l28s0'>    private static Map&lt;String, TaskProcess> <span class='static covered' title='Reads: 3 Writes: 0'>taskProcessContainer</span> = new ConcurrentHashMap&lt;String, TaskProcess>();</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -81,8 +81,8 @@ import java.util.concurrent.ConcurrentHashMap;
      */</div><span>    /*...*/</span></td>
     </tr>
     <tr>
-      <td class='line'>33</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l33s0'>    private static TaskProcessFactory <span class='static uncovered' title='Reads: 0 Writes: 0'>defaultTaskProcessFactory</span> = new TaskProcessFactory();</pre></td>
+      <td class='line'>33</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l33s0'>    private static TaskProcessFactory <span class='static uncovered' title='Reads: 0 Writes: 0'>defaultTaskProcessFactory</span> = new TaskProcessFactory();</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -99,20 +99,20 @@ import java.util.concurrent.ConcurrentHashMap;
       <td><pre class='prettyprint'>    public static TaskProcess getTaskProcess(String businessDomain, TaskProcessFactory factory) {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>0</td>
+      <td></td><td class='count'>1</td>
       <td class='paths'>
-        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/6</span>
+        <span style='cursor:default; background-color:#d42b00' onclick='hidePath()'>Path coverage: 1/6</span>
         <span class='uncovered' onclick="showPath(this,'l42s0 l45s0 l46s0 l56s0')">A: 0</span>
         <span class='uncovered' onclick="showPath(this,'l42s0 l45s0 l46s0 l48s0 l50s0 l54s0 l56s0')">B: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l42s0 l45s0 l46s0 l48s0 l50s0 l51s0 l54s0 l56s0')">C: 0</span>
+        <span class='covered' onclick="showPath(this,'l42s0 l45s0 l46s0 l48s0 l50s0 l51s0 l54s0 l56s0')">C: 1</span>
         <span class='uncovered' onclick="showPath(this,'l42s0 l43s0 l45s0 l46s0 l56s0')">D: 0</span>
         <span class='uncovered' onclick="showPath(this,'l42s0 l43s0 l45s0 l46s0 l48s0 l50s0 l54s0 l56s0')">E: 0</span>
         <span class='uncovered' onclick="showPath(this,'l42s0 l43s0 l45s0 l46s0 l48s0 l50s0 l51s0 l54s0 l56s0')">F: 0</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>42</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>        <span id='l42s0' title='Executions: 0' class='uncovered'>if (factory == null)</span> <span id='l42s1' title='Executions: 0' class='uncovered'>{</span></pre></td>
+      <td class='line'>42</td><td class='count'>1</td>
+      <td><pre class='prettyprint jmp'>        <span id='l42s0' title='Executions: 1' class='covered'>if (factory == null)</span> <span id='l42s1' title='Executions: 0' class='uncovered'>{</span></pre></td>
     </tr>
     <tr>
       <td class='line'>43</td><td class='count'>0</td>
@@ -123,52 +123,52 @@ import java.util.concurrent.ConcurrentHashMap;
       <td><pre class='prettyprint'>        }</pre></td>
     </tr>
     <tr>
-      <td class='line'>45</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l45s0'>        TaskProcess taskProcess = taskProcessContainer.get(businessDomain);</pre></td>
+      <td class='line'>45</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l45s0'>        TaskProcess taskProcess = taskProcessContainer.get(businessDomain);</pre></td>
     </tr>
     <tr>
-      <td class='line'>46</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>        <span id='l46s0' title='Executions: 0' class='uncovered'>if (taskProcess == null)</span> <span id='l46s1' title='Executions: 0' class='uncovered'>{</span></pre></td>
+      <td class='line'>46</td><td class='count'>1</td>
+      <td><pre class='prettyprint jmp'>        <span id='l46s0' title='Executions: 1' class='covered'>if (taskProcess == null)</span> <span id='l46s1' title='Executions: 1' class='covered'>{</span></pre></td>
     </tr>
     <tr>
       <td class='line'>47</td><td>&nbsp;</td>
       <td><pre class='comment'>            // DCL双重检查</pre></td>
     </tr>
     <tr>
-      <td class='line'>48</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l48s0'>            synchronized (TaskProcessManager.class) {</pre></td>
+      <td class='line'>48</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l48s0'>            synchronized (TaskProcessManager.class) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>49</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l49s0'>                taskProcess = taskProcessContainer.get(businessDomain);</pre></td>
+      <td class='line'>49</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l49s0'>                taskProcess = taskProcessContainer.get(businessDomain);</pre></td>
     </tr>
     <tr>
-      <td class='line'>50</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>                <span id='l50s0' title='Executions: 0' class='uncovered'>if (taskProcess == null)</span> <span id='l50s1' title='Executions: 0' class='uncovered'>{</span></pre></td>
+      <td class='line'>50</td><td class='count'>1</td>
+      <td><pre class='prettyprint jmp'>                <span id='l50s0' title='Executions: 1' class='covered'>if (taskProcess == null)</span> <span id='l50s1' title='Executions: 1' class='covered'>{</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>51</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l51s0'>                    taskProcess = factory.createTaskProcess();</pre></td>
+      <td class='line'>51</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l51s0'>                    taskProcess = factory.createTaskProcess();</pre></td>
     </tr>
     <tr>
-      <td class='line'>52</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l52s0'>                    taskProcessContainer.put(businessDomain, taskProcess);</pre></td>
+      <td class='line'>52</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l52s0'>                    taskProcessContainer.put(businessDomain, taskProcess);</pre></td>
     </tr>
     <tr>
       <td class='line'>53</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>                }</pre></td>
     </tr>
     <tr>
-      <td class='line'>54</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>            <span id='l54s0' title='Executions: 0' class='uncovered'>}</span></pre></td>
+      <td class='line'>54</td><td class='count'>1</td>
+      <td><pre class='prettyprint jmp'>            <span id='l54s0' title='Executions: 1' class='covered'>}</span></pre></td>
     </tr>
     <tr>
       <td class='line'>55</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>        }</pre></td>
     </tr>
     <tr>
-      <td class='line'>56</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l56s0'>        return taskProcess;</pre></td>
+      <td class='line'>56</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l56s0'>        return taskProcess;</pre></td>
     </tr>
     <tr>
       <td class='line'>57</td><td>&nbsp;</td>

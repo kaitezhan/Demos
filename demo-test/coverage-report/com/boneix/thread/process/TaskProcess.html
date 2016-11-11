@@ -56,8 +56,8 @@ import com.google.common.base.Stopwatch;
       <td><pre class='prettyprint'>public class TaskProcess {</pre></td>
     </tr>
     <tr>
-      <td class='line'>32</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l32s0'>    private static Logger <span class='static uncovered' title='Reads: 0 Writes: 0'>logger</span> = LoggerFactory.getLogger(TaskProcess.class);</pre></td>
+      <td class='line'>32</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l32s0'>    private static Logger <span class='static uncovered' title='Reads: 0 Writes: 0'>logger</span> = LoggerFactory.getLogger(TaskProcess.class);</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -68,7 +68,7 @@ import com.google.common.base.Stopwatch;
     </tr>
     <tr>
       <td class='line'>37</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>    private ExecutorService <span class='instance uncovered' title='Reads: 0 Writes: 0'>executor</span>;</pre></td>
+      <td><pre class='prettyprint'>    private ExecutorService <span class='instance covered' title='Reads: 10000 Writes: 1'>executor</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -79,7 +79,7 @@ import com.google.common.base.Stopwatch;
     </tr>
     <tr>
       <td class='line'>42</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>    private int <span class='instance uncovered' title='Reads: 0 Writes: 0'>coreSize</span>;</pre></td>
+      <td><pre class='prettyprint'>    private int <span class='instance covered' title='Reads: 2 Writes: 1'>coreSize</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -90,28 +90,28 @@ import com.google.common.base.Stopwatch;
     </tr>
     <tr>
       <td class='line'>47</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>    private int <span class='instance uncovered' title='Reads: 0 Writes: 0'>poolSize</span>;</pre></td>
+      <td><pre class='prettyprint'>    private int <span class='instance covered' title='Reads: 1 Writes: 1'>poolSize</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>49</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l49s0'>    TaskProcess(int coreSize, int poolSize) {</pre></td>
+      <td class='line'>49</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l49s0'>    TaskProcess(int coreSize, int poolSize) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>50</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l50s0'>        this.coreSize = coreSize;</pre></td>
+      <td class='line'>50</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l50s0'>        this.coreSize = coreSize;</pre></td>
     </tr>
     <tr>
-      <td class='line'>51</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l51s0'>        this.poolSize = poolSize;</pre></td>
+      <td class='line'>51</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l51s0'>        this.poolSize = poolSize;</pre></td>
     </tr>
     <tr>
-      <td class='line'>52</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l52s0'>        init();</pre></td>
+      <td class='line'>52</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l52s0'>        init();</pre></td>
     </tr>
     <tr>
-      <td class='line'>53</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l53s0'>    }</pre></td>
+      <td class='line'>53</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l53s0'>    }</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -129,8 +129,8 @@ import com.google.common.base.Stopwatch;
       <td><pre class='comment'>        // 线程工厂创建后台运行线程       </pre></td>
     </tr>
     <tr>
-      <td class='line'>60</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l60s0'>        ThreadFactory factory = new ThreadFactory() {</pre></td>
+      <td class='line'>60</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered' id='l60s0'>        ThreadFactory factory = new ThreadFactory() {</pre></td>
     </tr>
     <tr>
       <td class='line'>61</td><td>&nbsp;</td>
@@ -141,16 +141,16 @@ import com.google.common.base.Stopwatch;
       <td><pre class='prettyprint'>            public Thread newThread(Runnable r) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>63</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l63s0'>                Thread t = new Thread(r, "Taskprocess-Thread");</pre></td>
+      <td class='line'>63</td><td class='count'>1000</td>
+      <td><pre class='prettyprint covered' id='l63s0'>                Thread t = new Thread(r);</pre></td>
     </tr>
     <tr>
-      <td class='line'>64</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l64s0'>                t.setDaemon(true);</pre></td>
+      <td class='line'>64</td><td class='count'>1000</td>
+      <td><pre class='prettyprint covered' id='l64s0'>                t.setDaemon(true);</pre></td>
     </tr>
     <tr>
-      <td class='line'>65</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l65s0'>                return t;</pre></td>
+      <td class='line'>65</td><td class='count'>1000</td>
+      <td><pre class='prettyprint covered' id='l65s0'>                return t;</pre></td>
     </tr>
     <tr>
       <td class='line'>66</td><td>&nbsp;</td>
@@ -165,12 +165,12 @@ import com.google.common.base.Stopwatch;
       <td><pre class='comment'>        // 有界队列</pre></td>
     </tr>
     <tr>
-      <td class='line'>69</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l69s0'>        BlockingQueue&lt;Runnable> queue = new LinkedBlockingQueue&lt;Runnable>(coreSize);</pre></td>
+      <td class='line'>69</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l69s0'>        BlockingQueue&lt;Runnable> queue = new LinkedBlockingQueue&lt;Runnable>(coreSize);</pre></td>
     </tr>
     <tr>
-      <td class='line'>70</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l70s0'>        executor = new ThreadPoolExecutor(coreSize, poolSize, 60, TimeUnit.SECONDS, queue, factory,</pre></td>
+      <td class='line'>70</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l70s0'>        executor = new ThreadPoolExecutor(coreSize, poolSize, 60, TimeUnit.SECONDS, queue, factory,</pre></td>
     </tr>
     <tr>
       <td class='line'>71</td><td>&nbsp;</td>
@@ -182,8 +182,8 @@ import com.google.common.base.Stopwatch;
       <td><pre class='comment'>        // JDK回调钩子</pre></td>
     </tr>
     <tr>
-      <td class='line'>74</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l74s0'>        Runtime.getRuntime().addShutdownHook(new Thread() {</pre></td>
+      <td class='line'>74</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered' id='l74s0'>        Runtime.getRuntime().addShutdownHook(new Thread() {</pre></td>
     </tr>
     <tr>
       <td class='line'>75</td><td>&nbsp;</td>
@@ -194,16 +194,8 @@ import com.google.common.base.Stopwatch;
       <td><pre class='prettyprint'>            public void run() {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>0</td>
-      <td class='paths'>
-        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/2</span>
-        <span class='uncovered' onclick="showPath(this,'l77s0 l78s0')">A: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l77s0 l81s0 l86s0')">B: 0</span>
-      </td>
-    </tr>
-    <tr>
-      <td class='line'>77</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>                <span id='l77s0' title='Executions: 0' class='uncovered'>if (executor == null)</span> <span id='l77s1' title='Executions: 0' class='uncovered'>{</span></pre></td>
+      <td class='line'>77</td><td class='count'>1</td>
+      <td><pre class='prettyprint jmp'>                <span id='l77s0' title='Executions: 1' class='covered'>if (executor == null)</span> <span id='l77s1' title='Executions: 0' class='uncovered'>{</span></pre></td>
     </tr>
     <tr>
       <td class='line'>78</td><td class='count'>0</td>
@@ -218,12 +210,12 @@ import com.google.common.base.Stopwatch;
       <td><pre class='prettyprint'>                try {</pre></td>
     </tr>
     <tr>
-      <td class='line'>81</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l81s0'>                    executor.shutdown();</pre></td>
+      <td class='line'>81</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l81s0'>                    executor.shutdown();</pre></td>
     </tr>
     <tr>
-      <td class='line'>82</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l82s0'>                    executor.awaitTermination(5, TimeUnit.MINUTES);</pre></td>
+      <td class='line'>82</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l82s0'>                    executor.awaitTermination(5, TimeUnit.MINUTES);</pre></td>
     </tr>
     <tr>
       <td class='line'>83</td><td class='count'>0</td>
@@ -234,20 +226,20 @@ import com.google.common.base.Stopwatch;
       <td><pre class='prettyprint uncovered' id='l84s0'>                    logger.warn("interrupted when shuting down the process executor:\n{}", e);</pre></td>
     </tr>
     <tr>
-      <td class='line'>85</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l85s0'>                }</pre></td>
+      <td class='line'>85</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l85s0'>                }</pre></td>
     </tr>
     <tr>
-      <td class='line'>86</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l86s0'>            }</pre></td>
+      <td class='line'>86</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l86s0'>            }</pre></td>
     </tr>
     <tr>
       <td class='line'>87</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>        });</pre></td>
     </tr>
     <tr>
-      <td class='line'>88</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l88s0'>    }</pre></td>
+      <td class='line'>88</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l88s0'>    }</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -268,24 +260,32 @@ import com.google.common.base.Stopwatch;
       <td><pre class='prettyprint'>    public &lt;T> List&lt;T> executeTask(List&lt;TaskAction&lt;T>> tasks) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>98</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l98s0'>        TaskAction&lt;T>[] actions = new TaskAction[tasks.size()];</pre></td>
+      <td></td><td class='count'>1</td>
+      <td class='paths'>
+        <span style='cursor:default; background-color:#7f8000' onclick='hidePath()'>Path coverage: 1/2</span>
+        <span class='uncovered' onclick="showPath(this,'l98s0 l99s0 l102s0')">A: 0</span>
+        <span class='covered' onclick="showPath(this,'l98s0 l99s0 l100s0 l102s0')">B: 1</span>
+      </td>
     </tr>
     <tr>
-      <td class='line'>99</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>        <span id='l99s0' title='Executions: 0' class='uncovered'>for (int i = 0; i &lt; tasks.size(); i++) {</span></pre></td>
+      <td class='line'>98</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l98s0'>        TaskAction&lt;T>[] actions = new TaskAction[tasks.size()];</pre></td>
     </tr>
     <tr>
-      <td class='line'>100</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l100s0'>            actions[i] = tasks.get(i);</pre></td>
+      <td class='line'>99</td><td class='count'>10001</td>
+      <td><pre class='prettyprint jmp'>        <span id='l99s0' title='Executions: 10001' class='covered'>for (int i = 0; i &lt; tasks.size(); i++) {</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>100</td><td class='count'>10000</td>
+      <td><pre class='prettyprint covered' id='l100s0'>            actions[i] = tasks.get(i);</pre></td>
     </tr>
     <tr>
       <td class='line'>101</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>        }</pre></td>
     </tr>
     <tr>
-      <td class='line'>102</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l102s0'>        return executeTask(actions);</pre></td>
+      <td class='line'>102</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l102s0'>        return executeTask(actions);</pre></td>
     </tr>
     <tr>
       <td class='line'>103</td><td>&nbsp;</td>
@@ -370,6 +370,14 @@ import com.google.common.base.Stopwatch;
       <td><pre class='prettyprint'>    public void asyncExecuteTask(List&lt;TaskAction&lt;?>> tasks) {</pre></td>
     </tr>
     <tr>
+      <td></td><td class='count'>0</td>
+      <td class='paths'>
+        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/2</span>
+        <span class='uncovered' onclick="showPath(this,'l128s0 l129s0 l132s0 l133s0')">A: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l128s0 l129s0 l130s0 l132s0 l133s0')">B: 0</span>
+      </td>
+    </tr>
+    <tr>
       <td class='line'>128</td><td class='count'>0</td>
       <td><pre class='prettyprint uncovered' id='l128s0'>        TaskAction&lt;?>[] actions = new TaskAction[tasks.size()];</pre></td>
     </tr>
@@ -405,6 +413,14 @@ import com.google.common.base.Stopwatch;
     <tr>
       <td class='line'>140</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    public void asyncExecuteTask(TaskAction&lt;?>... tasks) {</pre></td>
+    </tr>
+    <tr>
+      <td></td><td class='count'>0</td>
+      <td class='paths'>
+        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/2</span>
+        <span class='uncovered' onclick="showPath(this,'l141s0 l153s0')">A: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l141s0 l141s1 l153s0')">B: 0</span>
+      </td>
     </tr>
     <tr>
       <td class='line'>141</td><td class='count'>0</td>
@@ -468,6 +484,14 @@ import com.google.common.base.Stopwatch;
       <td><pre class='prettyprint'>    public &lt;T> List&lt;T> exeucteTaskByConcurrentControl(final int concurrentCount, List&lt;TaskAction&lt;T>> tasks) {</pre></td>
     </tr>
     <tr>
+      <td></td><td class='count'>0</td>
+      <td class='paths'>
+        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/2</span>
+        <span class='uncovered' onclick="showPath(this,'l157s0 l158s0 l161s0')">A: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l157s0 l158s0 l159s0 l161s0')">B: 0</span>
+      </td>
+    </tr>
+    <tr>
       <td class='line'>157</td><td class='count'>0</td>
       <td><pre class='prettyprint uncovered' id='l157s0'>        TaskAction&lt;T>[] actions = new TaskAction[tasks.size()];</pre></td>
     </tr>
@@ -495,6 +519,28 @@ import com.google.common.base.Stopwatch;
     <tr>
       <td class='line'>164</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    private &lt;T> List&lt;Future&lt;T>> barrier(final int concurrentCount, TaskAction&lt;T>... tasks) {</pre></td>
+    </tr>
+    <tr>
+      <td></td><td class='count'>0</td>
+      <td class='paths'>
+        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/16</span>
+        <span class='uncovered' onclick="showPath(this,'l165s0 l166s0 l166s2 l166s3 l167s0 l167s2 l167s3 l168s0 l194s0')">A: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l165s0 l166s0 l166s2 l166s3 l167s0 l167s2 l167s3 l168s0 l169s0 l172s0 l189s0 l194s0')">B: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l165s0 l166s0 l166s2 l166s3 l167s0 l167s2 l167s3 l168s0 l169s0 l172s0 l172s1 l173s0 l176s0 l189s0 l194s0')">C: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l165s0 l166s0 l166s2 l166s3 l167s0 l167s2 l167s3 l168s0 l169s0 l172s0 l172s1 l173s0 l174s0 l189s0 l194s0')">D: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l165s0 l166s0 l166s2 l166s3 l167s0 l167s1 l167s3 l168s0 l194s0')">E: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l165s0 l166s0 l166s2 l166s3 l167s0 l167s1 l167s3 l168s0 l169s0 l172s0 l189s0 l194s0')">F: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l165s0 l166s0 l166s2 l166s3 l167s0 l167s1 l167s3 l168s0 l169s0 l172s0 l172s1 l173s0 l176s0 l189s0 l194s0')">G: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l165s0 l166s0 l166s2 l166s3 l167s0 l167s1 l167s3 l168s0 l169s0 l172s0 l172s1 l173s0 l174s0 l189s0 l194s0')">H: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l165s0 l166s0 l166s1 l166s3 l167s0 l167s2 l167s3 l168s0 l194s0')">I: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l165s0 l166s0 l166s1 l166s3 l167s0 l167s2 l167s3 l168s0 l169s0 l172s0 l189s0 l194s0')">J: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l165s0 l166s0 l166s1 l166s3 l167s0 l167s2 l167s3 l168s0 l169s0 l172s0 l172s1 l173s0 l176s0 l189s0 l194s0')">K: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l165s0 l166s0 l166s1 l166s3 l167s0 l167s2 l167s3 l168s0 l169s0 l172s0 l172s1 l173s0 l174s0 l189s0 l194s0')">L: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l165s0 l166s0 l166s1 l166s3 l167s0 l167s1 l167s3 l168s0 l194s0')">M: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l165s0 l166s0 l166s1 l166s3 l167s0 l167s1 l167s3 l168s0 l169s0 l172s0 l189s0 l194s0')">N: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l165s0 l166s0 l166s1 l166s3 l167s0 l167s1 l167s3 l168s0 l169s0 l172s0 l172s1 l173s0 l176s0 l189s0 l194s0')">O: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l165s0 l166s0 l166s1 l166s3 l167s0 l167s1 l167s3 l168s0 l169s0 l172s0 l172s1 l173s0 l174s0 l189s0 l194s0')">P: 0</span>
+      </td>
     </tr>
     <tr>
       <td class='line'>165</td><td class='count'>0</td>
@@ -636,6 +682,48 @@ import com.google.common.base.Stopwatch;
       <td><pre class='prettyprint'>    public &lt;T> List&lt;T> exeucteTaskByConcurrentControl(int concurrentCount, TaskAction&lt;T>... tasks) {</pre></td>
     </tr>
     <tr>
+      <td></td><td class='count'>0</td>
+      <td class='paths'>
+        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/36</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l209s0 l216s0 l221s0 l225s0 l235s0')">A: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l209s0 l216s0 l221s0 l225s0 l225s1 l228s0 l233s0 l234s0 l235s0')">B: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l209s0 l216s0 l221s0 l225s0 l225s1 l228s0 l229s0 l233s0 l234s0 l235s0')">C: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l209s0 l216s0 l221s0 l221s1 l225s0 l235s0')">D: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l209s0 l216s0 l221s0 l221s1 l225s0 l225s1 l228s0 l233s0 l234s0 l235s0')">E: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l209s0 l216s0 l221s0 l221s1 l225s0 l225s1 l228s0 l229s0 l233s0 l234s0 l235s0')">F: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l209s0 l216s0 l216s1 l221s0 l225s0 l235s0')">G: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l209s0 l216s0 l216s1 l221s0 l225s0 l225s1 l228s0 l233s0 l234s0 l235s0')">H: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l209s0 l216s0 l216s1 l221s0 l225s0 l225s1 l228s0 l229s0 l233s0 l234s0 l235s0')">I: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l209s0 l216s0 l216s1 l221s0 l221s1 l225s0 l235s0')">J: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l209s0 l216s0 l216s1 l221s0 l221s1 l225s0 l225s1 l228s0 l233s0 l234s0 l235s0')">K: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l209s0 l216s0 l216s1 l221s0 l221s1 l225s0 l225s1 l228s0 l229s0 l233s0 l234s0 l235s0')">L: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l209s0 l216s0 l216s1 l217s0 l221s0 l225s0 l235s0')">M: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l209s0 l216s0 l216s1 l217s0 l221s0 l225s0 l225s1 l228s0 l233s0 l234s0 l235s0')">N: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l209s0 l216s0 l216s1 l217s0 l221s0 l225s0 l225s1 l228s0 l229s0 l233s0 l234s0 l235s0')">O: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l209s0 l216s0 l216s1 l217s0 l221s0 l221s1 l225s0 l235s0')">P: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l209s0 l216s0 l216s1 l217s0 l221s0 l221s1 l225s0 l225s1 l228s0 l233s0 l234s0 l235s0')">Q: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l209s0 l216s0 l216s1 l217s0 l221s0 l221s1 l225s0 l225s1 l228s0 l229s0 l233s0 l234s0 l235s0')">R: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l207s0 l209s0 l216s0 l221s0 l225s0 l235s0')">S: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l207s0 l209s0 l216s0 l221s0 l225s0 l225s1 l228s0 l233s0 l234s0 l235s0')">T: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l207s0 l209s0 l216s0 l221s0 l225s0 l225s1 l228s0 l229s0 l233s0 l234s0 l235s0')">U: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l207s0 l209s0 l216s0 l221s0 l221s1 l225s0 l235s0')">V: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l207s0 l209s0 l216s0 l221s0 l221s1 l225s0 l225s1 l228s0 l233s0 l234s0 l235s0')">W: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l207s0 l209s0 l216s0 l221s0 l221s1 l225s0 l225s1 l228s0 l229s0 l233s0 l234s0 l235s0')">X: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l207s0 l209s0 l216s0 l216s1 l221s0 l225s0 l235s0')">Y: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l207s0 l209s0 l216s0 l216s1 l221s0 l225s0 l225s1 l228s0 l233s0 l234s0 l235s0')">Z: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l207s0 l209s0 l216s0 l216s1 l221s0 l225s0 l225s1 l228s0 l229s0 l233s0 l234s0 l235s0')">AA: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l207s0 l209s0 l216s0 l216s1 l221s0 l221s1 l225s0 l235s0')">AB: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l207s0 l209s0 l216s0 l216s1 l221s0 l221s1 l225s0 l225s1 l228s0 l233s0 l234s0 l235s0')">AC: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l207s0 l209s0 l216s0 l216s1 l221s0 l221s1 l225s0 l225s1 l228s0 l229s0 l233s0 l234s0 l235s0')">AD: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l207s0 l209s0 l216s0 l216s1 l217s0 l221s0 l225s0 l235s0')">AE: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l207s0 l209s0 l216s0 l216s1 l217s0 l221s0 l225s0 l225s1 l228s0 l233s0 l234s0 l235s0')">AF: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l207s0 l209s0 l216s0 l216s1 l217s0 l221s0 l225s0 l225s1 l228s0 l229s0 l233s0 l234s0 l235s0')">AG: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l207s0 l209s0 l216s0 l216s1 l217s0 l221s0 l221s1 l225s0 l235s0')">AH: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l207s0 l209s0 l216s0 l216s1 l217s0 l221s0 l221s1 l225s0 l225s1 l228s0 l233s0 l234s0 l235s0')">AI: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l205s0 l206s0 l207s0 l209s0 l216s0 l216s1 l217s0 l221s0 l221s1 l225s0 l225s1 l228s0 l229s0 l233s0 l234s0 l235s0')">AJ: 0</span>
+      </td>
+    </tr>
+    <tr>
       <td class='line'>205</td><td class='count'>0</td>
       <td><pre class='prettyprint uncovered' id='l205s0'>        int modTaskCount = tasks.length;</pre></td>
     </tr>
@@ -769,26 +857,38 @@ import com.google.common.base.Stopwatch;
       <td><pre class='prettyprint'>    public &lt;T> List&lt;T> executeTask(TaskAction&lt;T>... tasks) {</pre></td>
     </tr>
     <tr>
-      <td class='line'>245</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l245s0'>        final CountDownLatch latch = new CountDownLatch(tasks.length);</pre></td>
+      <td></td><td class='count'>1</td>
+      <td class='paths'>
+        <span style='cursor:default; background-color:#d42b00' onclick='hidePath()'>Path coverage: 1/6</span>
+        <span class='uncovered' onclick="showPath(this,'l245s0 l250s0 l269s0 l274s0 l284s0')">A: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l245s0 l250s0 l269s0 l274s0 l274s1 l277s0 l282s0 l283s0 l284s0')">B: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l245s0 l250s0 l269s0 l274s0 l274s1 l277s0 l278s0 l282s0 l283s0 l284s0')">C: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l245s0 l250s0 l250s1 l269s0 l274s0 l284s0')">D: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l245s0 l250s0 l250s1 l269s0 l274s0 l274s1 l277s0 l282s0 l283s0 l284s0')">E: 0</span>
+        <span class='covered' onclick="showPath(this,'l245s0 l250s0 l250s1 l269s0 l274s0 l274s1 l277s0 l278s0 l282s0 l283s0 l284s0')">F: 1</span>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>245</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l245s0'>        final CountDownLatch latch = new CountDownLatch(tasks.length);</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>247</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l247s0'>        List&lt;Future&lt;T>> futures = new ArrayList&lt;Future&lt;T>>();</pre></td>
+      <td class='line'>247</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l247s0'>        List&lt;Future&lt;T>> futures = new ArrayList&lt;Future&lt;T>>();</pre></td>
     </tr>
     <tr>
-      <td class='line'>248</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l248s0'>        List&lt;T> resultList = new ArrayList&lt;T>();</pre></td>
+      <td class='line'>248</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l248s0'>        List&lt;T> resultList = new ArrayList&lt;T>();</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>250</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>        <span id='l250s0' title='Executions: 0' class='uncovered'>for (final TaskAction&lt;T> runnable</span> : <span id='l250s1' title='Executions: 0' class='uncovered'>tasks)</span> </pre></td>
+      <td class='line'>250</td><td class='count'>10001</td>
+      <td><pre class='prettyprint jmp'>        <span id='l250s0' title='Executions: 10001' class='covered'>for (final TaskAction&lt;T> runnable</span> : <span id='l250s1' title='Executions: 10000' class='covered'>tasks)</span> </pre></td>
     </tr>
     <tr>
-      <td class='line'>251</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l251s0'>            Future&lt;T> future = executor.submit(new Callable&lt;T>() {</pre></td>
+      <td class='line'>251</td><td class='count'>20000</td>
+      <td><pre class='prettyprint covered' id='l251s0'>            Future&lt;T> future = executor.submit(new Callable&lt;T>() {</pre></td>
     </tr>
     <tr>
       <td class='line'>252</td><td>&nbsp;</td>
@@ -807,16 +907,16 @@ import com.google.common.base.Stopwatch;
       <td><pre class='prettyprint'>                    try {</pre></td>
     </tr>
     <tr>
-      <td class='line'>256</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l256s0'>                        return runnable.doInAction();</pre></td>
+      <td class='line'>256</td><td class='count'>9997</td>
+      <td><pre class='prettyprint covered' id='l256s0'>                        return runnable.doInAction();</pre></td>
     </tr>
     <tr>
       <td class='line'>257</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>                    } finally {</pre></td>
     </tr>
     <tr>
-      <td class='line'>258</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l258s0'>                        latch.countDown();</pre></td>
+      <td class='line'>258</td><td class='count'>9984</td>
+      <td><pre class='prettyprint covered' id='l258s0'>                        latch.countDown();</pre></td>
     </tr>
     <tr>
       <td class='line'>259</td><td>&nbsp;</td>
@@ -840,8 +940,8 @@ import com.google.common.base.Stopwatch;
       <td><pre class='prettyprint'>            });</pre></td>
     </tr>
     <tr>
-      <td class='line'>265</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l265s0'>            futures.add(future);</pre></td>
+      <td class='line'>265</td><td class='count'>10000</td>
+      <td><pre class='prettyprint covered' id='l265s0'>            futures.add(future);</pre></td>
     </tr>
     <tr>
       <td class='line'>266</td><td>&nbsp;</td>
@@ -853,8 +953,8 @@ import com.google.common.base.Stopwatch;
       <td><pre class='prettyprint'>        try {</pre></td>
     </tr>
     <tr>
-      <td class='line'>269</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l269s0'>            latch.await();</pre></td>
+      <td class='line'>269</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l269s0'>            latch.await();</pre></td>
     </tr>
     <tr>
       <td class='line'>270</td><td class='count'>0</td>
@@ -865,29 +965,29 @@ import com.google.common.base.Stopwatch;
       <td><pre class='prettyprint uncovered' id='l271s0'>            logger.info("Executing Task is interrupt.");</pre></td>
     </tr>
     <tr>
-      <td class='line'>272</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l272s0'>        }</pre></td>
+      <td class='line'>272</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l272s0'>        }</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>274</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>        <span id='l274s0' title='Executions: 0' class='uncovered'>for (Future&lt;T> future</span> : <span id='l274s1' title='Executions: 0' class='uncovered'>futures)</span> </pre></td>
+      <td class='line'>274</td><td class='count'>1</td>
+      <td><pre class='prettyprint jmp'>        <span id='l274s0' title='Executions: 1' class='covered'>for (Future&lt;T> future</span> : <span id='l274s1' title='Executions: 10000' class='covered'>futures)</span> </pre></td>
     </tr>
     <tr>
       <td class='line'>275</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>            try {</pre></td>
     </tr>
     <tr>
-      <td class='line'>276</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l276s0'>                T result = future.get();</pre></td>
+      <td class='line'>276</td><td class='count'>10000</td>
+      <td><pre class='prettyprint covered' id='l276s0'>                T result = future.get();</pre></td>
     </tr>
     <tr>
-      <td class='line'>277</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>                <span id='l277s0' title='Executions: 0' class='uncovered'>if (result != null)</span> <span id='l277s1' title='Executions: 0' class='uncovered'>{</span></pre></td>
+      <td class='line'>277</td><td class='count'>10000</td>
+      <td><pre class='prettyprint jmp'>                <span id='l277s0' title='Executions: 10000' class='covered'>if (result != null)</span> <span id='l277s1' title='Executions: 10000' class='covered'>{</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>278</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l278s0'>                    resultList.add(result);</pre></td>
+      <td class='line'>278</td><td class='count'>10000</td>
+      <td><pre class='prettyprint covered' id='l278s0'>                    resultList.add(result);</pre></td>
     </tr>
     <tr>
       <td class='line'>279</td><td>&nbsp;</td>
@@ -902,16 +1002,16 @@ import com.google.common.base.Stopwatch;
       <td><pre class='prettyprint uncovered' id='l281s0'>                throw new RuntimeException(e);</pre></td>
     </tr>
     <tr>
-      <td class='line'>282</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l282s0'>            }</pre></td>
+      <td class='line'>282</td><td class='count'>10000</td>
+      <td><pre class='prettyprint covered' id='l282s0'>            }</pre></td>
     </tr>
     <tr>
-      <td class='line'>283</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l283s0'>        }</pre></td>
+      <td class='line'>283</td><td class='count'>10000</td>
+      <td><pre class='prettyprint covered' id='l283s0'>        }</pre></td>
     </tr>
     <tr>
-      <td class='line'>284</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l284s0'>        return resultList;</pre></td>
+      <td class='line'>284</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l284s0'>        return resultList;</pre></td>
     </tr>
     <tr>
       <td class='line'>285</td><td>&nbsp;</td>
@@ -934,6 +1034,14 @@ import com.google.common.base.Stopwatch;
     <tr>
       <td class='line'>294</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    public &lt;T> Map&lt;String, T> executeIdentityTask(List&lt;IdentityTaskAction&lt;T>> tasks) {</pre></td>
+    </tr>
+    <tr>
+      <td></td><td class='count'>0</td>
+      <td class='paths'>
+        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/2</span>
+        <span class='uncovered' onclick="showPath(this,'l295s0 l296s0 l299s0')">A: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l295s0 l296s0 l297s0 l299s0')">B: 0</span>
+      </td>
     </tr>
     <tr>
       <td class='line'>295</td><td class='count'>0</td>
@@ -972,6 +1080,16 @@ import com.google.common.base.Stopwatch;
     <tr>
       <td class='line'>308</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    public &lt;T> Map&lt;String, T> executeIdentityTask(IdentityTaskAction&lt;T>... tasks) {</pre></td>
+    </tr>
+    <tr>
+      <td></td><td class='count'>0</td>
+      <td class='paths'>
+        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/4</span>
+        <span class='uncovered' onclick="showPath(this,'l309s0 l314s0 l333s0 l338s0 l339s0 l348s0')">A: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l309s0 l314s0 l333s0 l338s0 l339s0 l340s0 l347s0 l348s0')">B: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l309s0 l314s0 l314s1 l333s0 l338s0 l339s0 l348s0')">C: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l309s0 l314s0 l314s1 l333s0 l338s0 l339s0 l340s0 l347s0 l348s0')">D: 0</span>
+      </td>
     </tr>
     <tr>
       <td class='line'>309</td><td class='count'>0</td>
@@ -1130,6 +1248,24 @@ import com.google.common.base.Stopwatch;
     <tr>
       <td class='line'>352</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    public &lt;T> List&lt;T> executeFutureTask(List&lt;TaskAction&lt;T>> tasks) {</pre></td>
+    </tr>
+    <tr>
+      <td></td><td class='count'>0</td>
+      <td class='paths'>
+        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/12</span>
+        <span class='uncovered' onclick="showPath(this,'l353s0 l354s0 l358s0 l361s0 l377s0 l387s0')">A: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l353s0 l354s0 l358s0 l361s0 l377s0 l377s1 l380s0 l385s0 l386s0 l387s0')">B: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l353s0 l354s0 l358s0 l361s0 l377s0 l377s1 l380s0 l381s0 l385s0 l386s0 l387s0')">C: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l353s0 l354s0 l358s0 l361s0 l361s1 l377s0 l387s0')">D: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l353s0 l354s0 l358s0 l361s0 l361s1 l377s0 l377s1 l380s0 l385s0 l386s0 l387s0')">E: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l353s0 l354s0 l358s0 l361s0 l361s1 l377s0 l377s1 l380s0 l381s0 l385s0 l386s0 l387s0')">F: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l353s0 l354s0 l355s0 l358s0 l361s0 l377s0 l387s0')">G: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l353s0 l354s0 l355s0 l358s0 l361s0 l377s0 l377s1 l380s0 l385s0 l386s0 l387s0')">H: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l353s0 l354s0 l355s0 l358s0 l361s0 l377s0 l377s1 l380s0 l381s0 l385s0 l386s0 l387s0')">I: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l353s0 l354s0 l355s0 l358s0 l361s0 l361s1 l377s0 l387s0')">J: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l353s0 l354s0 l355s0 l358s0 l361s0 l361s1 l377s0 l377s1 l380s0 l385s0 l386s0 l387s0')">K: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l353s0 l354s0 l355s0 l358s0 l361s0 l361s1 l377s0 l377s1 l380s0 l381s0 l385s0 l386s0 l387s0')">L: 0</span>
+      </td>
     </tr>
     <tr>
       <td class='line'>353</td><td class='count'>0</td>

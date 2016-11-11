@@ -24,10 +24,16 @@
         </constructor-arg>
     </bean>
 
-    <bean name="cacheClientImpl" class="com.boneix.base.cache.client.CacheClientImpl">
+    <bean name="cacheClient" class="com.boneix.base.cache.client.CacheClientImpl">
         <constructor-arg index="0" ref="jedisPool"/>
         <!-- 使用第一个redis的db -->
         <constructor-arg index="1" value="0"/>
+    </bean>
+
+    <bean name="distrKeyClient" class="com.boneix.base.cache.client.CacheClientImpl">
+        <constructor-arg index="0" ref="jedisPool"/>
+        <!-- 使用第一个redis的db -->
+        <constructor-arg index="1" value="1"/>
     </bean>
 
 

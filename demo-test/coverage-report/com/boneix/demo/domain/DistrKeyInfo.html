@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JMockit Coverage Report - DistrKeyInfo.java</title>
+  <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+  <link rel='stylesheet' type='text/css' href='../../../../coverage.css'/>
+  <link rel='shortcut icon' type='image/png' href='../../../../logo.png'/>
+  <script type='text/javascript' src='../../../../coverage.js'></script>
+  <script type='text/javascript' src='../../../../prettify.js'></script>
+</head>
+<body onload='prettyPrint()'>
+  <table cellpadding='0' cellspacing='1'>
+    <caption>demo-test\src\main\java\com\boneix\demo\domain\DistrKeyInfo.java</caption>
+    <tr>
+      <td class='line'>1</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>package com.boneix.demo.domain;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td><pre class='imports prettyprint' onclick='showHideLines(this)'><div>import java.io.Serializable;
+import java.util.Date;
+</div><span>import ...</span></pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>/**
+ * Created by zhangrong5 on 2016/11/10.
+ */</div><span>/*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>9</td><td class='count'>10000</td>
+      <td><pre class='prettyprint covered' id='l9s0'>public class DistrKeyInfo implements Serializable {</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>11</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    private static final long serialVersionUID = 4245892057604090407L;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>13</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    private String <span class='instance uncovered' title='Reads: 9974 Writes: 10000'>key</span>;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>15</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    private SysInfo <span class='instance uncovered' title='Reads: 22199 Writes: 10000'>sysInfo</span>;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>17</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    private Date <span class='instance covered' title='Reads: 9967 Writes: 0'>createTime</span>;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>19</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    private int <span class='instance uncovered' title='Reads: 9978 Writes: 10000'>invalidTime</span>;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>21</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    public Date getCreateTime() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>22</td><td class='count'>9969</td>
+      <td><pre class='prettyprint covered' id='l22s0'>        return createTime;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>23</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>25</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    public void setCreateTime(Date createTime) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>26</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l26s0'>        this.createTime = createTime;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>27</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l27s0'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>29</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    public int getInvalidTime() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>30</td><td class='count'>9980</td>
+      <td><pre class='prettyprint covered' id='l30s0'>        return invalidTime;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>31</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>33</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    public void setInvalidTime(int invalidTime) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>34</td><td class='count'>10000</td>
+      <td><pre class='prettyprint covered' id='l34s0'>        this.invalidTime = invalidTime;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>35</td><td class='count'>10000</td>
+      <td><pre class='prettyprint covered' id='l35s0'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>37</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    public String getKey() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>38</td><td class='count'>9978</td>
+      <td><pre class='prettyprint covered' id='l38s0'>        return key;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>39</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>41</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    public void setKey(String key) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>42</td><td class='count'>10000</td>
+      <td><pre class='prettyprint covered' id='l42s0'>        this.key = key;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>43</td><td class='count'>10000</td>
+      <td><pre class='prettyprint covered' id='l43s0'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>45</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    public SysInfo getSysInfo() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>46</td><td class='count'>22189</td>
+      <td><pre class='prettyprint covered' id='l46s0'>        return sysInfo;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>47</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>49</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    public void setSysInfo(SysInfo sysInfo) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>50</td><td class='count'>10000</td>
+      <td><pre class='prettyprint covered' id='l50s0'>        this.sysInfo = sysInfo;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>51</td><td class='count'>10000</td>
+      <td><pre class='prettyprint covered' id='l51s0'>    }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>52</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>}</pre></td>
+    </tr>
+  </table>
+</body>
+</html>

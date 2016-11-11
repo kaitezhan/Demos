@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JMockit Coverage Report - HttpClient.java</title>
+  <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+  <link rel='stylesheet' type='text/css' href='../../../../coverage.css'/>
+  <link rel='shortcut icon' type='image/png' href='../../../../logo.png'/>
+  <script type='text/javascript' src='../../../../coverage.js'></script>
+  <script type='text/javascript' src='../../../../prettify.js'></script>
+</head>
+<body onload='prettyPrint()'>
+  <table cellpadding='0' cellspacing='1'>
+    <caption>demo-test\src\main\java\com\boneix\demo\client\HttpClient.java</caption>
+    <tr>
+      <td class='line'>1</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>package com.boneix.demo.client;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td><pre class='imports prettyprint' onclick='showHideLines(this)'><div>import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.HttpDelete;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.BasicResponseHandler;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+
+import java.io.IOException;
+</div><span>import ...</span></pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>17</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>public class HttpClient {</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>20</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    protected String <span class='instance uncovered' title='Reads: 19957 Writes: 9974'>serverUrl</span>;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>22</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    protected String <span class='instance uncovered' title='Reads: 19940 Writes: 9879'>httpMethod</span>;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>24</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    protected String <span class='instance uncovered' title='Reads: 19941 Writes: 9869'>clientData</span>;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>26</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    protected int <span class='instance uncovered' title='Reads: 9994 Writes: 9853'>connectTimeout</span>;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>28</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    protected int <span class='instance uncovered' title='Reads: 9994 Writes: 9859'>socketTimeout</span>;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>30</td><td class='count'>9972</td>
+      <td><pre class='prettyprint covered' id='l30s0'>    public HttpClient(String url, String method, String data) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>31</td><td class='count'>9977</td>
+      <td><pre class='prettyprint covered' id='l31s0'>        this.serverUrl = url;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>32</td><td class='count'>9980</td>
+      <td><pre class='prettyprint covered' id='l32s0'>        this.httpMethod = method;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>33</td><td class='count'>9907</td>
+      <td><pre class='prettyprint covered' id='l33s0'>        this.clientData = data;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>34</td><td class='count'>9927</td>
+      <td><pre class='prettyprint covered' id='l34s0'>        this.connectTimeout = -1;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>35</td><td class='count'>9879</td>
+      <td><pre class='prettyprint covered' id='l35s0'>        this.socketTimeout = -1;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>36</td><td class='count'>9953</td>
+      <td><pre class='prettyprint covered' id='l36s0'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>38</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l38s0'>    public HttpClient(String url) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>39</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l39s0'>        this.serverUrl = url;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>40</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l40s0'>        this.httpMethod = "GET";</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>41</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l41s0'>        this.clientData = null;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>42</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l42s0'>        this.connectTimeout = -1;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>43</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l43s0'>        this.socketTimeout = -1;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>44</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l44s0'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>46</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l46s0'>    public HttpClient(String url, String data) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>47</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l47s0'>        this.serverUrl = url;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>48</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l48s0'>        this.httpMethod = "GET";</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>49</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l49s0'>        this.clientData = data;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>50</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l50s0'>        this.connectTimeout = -1;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>51</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l51s0'>        this.socketTimeout = -1;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>52</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l52s0'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>54</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    public void setURL(String url) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>55</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l55s0'>        this.serverUrl = url;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>56</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l56s0'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>58</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    public void setMethod(String method) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>59</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l59s0'>        this.httpMethod = method;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>60</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l60s0'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>62</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    public void setData(String data) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>63</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l63s0'>        this.clientData = data;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>64</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l64s0'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>66</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    public void setConnectTimeout(int connectTimeout) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>67</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l67s0'>        this.connectTimeout = connectTimeout;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>68</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l68s0'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>70</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    public void setSocketTimeout(int socketTimeout) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>71</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l71s0'>        this.socketTimeout = socketTimeout;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>72</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l72s0'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>74</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    public String execute() throws IOException {</pre></td>
+    </tr>
+    <tr>
+      <td></td><td class='count'>10000</td>
+      <td class='paths'>
+        <span style='cursor:default; background-color:#7f8000' onclick='hidePath()'>Path coverage: 1/2</span>
+        <span class='uncovered' onclick="showPath(this,'l75s0 l76s0')">A: 0</span>
+        <span class='covered' onclick="showPath(this,'l75s0 l78s0 l79s0')">B: 10000</span>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>75</td><td class='count'>9976</td>
+      <td><pre class='prettyprint jmp'>        <span id='l75s0' title='Executions: 9976' class='covered'>if (null == this.serverUrl)</span> <span id='l75s1' title='Executions: 0' class='uncovered'>{</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>76</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l76s0'>            return null;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>77</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>78</td><td class='count'>9950</td>
+      <td><pre class='prettyprint covered' id='l78s0'>        String ret = this.httpExecute();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>79</td><td class='count'>9990</td>
+      <td><pre class='prettyprint covered' id='l79s0'>        return ret;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>80</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>82</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    private String getURLWithData() {</pre></td>
+    </tr>
+    <tr>
+      <td></td><td class='count'>0</td>
+      <td class='paths'>
+        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/3</span>
+        <span class='uncovered' onclick="showPath(this,'l83s0 l84s0 l85s0')">A: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l83s0 l84s0 l87s0')">B: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l83s0 l89s0')">C: 0</span>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>83</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>        <span id='l83s0' title='Executions: 0' class='uncovered'>if (this.clientData != null)</span> <span id='l83s1' title='Executions: 0' class='uncovered'>{</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>84</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>            <span id='l84s0' title='Executions: 0' class='uncovered'>if (this.serverUrl.endsWith("?")) {</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>85</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l85s0'>                return this.serverUrl + this.clientData;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>86</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>            }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>87</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l87s0'>            return this.serverUrl + "?" + this.clientData;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>88</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>89</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l89s0'>        return this.serverUrl;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>90</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>92</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    protected String httpExecute() throws IOException {</pre></td>
+    </tr>
+    <tr>
+      <td></td><td class='count'>10000</td>
+      <td class='paths'>
+        <span style='cursor:default; background-color:#f60900' onclick='hidePath()'>Path coverage: 1/28</span>
+        <span class='uncovered' onclick="showPath(this,'l93s0 l97s0 l100s0 l103s0 l106s0 l110s0 l117s0 l124s0 l133s0 l135s0')">A: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l93s0 l97s0 l100s0 l103s0 l106s0 l110s0 l117s0 l124s0 l125s0 l133s0 l135s0')">B: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l93s0 l97s0 l100s0 l103s0 l106s0 l110s0 l117s0 l118s0 l120s0 l123s0 l133s0 l135s0')">C: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l93s0 l97s0 l100s0 l103s0 l106s0 l110s0 l117s0 l118s0 l120s0 l121s0 l123s0 l133s0 l135s0')">D: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l93s0 l97s0 l100s0 l103s0 l106s0 l110s0 l111s0 l113s0 l116s0 l133s0 l135s0')">E: 0</span>
+        <span class='covered' onclick="showPath(this,'l93s0 l97s0 l100s0 l103s0 l106s0 l110s0 l111s0 l113s0 l114s0 l116s0 l133s0 l135s0')">F: 10000</span>
+        <span class='uncovered' onclick="showPath(this,'l93s0 l97s0 l100s0 l103s0 l106s0 l107s0 l133s0 l135s0')">G: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l93s0 l97s0 l100s0 l101s0 l103s0 l106s0 l110s0 l117s0 l124s0 l133s0 l135s0')">H: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l93s0 l97s0 l100s0 l101s0 l103s0 l106s0 l110s0 l117s0 l124s0 l125s0 l133s0 l135s0')">I: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l93s0 l97s0 l100s0 l101s0 l103s0 l106s0 l110s0 l117s0 l118s0 l120s0 l123s0 l133s0 l135s0')">J: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l93s0 l97s0 l100s0 l101s0 l103s0 l106s0 l110s0 l117s0 l118s0 l120s0 l121s0 l123s0 l133s0 l135s0')">K: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l93s0 l97s0 l100s0 l101s0 l103s0 l106s0 l110s0 l111s0 l113s0 l116s0 l133s0 l135s0')">L: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l93s0 l97s0 l100s0 l101s0 l103s0 l106s0 l110s0 l111s0 l113s0 l114s0 l116s0 l133s0 l135s0')">M: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l93s0 l97s0 l100s0 l101s0 l103s0 l106s0 l107s0 l133s0 l135s0')">N: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l93s0 l97s0 l98s0 l100s0 l103s0 l106s0 l110s0 l117s0 l124s0 l133s0 l135s0')">O: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l93s0 l97s0 l98s0 l100s0 l103s0 l106s0 l110s0 l117s0 l124s0 l125s0 l133s0 l135s0')">P: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l93s0 l97s0 l98s0 l100s0 l103s0 l106s0 l110s0 l117s0 l118s0 l120s0 l123s0 l133s0 l135s0')">Q: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l93s0 l97s0 l98s0 l100s0 l103s0 l106s0 l110s0 l117s0 l118s0 l120s0 l121s0 l123s0 l133s0 l135s0')">R: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l93s0 l97s0 l98s0 l100s0 l103s0 l106s0 l110s0 l111s0 l113s0 l116s0 l133s0 l135s0')">S: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l93s0 l97s0 l98s0 l100s0 l103s0 l106s0 l110s0 l111s0 l113s0 l114s0 l116s0 l133s0 l135s0')">T: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l93s0 l97s0 l98s0 l100s0 l103s0 l106s0 l107s0 l133s0 l135s0')">U: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l93s0 l97s0 l98s0 l100s0 l101s0 l103s0 l106s0 l110s0 l117s0 l124s0 l133s0 l135s0')">V: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l93s0 l97s0 l98s0 l100s0 l101s0 l103s0 l106s0 l110s0 l117s0 l124s0 l125s0 l133s0 l135s0')">W: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l93s0 l97s0 l98s0 l100s0 l101s0 l103s0 l106s0 l110s0 l117s0 l118s0 l120s0 l123s0 l133s0 l135s0')">X: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l93s0 l97s0 l98s0 l100s0 l101s0 l103s0 l106s0 l110s0 l117s0 l118s0 l120s0 l121s0 l123s0 l133s0 l135s0')">Y: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l93s0 l97s0 l98s0 l100s0 l101s0 l103s0 l106s0 l110s0 l111s0 l113s0 l116s0 l133s0 l135s0')">Z: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l93s0 l97s0 l98s0 l100s0 l101s0 l103s0 l106s0 l110s0 l111s0 l113s0 l114s0 l116s0 l133s0 l135s0')">AA: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l93s0 l97s0 l98s0 l100s0 l101s0 l103s0 l106s0 l107s0 l133s0 l135s0')">AB: 0</span>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>93</td><td class='count'>9959</td>
+      <td><pre class='prettyprint covered' id='l93s0'>        String ret = null;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>94</td><td class='count'>9957</td>
+      <td><pre class='prettyprint covered' id='l94s0'>        CloseableHttpClient httpclient = HttpClients.createDefault();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>95</td><td>&nbsp;</td>
+      <td><pre class='comment'>        // 设置请求和传输超时时间</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>96</td><td class='count'>9980</td>
+      <td><pre class='prettyprint covered' id='l96s0'>        RequestConfig.Builder builderConfig = RequestConfig.custom();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>97</td><td class='count'>9990</td>
+      <td><pre class='prettyprint jmp'>        <span id='l97s0' title='Executions: 9990' class='covered'>if (0 &lt; this.connectTimeout)</span> <span id='l97s1' title='Executions: 0' class='uncovered'>{</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>98</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l98s0'>            builderConfig.setConnectTimeout(Integer.valueOf(this.connectTimeout * 1000));</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>99</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>100</td><td class='count'>9989</td>
+      <td><pre class='prettyprint jmp'>        <span id='l100s0' title='Executions: 9989' class='covered'>if (0 &lt; this.socketTimeout)</span> <span id='l100s1' title='Executions: 0' class='uncovered'>{</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>101</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l101s0'>            builderConfig.setSocketTimeout(Integer.valueOf(this.socketTimeout * 1000));</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>102</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>103</td><td class='count'>9991</td>
+      <td><pre class='prettyprint covered' id='l103s0'>        RequestConfig requestConfig = builderConfig.build();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>104</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        try {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>105</td><td class='count'>9990</td>
+      <td><pre class='prettyprint covered' id='l105s0'>            ResponseHandler&lt;String> responseHandler = new BasicResponseHandler();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>106</td><td class='count'>9986</td>
+      <td><pre class='prettyprint jmp'>            <span id='l106s0' title='Executions: 9986' class='covered'>if (this.httpMethod.equalsIgnoreCase("GET")) {</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>107</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l107s0'>                HttpGet httpGet = new HttpGet(getURLWithData());</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>108</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l108s0'>                httpGet.setConfig(requestConfig);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>109</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l109s0'>                ret = httpclient.execute(httpGet, responseHandler);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>110</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>            <span id='l110s0' title='Executions: 0' class='uncovered'>}</span> else <span id='l110s1' title='Executions: 9974' class='covered'>if (this.httpMethod.equalsIgnoreCase("POST")) {</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>111</td><td class='count'>9968</td>
+      <td><pre class='prettyprint covered' id='l111s0'>                HttpPost httpPost = new HttpPost(this.serverUrl);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>112</td><td class='count'>9971</td>
+      <td><pre class='prettyprint covered' id='l112s0'>                httpPost.setConfig(requestConfig);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>113</td><td class='count'>9980</td>
+      <td><pre class='prettyprint jmp'>                <span id='l113s0' title='Executions: 9980' class='covered'>if (null != this.clientData)</span> <span id='l113s1' title='Executions: 9973' class='covered'>{</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>114</td><td class='count'>9982</td>
+      <td><pre class='prettyprint covered' id='l114s0'>                    httpPost.setEntity(new StringEntity(this.clientData, "UTF-8"));</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>115</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>116</td><td class='count'>9947</td>
+      <td><pre class='prettyprint covered' id='l116s0'>                ret = httpclient.execute(httpPost, responseHandler);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>117</td><td class='count'>9987</td>
+      <td><pre class='prettyprint jmp'>            <span id='l117s0' title='Executions: 9987' class='covered'>}</span> else <span id='l117s1' title='Executions: 0' class='uncovered'>if (this.httpMethod.equalsIgnoreCase("PUT")) {</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>118</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l118s0'>                HttpPut httpPut = new HttpPut(this.serverUrl);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>119</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l119s0'>                httpPut.setConfig(requestConfig);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>120</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>                <span id='l120s0' title='Executions: 0' class='uncovered'>if (null != this.clientData)</span> <span id='l120s1' title='Executions: 0' class='uncovered'>{</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>121</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l121s0'>                    httpPut.setEntity(new StringEntity(this.clientData, "UTF-8"));</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>122</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>                }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>123</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l123s0'>                ret = httpclient.execute(httpPut, responseHandler);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>124</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>            <span id='l124s0' title='Executions: 0' class='uncovered'>}</span> else <span id='l124s1' title='Executions: 0' class='uncovered'>if (this.httpMethod.equalsIgnoreCase("DELETE")) {</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>125</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l125s0'>                HttpDelete httpDelete = new HttpDelete(getURLWithData());</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>126</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l126s0'>                httpDelete.setConfig(requestConfig);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>127</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l127s0'>                ret = httpclient.execute(httpDelete, responseHandler);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>128</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>            }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>129</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l129s0'>        } catch (ClientProtocolException e) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>130</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l130s0'>        } catch (IOException e) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>131</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l131s0'>        } catch (Exception e) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>132</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        } finally {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>133</td><td class='count'>9994</td>
+      <td><pre class='prettyprint covered' id='l133s0'>            httpclient.close();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>134</td><td class='count'>9996</td>
+      <td><pre class='prettyprint covered' id='l134s0'>        }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>135</td><td class='count'>9999</td>
+      <td><pre class='prettyprint covered' id='l135s0'>        return ret;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>136</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>139</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>}</pre></td>
+    </tr>
+  </table>
+</body>
+</html>

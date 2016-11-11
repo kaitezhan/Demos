@@ -44,8 +44,8 @@ import com.alibaba.fastjson.JSON;
       <td><pre class='prettyprint'>public class JsonUtils {</pre></td>
     </tr>
     <tr>
-      <td class='line'>20</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l20s0'>    private static final Logger LOG = LoggerFactory.getLogger(JsonUtils.class);</pre></td>
+      <td class='line'>20</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l20s0'>    private static final Logger LOG = LoggerFactory.getLogger(JsonUtils.class);</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -76,17 +76,17 @@ import com.alibaba.fastjson.JSON;
       <td><pre class='prettyprint'>    public static &lt;T> T toBean(Object obj, Class&lt;T> clazz) {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>0</td>
+      <td></td><td class='count'>10000</td>
       <td class='paths'>
-        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/3</span>
+        <span style='cursor:default; background-color:#aa5500' onclick='hidePath()'>Path coverage: 1/3</span>
         <span class='uncovered' onclick="showPath(this,'l34s0 l35s0')">A: 0</span>
         <span class='uncovered' onclick="showPath(this,'l34s0 l37s0 l38s0')">B: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l34s0 l37s0 l41s0')">C: 0</span>
+        <span class='covered' onclick="showPath(this,'l34s0 l37s0 l41s0')">C: 10000</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>34</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>        <span id='l34s0' title='Executions: 0' class='uncovered'>if (null == obj)</span> <span id='l34s1' title='Executions: 0' class='uncovered'>{</span></pre></td>
+      <td class='line'>34</td><td class='count'>10000</td>
+      <td><pre class='prettyprint jmp'>        <span id='l34s0' title='Executions: 10000' class='covered'>if (null == obj)</span> <span id='l34s1' title='Executions: 0' class='uncovered'>{</span></pre></td>
     </tr>
     <tr>
       <td class='line'>35</td><td class='count'>0</td>
@@ -97,8 +97,8 @@ import com.alibaba.fastjson.JSON;
       <td><pre class='prettyprint'>        }</pre></td>
     </tr>
     <tr>
-      <td class='line'>37</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>        <span id='l37s0' title='Executions: 0' class='uncovered'>if (clazz == String.class)</span> <span id='l37s1' title='Executions: 0' class='uncovered'>{</span></pre></td>
+      <td class='line'>37</td><td class='count'>10000</td>
+      <td><pre class='prettyprint jmp'>        <span id='l37s0' title='Executions: 10000' class='covered'>if (clazz == String.class)</span> <span id='l37s1' title='Executions: 0' class='uncovered'>{</span></pre></td>
     </tr>
     <tr>
       <td class='line'>38</td><td class='count'>0</td>
@@ -113,8 +113,8 @@ import com.alibaba.fastjson.JSON;
       <td><pre class='prettyprint'>        try {</pre></td>
     </tr>
     <tr>
-      <td class='line'>41</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l41s0'>            return JSON.parseObject(JsonUtils.toString(obj), clazz);</pre></td>
+      <td class='line'>41</td><td class='count'>10000</td>
+      <td><pre class='prettyprint covered' id='l41s0'>            return JSON.parseObject(JsonUtils.toString(obj), clazz);</pre></td>
     </tr>
     <tr>
       <td class='line'>42</td><td class='count'>0</td>
@@ -152,25 +152,25 @@ import com.alibaba.fastjson.JSON;
       <td><pre class='prettyprint'>    public static String toString(Object obj) {</pre></td>
     </tr>
     <tr>
-      <td></td><td class='count'>0</td>
+      <td></td><td class='count'>20000</td>
       <td class='paths'>
-        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/3</span>
-        <span class='uncovered' onclick="showPath(this,'l56s0 l57s0')">A: 0</span>
+        <span style='cursor:default; background-color:#55aa00' onclick='hidePath()'>Path coverage: 2/3</span>
+        <span class='covered' onclick="showPath(this,'l56s0 l57s0')">A: 10000</span>
         <span class='uncovered' onclick="showPath(this,'l56s0 l58s0 l59s0')">B: 0</span>
-        <span class='uncovered' onclick="showPath(this,'l56s0 l58s0 l62s0')">C: 0</span>
+        <span class='covered' onclick="showPath(this,'l56s0 l58s0 l62s0')">C: 10000</span>
       </td>
     </tr>
     <tr>
-      <td class='line'>56</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>        <span id='l56s0' title='Executions: 0' class='uncovered'>if (obj instanceof String)</span> <span id='l56s1' title='Executions: 0' class='uncovered'>{</span></pre></td>
+      <td class='line'>56</td><td class='count'>19973</td>
+      <td><pre class='prettyprint jmp'>        <span id='l56s0' title='Executions: 19973' class='covered'>if (obj instanceof String)</span> <span id='l56s1' title='Executions: 9999' class='covered'>{</span></pre></td>
     </tr>
     <tr>
-      <td class='line'>57</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l57s0'>            return (String) obj;</pre></td>
+      <td class='line'>57</td><td class='count'>10000</td>
+      <td><pre class='prettyprint covered' id='l57s0'>            return (String) obj;</pre></td>
     </tr>
     <tr>
-      <td class='line'>58</td><td class='count'>0</td>
-      <td><pre class='prettyprint jmp'>        <span id='l58s0' title='Executions: 0' class='uncovered'>}</span> else <span id='l58s1' title='Executions: 0' class='uncovered'>if (null == obj)</span> </pre></td>
+      <td class='line'>58</td><td class='count'>9966</td>
+      <td><pre class='prettyprint jmp'>        <span id='l58s0' title='Executions: 9966' class='covered'>}</span> else <span id='l58s1' title='Executions: 0' class='uncovered'>if (null == obj)</span> </pre></td>
     </tr>
     <tr>
       <td class='line'>59</td><td class='count'>0</td>
@@ -185,8 +185,8 @@ import com.alibaba.fastjson.JSON;
       <td><pre class='prettyprint'>        try {</pre></td>
     </tr>
     <tr>
-      <td class='line'>62</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l62s0'>            return JSON.toJSONString(obj);</pre></td>
+      <td class='line'>62</td><td class='count'>9961</td>
+      <td><pre class='prettyprint covered' id='l62s0'>            return JSON.toJSONString(obj);</pre></td>
     </tr>
     <tr>
       <td class='line'>63</td><td class='count'>0</td>

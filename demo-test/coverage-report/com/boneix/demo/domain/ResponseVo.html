@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JMockit Coverage Report - ResponseVo.java</title>
+  <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+  <link rel='stylesheet' type='text/css' href='../../../../coverage.css'/>
+  <link rel='shortcut icon' type='image/png' href='../../../../logo.png'/>
+  <script type='text/javascript' src='../../../../coverage.js'></script>
+  <script type='text/javascript' src='../../../../prettify.js'></script>
+</head>
+<body onload='prettyPrint()'>
+  <table cellpadding='0' cellspacing='1'>
+    <caption>demo-test\src\main\java\com\boneix\demo\domain\ResponseVo.java</caption>
+    <tr>
+      <td class='line'>1</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>package com.boneix.demo.domain;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>/**
+ * 此类描述的是：请求返回的公用数据
+ *
+ * @author xujinfei
+ */</div><span>/*...*/</span></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>10</td><td class='count'>19999</td>
+      <td><pre class='prettyprint covered' id='l10s0'>public class ResponseVo {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>11</td><td>&nbsp;</td>
+      <td><pre class='comment'>    // 成功标记</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>12</td><td class='count'>19997</td>
+      <td><pre class='prettyprint covered' id='l12s0'>    private boolean <span class='instance uncovered' title='Reads: 0 Writes: 29821'>success</span> = true;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>14</td><td>&nbsp;</td>
+      <td><pre class='comment'>    // 错误码</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>15</td><td class='count'>19956</td>
+      <td><pre class='prettyprint covered' id='l15s0'>    private int <span class='instance uncovered' title='Reads: 0 Writes: 29721'>errorCode</span> = CommonError.SUCCESS.getErrorCode();</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>17</td><td>&nbsp;</td>
+      <td><pre class='comment'>    // 错误信息</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>18</td><td class='count'>19938</td>
+      <td><pre class='prettyprint covered' id='l18s0'>    private String <span class='instance uncovered' title='Reads: 0 Writes: 29676'>msg</span> = "";</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>20</td><td>&nbsp;</td>
+      <td><pre class='comment'>    // 返回的具体数据</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>21</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    private Object <span class='instance uncovered' title='Reads: 9970 Writes: 9865'>data</span>;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>    /**
+     * success
+     *
+     * @return the success
+     */</div><span>    /*...*/</span></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>29</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    public boolean isSuccess() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>30</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l30s0'>        return success;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>31</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>    /**
+     * @param success the success to set
+     */</div><span>    /*...*/</span></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>37</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    public void setSuccess(boolean success) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>38</td><td class='count'>9980</td>
+      <td><pre class='prettyprint covered' id='l38s0'>        this.success = success;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>39</td><td class='count'>9937</td>
+      <td><pre class='prettyprint covered' id='l39s0'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>    /**
+     * errorCode
+     *
+     * @return the errorCode
+     */</div><span>    /*...*/</span></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>47</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    public int getErrorCode() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>48</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l48s0'>        return errorCode;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>49</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>    /**
+     * @param errorCode the errorCode to set
+     */</div><span>    /*...*/</span></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>55</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    public void setErrorCode(int errorCode) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>56</td><td class='count'>9970</td>
+      <td><pre class='prettyprint covered' id='l56s0'>        this.errorCode = errorCode;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>57</td><td class='count'>9959</td>
+      <td><pre class='prettyprint covered' id='l57s0'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>    /**
+     * data
+     *
+     * @return the data
+     */</div><span>    /*...*/</span></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>65</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    public Object getData() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>66</td><td class='count'>9951</td>
+      <td><pre class='prettyprint covered' id='l66s0'>        return data;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>67</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>    /**
+     * @param data the data to set
+     */</div><span>    /*...*/</span></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>73</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    public void setData(Object data) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>74</td><td class='count'>9979</td>
+      <td><pre class='prettyprint covered' id='l74s0'>        this.data = data;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>75</td><td class='count'>9919</td>
+      <td><pre class='prettyprint covered' id='l75s0'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>    /*
+     * http://bug.tuniu.org/issues/26368 代码里设置数组时没提供统一方法来实现这个约束，每个人自己写自己的,导致不统一
+     */
+    /*
+     * public &lt;T> void setData(List&lt;T> dataList) { ResponseDataVo dataVo = new ResponseDataVo(); dataVo.setCount(dataList.size());
+     * dataVo.setRows(dataList); this.data = dataVo; }
+     */</div><span>    /*...*/</span></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>    /**
+     * msg
+     *
+     * @return the msg
+     */</div><span>    /*...*/</span></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>91</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    public String getMsg() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>92</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l92s0'>        return msg;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>93</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    }</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>    /**
+     * @param msg the msg to set
+     */</div><span>    /*...*/</span></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>99</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    public void setMsg(String msg) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>100</td><td class='count'>9976</td>
+      <td><pre class='prettyprint covered' id='l100s0'>        this.msg = msg;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>101</td><td class='count'>9976</td>
+      <td><pre class='prettyprint covered' id='l101s0'>    }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>102</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>}</pre></td>
+    </tr>
+  </table>
+</body>
+</html>
