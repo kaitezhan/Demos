@@ -1,23 +1,41 @@
 # 忽略Idea生成的项目文件
 *.iml
 .idea/
+*/.idea/
+*/*/.idea/
 
 # 忽略eclipse的项目文件
 .project
 .classpath
 .settings/
+*/.project/
+*/.classpath/
+*/.settings/
+*/*/.project/
+*/*/.classpath/
+*/*/.settings/
 
 # 忽略所有target
 target/
+*/target/
+*/*/target/
 
 # 生成的jar包全部忽略
 war/
 temp/
 WebContent/
+*/war/
+*/temp/
+*/WebContent/
+*/*/war/
+*/*/temp/
+*/*/WebContent/
 
 # 忽略war工程下的lib与class文件
 */WebContent/WEB-INF/classes/
 */WebContent/WEB-INF/lib/
+*/*/WebContent/WEB-INF/classes/
+*/*/WebContent/WEB-INF/lib/
 
 # 主配置文件忽略
 #system.properties
