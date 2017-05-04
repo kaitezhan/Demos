@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://D:/labCode/EasyMapper/EasyMapper.iml" filepath="D:/labCode/EasyMapper/EasyMapper.iml" />
-      <module fileurl="file://D:/labCode/utils/utils.iml" filepath="D:/labCode/utils/utils.iml" />
-    </modules>
-  </component>
-</project>

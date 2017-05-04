@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="mystory-bfm-web:war">
-    <output-path>$PROJECT_DIR$/mystory-bfm-web/target</output-path>
-    <root id="archive" name="mystory-bfm-web-1.0-SNAPSHOT.war">
-      <element id="artifact" artifact-name="mystory-bfm-web:war exploded" />
-    </root>
-  </artifact>
-</component>
