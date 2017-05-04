@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/dks-kps.iml" filepath="$PROJECT_DIR$/dks-kps.iml" />
-      <module fileurl="file://$PROJECT_DIR$/dks-kps-base/dks-kps-base.iml" filepath="$PROJECT_DIR$/dks-kps-base/dks-kps-base.iml" />
-      <module fileurl="file://$PROJECT_DIR$/dks-kps-intf/dks-kps-intf.iml" filepath="$PROJECT_DIR$/dks-kps-intf/dks-kps-intf.iml" />
-      <module fileurl="file://$PROJECT_DIR$/dks-kps-service/dks-kps-service.iml" filepath="$PROJECT_DIR$/dks-kps-service/dks-kps-service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/dks-kps-web/dks-kps-web.iml" filepath="$PROJECT_DIR$/dks-kps-web/dks-kps-web.iml" />
+      <module fileurl="file://D:/labCode/EasyMapper/EasyMapper.iml" filepath="D:/labCode/EasyMapper/EasyMapper.iml" />
+      <module fileurl="file://D:/labCode/utils/utils.iml" filepath="D:/labCode/utils/utils.iml" />
     </modules>
   </component>
 </project>

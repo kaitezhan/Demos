@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boneix.dks.domain.Topic">
+    <resultMap type="com.boneix.dks.domain.Topic" id="topic">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="commentSum" column="comment_sum" jdbcType="INTEGER"/>
+        <result property="deleteFlag" column="delete_flag" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="base_Column_List">
+        id,
+        title,
+        comment_sum,
+        delete_flag,
+        create_time
+    </sql>
+
+    <select id="select" resultMap="topic">
+        select
+        <include refid="base_Column_List"/>
+        from
+        `topic` WHERE delete_flag=0
+    </select>
+
+    <select id="selectById" parameterType="Long" resultMap="topic">
+        select
+        <include refid="base_Column_List"/>
+        from
+        topic where id = #{id} AND delete_flag=0
+    </select>
+
+
+    <update id="updateById" parameterType="com.boneix.dks.domain.Topic">
+        UPDATE
+        topic
+        set
+            comment_sum = comment_sum+1
+
+        <where>
+            <trim prefixOverrides="and">
+                AND id = #{id}
+                AND delete_flag=0
+                AND comment_sum= #{commentSum}
+            </trim>
+        </where>
+    </update>
+
+    <update id="updateTopic" parameterType="com.boneix.dks.domain.Topic">
+        UPDATE
+        topic
+        set
+            comment_sum = #{commentSum}+1
+
+        <where>
+            <trim prefixOverrides="and">
+                AND id = #{id}
+                AND delete_flag=0
+            </trim>
+        </where>
+    </update>
+
+
+
+</mapper>

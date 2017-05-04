@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boneix.dks.domain.User">
+    <resultMap type="com.boneix.dks.domain.User" id="user">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
+        <result property="age" column="age" jdbcType="INTEGER"/>
+        <result property="version" column="version" jdbcType="INTEGER"/>
+        <result property="deleteFlag" column="delete_flag" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="base_Column_List">
+        id,
+        `name`,
+        password,
+        age,
+        version,
+        delete_flag,
+        create_time
+    </sql>
+
+
+    <select id="select" resultMap="user">
+        select
+        <include refid="base_Column_List"/>
+        from
+        `user` WHERE delete_flag=0
+    </select>
+
+    <select id="selectById" parameterType="Long" resultMap="user">
+        select
+        <include refid="base_Column_List"/>
+        from
+        `user` where id = #{id} AND delete_flag=0
+    </select>
+
+
+    <update id="updateById" parameterType="com.boneix.dks.domain.User">
+        UPDATE
+        sys_info
+        <set>
+            <trim prefixOverrides="and">
+                <if test="name != null">
+                    name = #{name}
+                </if>
+                <if test="version != null">
+                    AND  version = #{version}+1
+                </if>
+            </trim>
+        </set>
+        <where>
+            <trim prefixOverrides="and">
+                AND id = #{id}
+                AND delete_flag=0
+                AND version= #{version}
+            </trim>
+        </where>
+    </update>
+
+
+    <insert id="insert" parameterType="com.boneix.dks.domain.User" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO `USER`
+        <trim prefix="(" suffix=")" prefixOverrides=",">
+            `name`,version
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" prefixOverrides=",">
+            #{name},#{version}
+        </trim>
+    </insert>
+
+
+
+
+</mapper>
