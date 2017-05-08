@@ -57,12 +57,49 @@
 # for g in x:
 	# print(g)
 # =====================================================================
-
+# from collections import Iterator
+# isinstance((x for a in range (10) if a%2==1),Iterator)
+# =====================================================================
+# 利用map()函数，把用户输入的不规范的英文名字，变为首字母大写，其他小写的规范名字。输入：['adam', 'LISA', 'barT']，输出：['Adam', 'Lisa', 'Bart']：
+# def formatStr(x):
+	# return x[:1].upper()+x[1:].lower();
+# a=list(map(formatStr,['adam', 'LISA', 'barT']))	
+# print(a);
+# =====================================================================
+# Python提供的sum()函数可以接受一个list并求和，请编写一个prod()函数，可以接受一个list并利用reduce()求积：
+# from functools import reduce
+# def prod(x,y):
+	# return x*y;
+# aa=reduce(prod,range(1,10));
+# print(aa)
+# =====================================================================
+# 利用map和reduce编写一个str2float函数，把字符串'123.456'转换成浮点数123.456：
+# from functools import reduce
+# def str2float(s):
+	# def fn(x,y):
+		# return x*10+y
+	# def fn2(x,y):
+		# return x/10+y
+	# def char2num(bt):
+		# dic={'0':0,'1':1,'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9}
+		# return dic[bt]
+	# sp="."
+	# if(sp in s):
+		# nPos=s.index(sp)
+		# seP=0
+		# frP=0
+		# fs=s[:nPos]
+		# se=s[nPos+1:][::-1]
+		# if len(fs)>0:
+			# frP=reduce(fn,map(char2num,fs))	
+		# if len(se)>0:
+			# seP=reduce(fn2,map(char2num,se))	
+		# return frP+seP/10;
+	# else:
+		# return reduce(fn,map(char2num,s))
+# print(str2float('3553333.'))
 # =====================================================================
 # =====================================================================
 # =====================================================================
-
-	
-	
-	
-	
+# =====================================================================
+# =====================================================================
