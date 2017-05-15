@@ -20,6 +20,11 @@ target/
 */target/
 */*/target/
 
+# 忽略netty相关文件
+coverage-report/
+*/coverage-report/
+*/*/coverage-report/
+
 # 生成的jar包全部忽略
 war/
 temp/

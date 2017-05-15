@@ -98,6 +98,12 @@
             <artifactId>netty-all</artifactId>
             <version>4.0.21.Final</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>3.3.0</version>
+        </dependency>
     </dependencies>
 
 </project>

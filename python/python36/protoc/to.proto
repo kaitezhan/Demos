@@ -1,0 +1,22 @@
+option java_outer_classname = "RichManProto"; 
+message RichMan {  
+  
+    int32 id = 1;  
+    string name = 2;  
+    string email = 3;  
+     
+   enum CarType {  
+     AUDI = 0;  
+     BENZ = 1;  
+     LAMBORGHINI = 2;  
+     DASAUTO = 3;  
+   }  
+     
+   message Car {  
+       string name = 1;  
+       CarType type = 2 ;  
+   }  
+     
+   repeated Car cars = 4;  
+     
+}  
