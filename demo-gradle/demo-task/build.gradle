@@ -1,0 +1,24 @@
+apply plugin: 'groovy'
+apply plugin: 'maven'
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+}
+
+repositories {
+    mavenCentral()
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            //设置插件的GAV参数
+            pom.groupId = 'com.boneix.plugin'
+            pom.artifactId = 'task-plugin'
+            pom.version = 1.0
+            //文件发布到下面目录
+            repository(url: uri('../release'))
+        }
+    }
+}

@@ -1,0 +1,6 @@
+rootProject.name = 'demo-gradle'
+include 'demo-plugin'
+include 'test-plugin'
+include 'demo-task'
+include 'test-task'
+
