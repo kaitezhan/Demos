@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * Created by rzhang on 2017/6/13.
  */
 public class MessageHandlerRegister {
-    Map<String, IMessageHandler> container = new ConcurrentHashMap<>();
+    private Map<String, IMessageHandler> container = new ConcurrentHashMap<>();
 
     public Map<String, IMessageHandler> getContainer() {
         return container;

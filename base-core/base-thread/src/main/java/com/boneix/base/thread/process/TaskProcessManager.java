@@ -5,9 +5,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 异步任务执行管理器
- * 
+ *
  * @author wangchong
- * 
  */
 
 public class TaskProcessManager {
@@ -34,8 +33,9 @@ public class TaskProcessManager {
 
     /**
      * 获取执行器
+     *
      * @param businessDomain 业务域
-     * @param factory 任务处理工厂
+     * @param factory        任务处理工厂
      * @return 执行器
      */
     public static TaskProcess getTaskProcess(String businessDomain, TaskProcessFactory factory) {
@@ -58,6 +58,7 @@ public class TaskProcessManager {
 
     /**
      * 获取执行器，使用默认任务处理工厂
+     *
      * @param businessDomain 业务域
      * @return 执行器
      */
@@ -67,6 +68,7 @@ public class TaskProcessManager {
 
     /**
      * 使用默认的任务执行器
+     *
      * @return
      */
     public static TaskProcess getTaskProcess() {

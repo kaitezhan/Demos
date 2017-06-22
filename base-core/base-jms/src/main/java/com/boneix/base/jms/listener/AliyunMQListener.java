@@ -29,7 +29,7 @@ public class AliyunMQListener implements MessageListener {
         } else {
             messageHandler.parse(message);
         }
-        return  Action.CommitMessage;
+        return Action.CommitMessage;
     }
 
 }

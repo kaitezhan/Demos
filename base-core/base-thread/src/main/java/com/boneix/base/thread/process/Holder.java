@@ -7,7 +7,6 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @author wangchong
- * 
  */
 public final class Holder<T> {
     private CountDownLatch latch;

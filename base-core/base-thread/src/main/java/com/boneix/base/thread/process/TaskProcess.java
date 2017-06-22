@@ -9,7 +9,7 @@ import java.util.concurrent.*;
 
 /**
  * 异步任务执行器
- * 
+ *
  * @author wangchong
  */
 public class TaskProcess {
@@ -73,7 +73,7 @@ public class TaskProcess {
 
     /**
      * 执行TaskAction并等待执行结果
-     * 
+     *
      * @param tasks
      * @return 执行结果
      */
@@ -105,7 +105,7 @@ public class TaskProcess {
 
     /**
      * 异步执行TaskAction，无须等待执行结果
-     * 
+     *
      * @param tasks
      */
     public void asyncExecuteTask(List<TaskAction<?>> tasks) {
@@ -118,7 +118,7 @@ public class TaskProcess {
 
     /**
      * 异步执行TaskAction，无须等待执行结果
-     * 
+     *
      * @param tasks
      */
     public void asyncExecuteTask(TaskAction<?>... tasks) {
@@ -180,7 +180,7 @@ public class TaskProcess {
 
     /**
      * 并发控制任务执行
-     * 
+     *
      * @param concurrentCount 并行任务数
      * @param tasks
      * @return
@@ -221,7 +221,7 @@ public class TaskProcess {
 
     /**
      * 执行TaskAction并等待执行结果
-     * 
+     *
      * @param tasks
      * @return 执行结果
      */
@@ -270,7 +270,7 @@ public class TaskProcess {
 
     /**
      * 标识性任务执行，等待执行结果，对任务执行结果分类
-     * 
+     *
      * @param tasks
      * @return
      */
@@ -285,7 +285,7 @@ public class TaskProcess {
 
     /**
      * 标识性任务执行，等待执行结果，对任务执行结果分类
-     * 
+     *
      * @param tasks
      * @return
      */
