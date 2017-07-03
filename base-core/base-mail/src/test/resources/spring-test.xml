@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                            http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+                            http://www.springframework.org/schema/context
+                            http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+       default-lazy-init="true">
+    <context:property-placeholder
+            location="classpath:config.properties"/>
+
+    <bean id="velocityEngine"
+          class="org.apache.velocity.app.VelocityEngine">
+        <constructor-arg name="p">
+            <props>
+                <prop key="input.encoding">UTF-8</prop>
+                <prop key="output.encoding">UTF-8</prop>
+                <prop key="resource.loader">class</prop>
+                <prop key="class.resource.loader.class">
+                    org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+                </prop>
+            </props>
+        </constructor-arg>
+    </bean>
+
+    <!--邮件发送实现类 -->
+    <bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="${mail.smtp.host}"/>
+        <property name="port" value="${mail.smtp.port}"/>
+        <property name="username" value="${mail.smtp.username}"/>
+        <property name="password" value="${mail.smtp.password}"/>
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.timeout">${mail.smtp.timeout}</prop>
+                <prop key="mail.smtp.auth">${mail.smtp.auth}</prop>
+                <prop key="mail.smtp.starttls.enable">${mail.smtp.starttls.enable}</prop>
+                <prop key="mail.smtp.socketFactory.port">${mail.smtp.port}</prop>
+                <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
+                <prop key="mail.smtp.socketFactory.fallback">false</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="mailSenderClient" class="com.boneix.base.mail.MailSender">
+        <property name="javaMailSender" ref="javaMailSender"/>
+        <property name="fromAddress" value="${mail.smtp.username}"/>
+    </bean>
+
+    <bean id="htmlVelocityEngine" class="com.boneix.base.mail.HtmlVelocityEngine">
+        <property name="velocityEngine" ref="velocityEngine"/>
+    </bean>
+
+
+</beans>

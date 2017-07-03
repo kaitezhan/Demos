@@ -39,6 +39,10 @@
         <fastjson.version>1.1.40</fastjson.version>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
         <!-- json -->
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -77,6 +81,16 @@
             <artifactId>objenesis</artifactId>
         </dependency>
         <!-- io.protostuff end -->
+        <!-- logback start -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+        <!-- logback end -->
     </dependencies>
 
 </project>

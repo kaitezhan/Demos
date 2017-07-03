@@ -12,6 +12,7 @@
         <module>base-dao</module>
         <module>base-thread</module>
         <module>base-utils</module>
+        <module>base-mail</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -56,10 +57,20 @@
         <io.protostuff.core.version>1.3.5</io.protostuff.core.version>
         <io.protostuff.runtime.version>1.3.5</io.protostuff.runtime.version>
         <org.objenesis.version>2.1</org.objenesis.version>
+        <javax.mail.version>1.4.7</javax.mail.version>
+        <velocity.version>1.7</velocity.version>
+        <velocity.tools.version>2.0</velocity.tools.version>
+        <junit.version>4.12</junit.version>
+        <logback.version>1.2.3</logback.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-tx</artifactId>
@@ -69,6 +80,28 @@
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-commons</artifactId>
                 <version>${spring.data.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <!-- logback -->
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
             </dependency>
             <!-- mybatis -->
             <dependency>
@@ -158,7 +191,37 @@
                 <version>${org.objenesis.version}</version>
             </dependency>
             <!-- io.protostuff end -->
-
+            <!-- mail start -->
+            <dependency>
+                <groupId>javax.mail</groupId>
+                <artifactId>mail</artifactId>
+                <version>${javax.mail.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity</artifactId>
+                <version>${velocity.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity-tools</artifactId>
+                <version>${velocity.tools.version}</version>
+            </dependency>
+            <!-- mail end -->
+            <!-- test -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${spring.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <!-- test end -->
 
         </dependencies>
     </dependencyManagement>
