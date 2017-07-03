@@ -2,12 +2,15 @@ package com.boneix.base.mail;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 
 import javax.mail.internet.MimeMessage;
+import java.util.List;
 
 /**
+ * 发送邮件工具类
  * Created by rzhang on 2017/7/3.
  */
 public class MailSender {
@@ -18,7 +21,13 @@ public class MailSender {
 
     private String fromAddress;
 
-
+    /**
+     * 发送网页文本类型的邮件
+     *
+     * @param to       收件人
+     * @param subject  主题
+     * @param htmlText 网页文本
+     */
     public void sendEmailWithHtml(String to, String subject, String htmlText) {
         try {
             MimeMessage message = this.javaMailSender.createMimeMessage();
@@ -31,6 +40,39 @@ public class MailSender {
             helper.setSubject(subject);
             // 设置文本
             helper.setText(htmlText, true);
+            logger.debug("Attempt to send Email to {}", to);
+            javaMailSender.send(message);
+            logger.debug("Already send Email to {}", to);
+        } catch (Exception e) {
+            logger.error("When attempt to send Email ,Exception happened.{}", e);
+        }
+    }
+
+    /**
+     * 发送带附件的网页文本类型的邮件
+     *
+     * @param to        收件人
+     * @param subject   主题
+     * @param htmlText  网页文本
+     * @param filePaths 附件
+     */
+    public void sendEmailWithAttachment(String to, String subject, String htmlText, List<String> filePaths) {
+        try {
+            MimeMessage message = this.javaMailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true, MailEncodeEnum.UTF8.getValue());
+            // 设置发送人
+            helper.setFrom(this.fromAddress);
+            // 设置接收人
+            helper.setTo(to);
+            // 设置主题
+            helper.setSubject(subject);
+            // 设置文本
+            helper.setText(htmlText, true);
+            // 设置附件
+            for (String attach : filePaths) {
+                FileSystemResource file = new FileSystemResource(attach);
+                helper.addAttachment(attach, file);
+            }
             logger.debug("Attempt to send Email to {}", to);
             javaMailSender.send(message);
             logger.debug("Already send Email to {}", to);
