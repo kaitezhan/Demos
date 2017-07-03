@@ -2,12 +2,12 @@ package com.boneix.base.mail;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.InputStreamSource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 
 import javax.mail.internet.MimeMessage;
-import java.util.List;
+import java.util.Map;
 
 /**
  * 发送邮件工具类
@@ -51,12 +51,12 @@ public class MailSender {
     /**
      * 发送带附件的网页文本类型的邮件
      *
-     * @param to        收件人
-     * @param subject   主题
-     * @param htmlText  网页文本
-     * @param filePaths 附件
+     * @param to       收件人
+     * @param subject  主题
+     * @param htmlText 网页文本
+     * @param fileList 附件
      */
-    public void sendEmailWithAttachment(String to, String subject, String htmlText, List<String> filePaths) {
+    public void sendEmailWithAttachment(String to, String subject, String htmlText, Map<String, InputStreamSource> fileList) {
         try {
             MimeMessage message = this.javaMailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true, MailEncodeEnum.UTF8.getValue());
@@ -69,9 +69,8 @@ public class MailSender {
             // 设置文本
             helper.setText(htmlText, true);
             // 设置附件
-            for (String attach : filePaths) {
-                FileSystemResource file = new FileSystemResource(attach);
-                helper.addAttachment(attach, file);
+            for (Map.Entry<String, InputStreamSource> entry : fileList.entrySet()) {
+                helper.addAttachment(entry.getKey(), entry.getValue());
             }
             logger.debug("Attempt to send Email to {}", to);
             javaMailSender.send(message);
