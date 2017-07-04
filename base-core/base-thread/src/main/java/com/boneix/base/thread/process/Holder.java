@@ -19,26 +19,14 @@ public final class Holder<T> {
         this.future = future;
     }
 
-    public T getResult() {
-        try {
-            latch.await();
-            return future.get();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        } catch (ExecutionException e) {
-            throw new RuntimeException(e);
-        }
+    public T getResult() throws InterruptedException, ExecutionException {
+        latch.await();
+        return future.get();
     }
 
-    public T getResult(long timeout) {
-        try {
-            latch.await(timeout, TimeUnit.MILLISECONDS);
-            return future.get();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        } catch (ExecutionException e) {
-            throw new RuntimeException(e);
-        }
+    public T getResult(long timeout) throws InterruptedException, ExecutionException {
+        latch.await(timeout, TimeUnit.MILLISECONDS);
+        return future.get();
     }
 
 }

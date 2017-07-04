@@ -92,7 +92,7 @@ public class JsonUtils {
      */
     @SuppressWarnings("unchecked")
     public static <K, V> List<Map<K, V>> toListWithMap(Object obj) {
-        List<Map<K, V>> lists = new LinkedList<Map<K, V>>();
+        List<Map<K, V>> lists = new LinkedList<>();
         List<Object> list = JsonUtils.toBean(obj, List.class);
         if (null != list) {
             for (Object object : list) {
@@ -114,7 +114,7 @@ public class JsonUtils {
      */
     @SuppressWarnings("unchecked")
     public static <T> List<T> toList(Object obj, Class<T> cls) {
-        List<T> lists = new LinkedList<T>();
+        List<T> lists = new LinkedList<>();
         List<Object> list = JsonUtils.toBean(obj, List.class);
         if (null != list) {
             for (Object object : list) {

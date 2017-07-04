@@ -47,7 +47,7 @@ public class StringUtils {
         }
 
         for (int index = 0; index < cs.length(); ++index) {
-            if (false == Character.isWhitespace(cs.charAt(index))) {
+            if (!Character.isWhitespace(cs.charAt(index))) {
                 return false;
             }
 
@@ -97,7 +97,7 @@ public class StringUtils {
     }
 
     public static boolean equals(CharSequence cs1, CharSequence cs2) {
-        return ((cs1 == null) ? false : (cs2 == null) ? true : cs1.equals(cs2));
+        return (cs1 == null) ? false : (cs2 == null) ? true : cs1.equals(cs2);
     }
 
     public static int indexOf(CharSequence cs, int search) {
@@ -407,7 +407,7 @@ public class StringUtils {
     }
 
     private static String upperCase(CharSequence str) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         if (null == str) {
             return null;
         }

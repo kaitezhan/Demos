@@ -18,7 +18,10 @@ package com.boneix.base.utils.common;
 
 import java.util.Map;
 
-public abstract class MapUtils {
+public class MapUtils {
+
+    private MapUtils() {
+    }
 
     public static boolean isEmpty(Map<?, ?> map) {
         return (map == null || map.isEmpty());

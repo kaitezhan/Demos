@@ -41,16 +41,13 @@ public class TaskProcess {
      */
     private void init() {
         // 线程工厂创建后台运行线程       
-        ThreadFactory factory = new ThreadFactory() {
-            @Override
-            public Thread newThread(Runnable r) {
-                Thread t = new Thread(r);
-                t.setDaemon(true);
-                return t;
-            }
+        ThreadFactory factory = r -> {
+            Thread t = new Thread(r);
+            t.setDaemon(true);
+            return t;
         };
         // 有界队列
-        BlockingQueue<Runnable> queue = new LinkedBlockingQueue<Runnable>(coreSize);
+        BlockingQueue<Runnable> queue = new LinkedBlockingQueue<>(coreSize);
         executor = new ThreadPoolExecutor(coreSize, poolSize, 60, TimeUnit.SECONDS, queue, factory,
                 new ThreadPoolExecutor.CallerRunsPolicy());
 
@@ -64,7 +61,7 @@ public class TaskProcess {
                 try {
                     executor.shutdown();
                     executor.awaitTermination(5, TimeUnit.MINUTES);
-                } catch (InterruptedException e) {
+                } catch (Exception e) {
                     logger.warn("interrupted when shuting down the process executor:\n{}", e);
                 }
             }
@@ -78,7 +75,7 @@ public class TaskProcess {
      * @return 执行结果
      */
     @SuppressWarnings("unchecked")
-    public <T> List<T> executeTask(List<TaskAction<T>> tasks) {
+    public <T> List<T> executeTask(List<TaskAction<T>> tasks) throws ExecutionException, InterruptedException {
         TaskAction<T>[] actions = new TaskAction[tasks.size()];
         for (int i = 0; i < tasks.size(); i++) {
             actions[i] = tasks.get(i);
@@ -93,14 +90,12 @@ public class TaskProcess {
             public T call() throws Exception {
                 try {
                     return task.doInAction();
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
                 } finally {
                     latch.countDown();
                 }
             }
         });
-        return new Holder<T>(latch, future);
+        return new Holder<>(latch, future);
     }
 
     /**
@@ -123,21 +118,12 @@ public class TaskProcess {
      */
     public void asyncExecuteTask(TaskAction<?>... tasks) {
         for (final TaskAction<?> runnable : tasks) {
-            executor.execute(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        runnable.doInAction();
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-            });
+            executor.execute(() -> runnable.doInAction());
         }
     }
 
     @SuppressWarnings("unchecked")
-    public <T> List<T> exeucteTaskByConcurrentControl(final int concurrentCount, List<TaskAction<T>> tasks) {
+    public <T> List<T> exeucteTaskByConcurrentControl(final int concurrentCount, List<TaskAction<T>> tasks) throws ExecutionException, InterruptedException {
         TaskAction<T>[] actions = new TaskAction[tasks.size()];
         for (int i = 0; i < tasks.size(); i++) {
             actions[i] = tasks.get(i);
@@ -146,7 +132,7 @@ public class TaskProcess {
     }
 
     private <T> List<Future<T>> barrier(final int concurrentCount, TaskAction<T>... tasks) {
-        List<Future<T>> futures = new ArrayList<Future<T>>(tasks.length);
+        List<Future<T>> futures = new ArrayList<>(tasks.length);
         int lacth = tasks.length < concurrentCount ? tasks.length : concurrentCount;
         int devide = tasks.length / concurrentCount == 0 ? 1 : tasks.length / concurrentCount;
         for (int i = 0; i < devide; i++) {
@@ -157,22 +143,19 @@ public class TaskProcess {
                 if (action == null) {
                     continue;
                 }
-                Future<T> future = executor.submit(new Callable<T>() {
-                    @Override
-                    public T call() throws Exception {
-                        try {
-                            return action.doInAction();
-                        } finally {
-                            latch.countDown();
-                        }
+                Future<T> future = executor.submit(() -> {
+                    try {
+                        return action.doInAction();
+                    } finally {
+                        latch.countDown();
                     }
                 });
                 futures.add(future);
             }
             try {
                 latch.await();
-            } catch (InterruptedException e) {
-                logger.info("Executing Task is interrupt.");
+            } catch (Exception e) {
+                logger.warn("Executing Task is interrupt.{}", e);
             }
         }
         return futures;
@@ -185,16 +168,14 @@ public class TaskProcess {
      * @param tasks
      * @return
      */
-    public <T> List<T> exeucteTaskByConcurrentControl(int concurrentCount, TaskAction<T>... tasks) {
+    public <T> List<T> exeucteTaskByConcurrentControl(int concurrentCount, TaskAction<T>... tasks) throws ExecutionException, InterruptedException {
         int modTaskCount = tasks.length;
-        if (concurrentCount > coreSize) {
-            concurrentCount = coreSize;
-        }
+        concurrentCount = concurrentCount > coreSize ? coreSize : concurrentCount;
         int remainTaskCount = tasks.length % concurrentCount;
-        List<T> resultList = new ArrayList<T>(modTaskCount);
-        List<Future<T>> futures = new ArrayList<Future<T>>(tasks.length);
+        List<T> resultList = new ArrayList<>(modTaskCount);
+        List<Future<T>> futures = new ArrayList<>(tasks.length);
 
-        Map<Integer, TaskAction<T>[]> currentTaskMap = new HashMap<Integer, TaskAction<T>[]>(2);
+        Map<Integer, TaskAction<T>[]> currentTaskMap = new HashMap<>(2);
         currentTaskMap.put(concurrentCount, Arrays.copyOf(tasks, modTaskCount));
 
         if (remainTaskCount != 0 && remainTaskCount != modTaskCount) {
@@ -207,13 +188,9 @@ public class TaskProcess {
         }
 
         for (Future<T> future : futures) {
-            try {
-                T result = future.get();
-                if (result != null) {
-                    resultList.add(result);
-                }
-            } catch (Exception e) {
-                throw new RuntimeException(e);
+            T result = future.get();
+            if (result != null) {
+                resultList.add(result);
             }
         }
         return resultList;
@@ -225,44 +202,29 @@ public class TaskProcess {
      * @param tasks
      * @return 执行结果
      */
-    public <T> List<T> executeTask(TaskAction<T>... tasks) {
+    public <T> List<T> executeTask(TaskAction<T>... tasks) throws ExecutionException, InterruptedException {
         final CountDownLatch latch = new CountDownLatch(tasks.length);
 
-        List<Future<T>> futures = new ArrayList<Future<T>>();
-        List<T> resultList = new ArrayList<T>();
+        List<Future<T>> futures = new ArrayList<>();
+        List<T> resultList = new ArrayList<>();
 
         for (final TaskAction<T> runnable : tasks) {
-            Future<T> future = executor.submit(new Callable<T>() {
-                @Override
-                public T call() throws Exception {
-                    //Stopwatch sw=Stopwatch.createStarted();
-                    try {
-                        return runnable.doInAction();
-                    } finally {
-                        latch.countDown();
-//                        sw.stop();
-//                        logger.info("cost time:{}",sw.toString());
-                    }
-
+            Future<T> future = executor.submit(() -> {
+                try {
+                    return runnable.doInAction();
+                } finally {
+                    latch.countDown();
                 }
             });
             futures.add(future);
         }
 
-        try {
-            latch.await();
-        } catch (InterruptedException e) {
-            logger.info("Executing Task is interrupt.");
-        }
+        latch.await();
 
         for (Future<T> future : futures) {
-            try {
-                T result = future.get();
-                if (result != null) {
-                    resultList.add(result);
-                }
-            } catch (Exception e) {
-                throw new RuntimeException(e);
+            T result = future.get();
+            if (result != null) {
+                resultList.add(result);
             }
         }
         return resultList;
@@ -275,7 +237,7 @@ public class TaskProcess {
      * @return
      */
     @SuppressWarnings("unchecked")
-    public <T> Map<String, T> executeIdentityTask(List<IdentityTaskAction<T>> tasks) {
+    public <T> Map<String, T> executeIdentityTask(List<IdentityTaskAction<T>> tasks) throws ExecutionException, InterruptedException {
         IdentityTaskAction<T>[] actions = new IdentityTaskAction[tasks.size()];
         for (int i = 0; i < tasks.size(); i++) {
             actions[i] = tasks.get(i);
@@ -289,83 +251,61 @@ public class TaskProcess {
      * @param tasks
      * @return
      */
-    public <T> Map<String, T> executeIdentityTask(IdentityTaskAction<T>... tasks) {
+    public <T> Map<String, T> executeIdentityTask(IdentityTaskAction<T>... tasks) throws ExecutionException, InterruptedException {
         final CountDownLatch latch = new CountDownLatch(tasks.length);
 
-        Map<String, Future<T>> futures = new HashMap<String, Future<T>>();
-        Map<String, T> resultMap = new HashMap<String, T>();
+        Map<String, Future<T>> futures = new HashMap<>();
+        Map<String, T> resultMap = new HashMap<>();
 
         for (final IdentityTaskAction<T> runnable : tasks) {
-            Future<T> future = executor.submit(new Callable<T>() {
-                @Override
-                public T call() throws Exception {
-                    long time = System.currentTimeMillis();
-                    try {
-                        return runnable.doInAction();
-                    } finally {
-                        logger.debug("Executing Task : {} ,time :{}", runnable.identity(), System.currentTimeMillis()
-                                - time);
-                        latch.countDown();
-                    }
-
+            Future<T> future = executor.submit(() -> {
+                long time = System.currentTimeMillis();
+                try {
+                    return runnable.doInAction();
+                } finally {
+                    logger.debug("Executing Task : {} ,time :{}", runnable.identity(), System.currentTimeMillis()
+                            - time);
+                    latch.countDown();
                 }
+
             });
             futures.put(runnable.identity(), future);
         }
 
         try {
             latch.await();
-        } catch (InterruptedException e) {
+        } catch (Exception e) {
             logger.info("Executing Task is interrupt.");
         }
 
         Iterator<Entry<String, Future<T>>> it = futures.entrySet().iterator();
         while (it.hasNext()) {
             Entry<String, Future<T>> entry = it.next();
-            try {
-                T result = entry.getValue().get();
-                resultMap.put(entry.getKey(), result);
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+            T result = entry.getValue().get();
+            resultMap.put(entry.getKey(), result);
         }
         return resultMap;
     }
 
     @SuppressWarnings("unchecked")
-    public <T> List<T> executeFutureTask(List<TaskAction<T>> tasks) {
+    public <T> List<T> executeFutureTask(List<TaskAction<T>> tasks) throws ExecutionException, InterruptedException {
         TaskAction<T>[] actions = new TaskAction[tasks.size()];
         for (int i = 0; i < tasks.size(); i++) {
             actions[i] = tasks.get(i);
         }
 
-        List<Future<T>> futures = new ArrayList<Future<T>>();
-        List<T> resultList = new ArrayList<T>();
+        List<Future<T>> futures = new ArrayList<>();
+        List<T> resultList = new ArrayList<>();
 
         for (final TaskAction<T> runnable : actions) {
-            Future<T> future = executor.submit(new Callable<T>() {
-                @Override
-                public T call() throws Exception {
-                    //Stopwatch sw=Stopwatch.createStarted();
-                    try {
-                        return runnable.doInAction();
-                    } finally {
-                        //sw.stop();
-                        //logger.info("cost time:{}",sw.toString());
-                    }
-                }
-            });
+            Future<T> future = executor.submit(runnable::doInAction);
             futures.add(future);
         }
 
         for (Future<T> future : futures) {
-            try {
-                T result = future.get();
-                if (result != null) {
-                    resultList.add(result);
-                }
-            } catch (Exception e) {
-                throw new RuntimeException(e);
+            T result = future.get();
+            if (result != null) {
+                resultList.add(result);
             }
         }
         return resultList;

@@ -170,7 +170,7 @@ public abstract class BaseDaoImpl<T extends Identifiable> implements BaseDao<T> 
     public <V extends T> Page<V> selectPageList(T query, Pageable pageable) {
         try {
             List<V> contentList = sqlSessionTemplate.selectList(getSqlName(SqlId.SQL_SELECT), getParams(query, pageable));
-            return new PageImpl<V>(contentList, pageable, this.selectCount(query));
+            return new PageImpl<>(contentList, pageable, this.selectCount(query));
         } catch (Exception e) {
             throw new DaoException(String.format("selectPageList error! statement: %s", getSqlName(SqlId.SQL_SELECT)), e);
         }
@@ -324,7 +324,7 @@ public abstract class BaseDaoImpl<T extends Identifiable> implements BaseDao<T> 
 
             List<T> list = sqlSessionTemplate.selectList(getSqlName(SqlId.SQL_CHECK_NAME), params);
 
-            return list != null && list.size() > 0;
+            return list != null && !list.isEmpty();
         } catch (Exception e) {
             throw new DaoException(String.format("selectOne error! statement: %s", getSqlName(SqlId.SQL_SELECT)), e);
         }

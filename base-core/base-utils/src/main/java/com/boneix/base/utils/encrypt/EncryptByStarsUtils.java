@@ -9,6 +9,9 @@ import com.boneix.base.utils.common.ValidationUtils;
  */
 public class EncryptByStarsUtils {
 
+    private EncryptByStarsUtils() {
+    }
+
     /**
      * 身份证加密 只保留前三和后五个字符
      *
@@ -17,7 +20,7 @@ public class EncryptByStarsUtils {
      */
     public static String encryptIdCard(String idCard) {
         if (StringUtils.isNotEmpty(idCard) && idCard.length() > 10) {
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             sb.append(idCard.substring(0, 3));
             sb.append("****");
             sb.append(idCard.substring((idCard.length() - 5)));
@@ -34,7 +37,7 @@ public class EncryptByStarsUtils {
      */
     public static String encryptAccountName(String bankAccountName) {
         if (StringUtils.isNotEmpty(bankAccountName) && bankAccountName.length() > 1) {
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             if (bankAccountName.length() <= 2) {
                 sb.append("*");
             } else {
@@ -55,7 +58,7 @@ public class EncryptByStarsUtils {
      */
     public static String encryptMobile(String bankAccountMobile) {
         if (null != bankAccountMobile && ValidationUtils.validateMobile(bankAccountMobile)) {
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             sb.append(bankAccountMobile.substring(0, 3));
             sb.append("****");
             sb.append(bankAccountMobile.substring((bankAccountMobile.length() - 4)));
@@ -72,7 +75,7 @@ public class EncryptByStarsUtils {
      */
     public static String encryptBankAccount(String bankAccount) {
         if (StringUtils.isNotEmpty(bankAccount) && bankAccount.length() > 4) {
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             sb.append("**** **** ****");
             sb.append(bankAccount.substring((bankAccount.length() - 4)));
             return sb.toString();

@@ -7,6 +7,6 @@ package com.boneix.base.thread.process;
  * @author wangchong
  */
 public interface TaskAction<T> {
-    T doInAction() throws Exception;
+    T doInAction();
 }
 

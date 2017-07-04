@@ -21,20 +21,23 @@ public class EncryptUtils {
 
     private static final Logger LOG = LoggerFactory.getLogger(EncryptUtils.class);
 
+    private EncryptUtils() {
+    }
+
     /**
      * SHA1加密
      *
      * @param decript 需要加密的内容
      * @return String
      */
-    public static String SHA1(String decript) {
+    public static String decriptSHA1(String decript) {
         try {
             MessageDigest digest = MessageDigest
                     .getInstance("SHA-1");
             digest.update(decript.getBytes());
-            byte messageDigest[] = digest.digest();
+            byte[] messageDigest = digest.digest();
             // Create Hex String
-            StringBuffer hexString = new StringBuffer();
+            StringBuilder hexString = new StringBuilder();
             // 字节数组转换为 十六进制 数
             for (int i = 0; i < messageDigest.length; i++) {
                 String shaHex = Integer.toHexString(messageDigest[i] & 0xFF);
@@ -57,14 +60,14 @@ public class EncryptUtils {
      * @param decript 需要加密的内容
      * @return String
      */
-    public static String SHA(String decript) {
+    public static String decriptSHA(String decript) {
         try {
             MessageDigest digest = MessageDigest
                     .getInstance("SHA");
             digest.update(decript.getBytes());
-            byte messageDigest[] = digest.digest();
+            byte[] messageDigest = digest.digest();
             // Create Hex String
-            StringBuffer hexString = new StringBuffer();
+            StringBuilder hexString = new StringBuilder();
             // 字节数组转换为 十六进制 数
             for (int i = 0; i < messageDigest.length; i++) {
                 String shaHex = Integer.toHexString(messageDigest[i] & 0xFF);
@@ -87,7 +90,7 @@ public class EncryptUtils {
      * @param input 需要加密的内容
      * @return String
      */
-    public static String MD5(String input) {
+    public static String decriptMD5(String input) {
         try {
             // 获得MD5摘要算法的 MessageDigest 对象
             MessageDigest mdInst = MessageDigest.getInstance("MD5");
@@ -96,7 +99,7 @@ public class EncryptUtils {
             // 获得密文
             byte[] md = mdInst.digest();
             // 把密文转换成十六进制的字符串形式
-            StringBuffer hexString = new StringBuffer();
+            StringBuilder hexString = new StringBuilder();
             // 字节数组转换为 十六进制 数
             for (int i = 0; i < md.length; i++) {
                 String shaHex = Integer.toHexString(md[i] & 0xFF);
@@ -129,8 +132,7 @@ public class EncryptUtils {
             Cipher cipher = Cipher.getInstance("AES");// 创建密码器
             byte[] byteContent = content.getBytes("utf-8");
             cipher.init(Cipher.ENCRYPT_MODE, key);// 初始化
-            byte[] result = cipher.doFinal(byteContent);
-            return result; // 加密
+            return cipher.doFinal(byteContent); // 加密
         } catch (NoSuchAlgorithmException e) {
             LOG.error("EncryptUtils.encryptAES NoSuchAlgorithmException error {}", e);
         } catch (NoSuchPaddingException e) {
@@ -144,7 +146,7 @@ public class EncryptUtils {
         } catch (BadPaddingException e) {
             LOG.error("EncryptUtils.encryptAES BadPaddingException error {}", e);
         }
-        return null;
+        return new byte[0];
     }
 
     /**
@@ -163,8 +165,7 @@ public class EncryptUtils {
             SecretKeySpec key = new SecretKeySpec(enCodeFormat, "AES");
             Cipher cipher = Cipher.getInstance("AES");// 创建密码器
             cipher.init(Cipher.DECRYPT_MODE, key);// 初始化
-            byte[] result = cipher.doFinal(content);
-            return result; // 加密
+            return cipher.doFinal(content);// 加密
         } catch (NoSuchAlgorithmException e) {
             LOG.error("EncryptUtils.decryptAES NoSuchAlgorithmException error {}", e);
         } catch (NoSuchPaddingException e) {
@@ -176,7 +177,7 @@ public class EncryptUtils {
         } catch (BadPaddingException e) {
             LOG.error("EncryptUtils.decryptAES BadPaddingException error {}", e);
         }
-        return null;
+        return new byte[0];
     }
 
 }

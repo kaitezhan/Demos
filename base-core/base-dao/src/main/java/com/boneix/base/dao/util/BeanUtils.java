@@ -15,6 +15,10 @@ import java.util.Map;
  * @version [1.0, 2014年12月8日]
  */
 public class BeanUtils {
+
+    private BeanUtils() {
+    }
+
     /**
      * 将Bean对象转换成Map对象，将忽略掉值为null或size=0的属性
      *
@@ -23,7 +27,7 @@ public class BeanUtils {
      */
     @SuppressWarnings("unchecked")
     public static Map<String, Object> toMap(Object obj) {
-        Map<String, Object> map = new HashMap<String, Object>();
+        Map<String, Object> map = new HashMap<>();
         if (obj == null) {
             return map;
         }
@@ -47,7 +51,7 @@ public class BeanUtils {
      * @return 对于值为null的对象将忽略掉
      */
     public static Map<String, Object> toMap(Object... objs) {
-        Map<String, Object> map = new HashMap<String, Object>();
+        Map<String, Object> map = new HashMap<>();
         for (Object object : objs) {
             if (object != null) {
                 map.putAll(toMap(object));

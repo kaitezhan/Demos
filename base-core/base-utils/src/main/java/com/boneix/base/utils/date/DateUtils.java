@@ -14,6 +14,9 @@ import java.util.Date;
  */
 public class DateUtils {
 
+    private DateUtils() {
+    }
+
     private static final Logger LOG = LoggerFactory.getLogger(DateUtils.class);
 
     public static final long MILLIS_PER_SECOND = 1000L;

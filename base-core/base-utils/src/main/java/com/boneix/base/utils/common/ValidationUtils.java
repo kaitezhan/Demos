@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
  */
 public final class ValidationUtils {
 
-    private static final String mobileRegex = "^((13[0-9])|(15[^4,\\D])|(18[^1^4,\\D])|(17[0-9]))\\d{8}";
+    private static final String MOBILE_REGEX = "^((13[0-9])|(15[^4,\\D])|(18[^1^4,\\D])|(17[0-9]))\\d{8}";
 
     private ValidationUtils() {
     }
@@ -21,7 +21,7 @@ public final class ValidationUtils {
      * 手机号的验证
      */
     public static boolean validateMobile(String mobile) {
-        return Pattern.compile(mobileRegex).matcher(mobile).matches();
+        return Pattern.compile(MOBILE_REGEX).matcher(mobile).matches();
     }
 
 }

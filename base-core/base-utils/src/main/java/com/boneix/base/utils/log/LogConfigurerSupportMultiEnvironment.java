@@ -17,6 +17,9 @@ import java.net.URL;
  * @version [1.0, 2016年1月5日]
  */
 public class LogConfigurerSupportMultiEnvironment {
+    private LogConfigurerSupportMultiEnvironment() {
+    }
+
     public static void registLogConfiguration(String logConfigLocation)
             throws FileNotFoundException, JoranException {
         String resolvedLocation = SystemPropertyUtils.resolvePlaceholders(logConfigLocation);

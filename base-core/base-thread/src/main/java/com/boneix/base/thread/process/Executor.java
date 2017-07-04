@@ -6,6 +6,10 @@ package com.boneix.base.thread.process;
  * @author huangyongfa
  */
 public class Executor {
+
+    private Executor() {
+    }
+
     /**
      * 多线程执行器的业务域
      */

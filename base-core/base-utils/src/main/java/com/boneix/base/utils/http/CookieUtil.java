@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletResponse;
  * @author GetInstance
  */
 public class CookieUtil {
+    private CookieUtil() {
+    }
+
     /**
      * 添加cookie
      *

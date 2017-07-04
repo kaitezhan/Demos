@@ -85,8 +85,7 @@ public class HttpClient {
         if (null == this.serverUrl) {
             return null;
         }
-        String ret = this.httpExecute();
-        return ret;
+        return this.httpExecute();
     }
 
     private String getURLWithData() {
@@ -105,10 +104,10 @@ public class HttpClient {
         // 设置请求和传输超时时间
         RequestConfig.Builder builderConfig = RequestConfig.custom();
         if (0 < this.connectTimeout) {
-            builderConfig.setConnectTimeout(Integer.valueOf(this.connectTimeout * 1000));
+            builderConfig.setConnectTimeout(this.connectTimeout * 1000);
         }
         if (0 < this.socketTimeout) {
-            builderConfig.setSocketTimeout(Integer.valueOf(this.socketTimeout * 1000));
+            builderConfig.setSocketTimeout(this.socketTimeout * 1000);
         }
         RequestConfig requestConfig = builderConfig.build();
         try {

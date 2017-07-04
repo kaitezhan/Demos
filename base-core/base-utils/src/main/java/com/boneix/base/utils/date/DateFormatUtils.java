@@ -19,6 +19,9 @@ public class DateFormatUtils {
 
     private static final ThreadLocal<HashMap<String, SimpleDateFormat>> DATE_LOCAL = new ThreadLocal<>();
 
+    private DateFormatUtils() {
+    }
+
     @SuppressWarnings("unused")
     private static final String DEFAULT_DATEFORMAT = "yyyy-MM-dd";
 
@@ -29,10 +32,10 @@ public class DateFormatUtils {
 
     private static SimpleDateFormat getDateFormat(String format) {
         SimpleDateFormat sdf = null;
-        HashMap<String, SimpleDateFormat> local = (HashMap) DATE_LOCAL.get();
+        HashMap<String, SimpleDateFormat> local = DATE_LOCAL.get();
 
         if (null == local) {
-            HashMap<String, SimpleDateFormat> map = new HashMap<String, SimpleDateFormat>();
+            HashMap<String, SimpleDateFormat> map = new HashMap<>();
             sdf = new SimpleDateFormat(format);
             map.put(format, sdf);
             DATE_LOCAL.set(map);
@@ -67,12 +70,12 @@ public class DateFormatUtils {
     }
 
     public static String formatDate(Date date) {
-        return getDateFormat("yyyy-MM-dd").format(date);
+        return getDateFormat(DEFAULT_DATEFORMAT).format(date);
     }
 
     public static Date parseDate(String dateStr) {
         try {
-            return getDateFormat("yyyy-MM-dd").parse(dateStr);
+            return getDateFormat(DEFAULT_DATEFORMAT).parse(dateStr);
         } catch (Exception e) {
             LOG.error("DateFormatUtils.parseDate error |{}", e);
         }
@@ -80,12 +83,12 @@ public class DateFormatUtils {
     }
 
     public static String formatDatetime(Date date) {
-        return getDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
+        return getDateFormat(DEFAULT_DATETIMEFORMAT).format(date);
     }
 
     public static Date parseDatetime(String dateStr) {
         try {
-            return getDateFormat("yyyy-MM-dd HH:mm:ss").parse(dateStr);
+            return getDateFormat(DEFAULT_DATETIMEFORMAT).parse(dateStr);
         } catch (Exception e) {
             LOG.error("DateFormatUtils.parseDatetime error |{}", e);
         }
