@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+    <bean id="amqConnectionFactory"
+          class="org.apache.activemq.ActiveMQConnectionFactory">
+
+        <property name="brokerURL" value="${amq.address}"/>
+        <!--<property name="brokerURL"-->
+        <!--value="failover://${amq.address}?randomize=false&amp;jms.useAsyncSend=true&amp;jms.prefetchPolicy.queuePrefetch=1" />-->
+    </bean>
+
+    <bean id="poolConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory">
+        <property name="connectionFactory" ref="amqConnectionFactory"/>
+        <property name="maxConnections" value="${amq.pool.maxConnections}"/>
+    </bean>
+
+    <!-- destination -->
+    <bean id="actionQueue" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg index="0" value="${demo.action.amq.queue.name}"/>
+    </bean>
+
+    <!-- AMQ消费者 -->
+    <bean id="actionMQListener" class="com.boneix.base.jms.listener.ActiveMQListener"/>
+    <bean id="actionMQConsume" class="com.boneix.base.jms.test.consumer.ActionMQConsume">
+        <property name="connectionFactory" ref="poolConnectionFactory"/>
+        <property name="destination" ref="actionQueue"/>
+        <property name="messageListener" ref="actionMQListener"/>
+        <property name="receiveTimeout" value="${amq.consume.receiveTimeout}"/>
+        <property name="concurrentConsumers" value="${amq.consume.concurrentConsumers}"/>
+        <property name="maxConcurrentConsumers" value="${amq.consume.maxConcurrentConsumers}"/>
+        <property name="sessionTransacted" value="true"/>
+        <property name="sessionAcknowledgeMode" value="0"/>
+    </bean>
+
+    <bean id="demoMessageHandler" class="com.boneix.base.jms.test.handler.AMQDemoMessageHandler" init-method="init"/>
+    <bean id="activeMQQueue" class="com.boneix.base.jms.test.constants.ActiveMQQueue">
+        <property name="demoQueue" value="${demo.action.amq.queue.name}"/>
+    </bean>
+
+</beans>

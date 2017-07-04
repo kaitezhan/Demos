@@ -42,7 +42,7 @@ public abstract class ActiveMQProducerImpl implements IJmsBaseProducer {
                     destinationName = ((Topic) destination).getTopicName();
                 }
                 if (StringUtils.isEmpty(destinationName)) {
-                    logger.warn("Only Quene and Topic support.");
+                    logger.warn("Only Queue and Topic support.");
                     jmsSendResult.setStatus(false);
                 } else {
                     Message msgReceive = jmsTemplate.sendAndReceive(destination, session -> session.createTextMessage(JsonUtils.toString(message)));

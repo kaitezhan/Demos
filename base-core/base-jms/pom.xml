@@ -79,6 +79,18 @@
             <artifactId>jms</artifactId>
         </dependency>
         <!-- activemq  end-->
+        <!-- test -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- test end -->
     </dependencies>
 
 </project>
