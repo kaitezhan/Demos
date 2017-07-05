@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -62,6 +62,8 @@
         <velocity.tools.version>2.0</velocity.tools.version>
         <junit.version>4.12</junit.version>
         <logback.version>1.2.3</logback.version>
+        <rabbitmq.client.version>4.1.1</rabbitmq.client.version>
+        <rabbitmq.spring.version>1.7.3.RELEASE</rabbitmq.spring.version>
     </properties>
 
     <dependencyManagement>
@@ -220,6 +222,17 @@
                 <artifactId>spring-test</artifactId>
                 <version>${spring.version}</version>
                 <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.rabbitmq</groupId>
+                <artifactId>amqp-client</artifactId>
+                <version>${rabbitmq.client.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.amqp</groupId>
+                <artifactId>spring-rabbit</artifactId>
+                <version>${rabbitmq.spring.version}</version>
             </dependency>
             <!-- test end -->
 

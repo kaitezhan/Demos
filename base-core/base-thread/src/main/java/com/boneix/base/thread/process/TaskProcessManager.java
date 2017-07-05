@@ -11,25 +11,23 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class TaskProcessManager {
 
-    // 外包不能初始化
-    TaskProcessManager() {
-    }
-
     /**
      * 默认的业务执行域
      */
     private static final String DEFAULT_BUSINESS_DOMAIN = TaskProcessManager.class.getName();
-
     /**
      * 执行器的容器，根据业务域来区分<br>
      * 每个业务域只有一个执行器
      */
     private static Map<String, TaskProcess> taskProcessContainer = new ConcurrentHashMap<>();
-
     /**
      * 默认异步任务执行器工厂
      */
     private static TaskProcessFactory defaultTaskProcessFactory = new TaskProcessFactory();
+
+    // 外包不能初始化
+    TaskProcessManager() {
+    }
 
     /**
      * 获取执行器

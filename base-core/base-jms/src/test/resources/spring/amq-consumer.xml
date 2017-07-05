@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="
     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
 
@@ -24,7 +24,7 @@
 
     <!-- AMQ消费者 -->
     <bean id="actionMQListener" class="com.boneix.base.jms.listener.ActiveMQListener"/>
-    <bean id="actionMQConsume" class="com.boneix.base.jms.test.consumer.ActionMQConsume">
+    <bean id="actionMQConsume" class="com.boneix.base.jms.test.activemq.consumer.ActionMQConsume">
         <property name="connectionFactory" ref="poolConnectionFactory"/>
         <property name="destination" ref="actionQueue"/>
         <property name="messageListener" ref="actionMQListener"/>
@@ -35,8 +35,9 @@
         <property name="sessionAcknowledgeMode" value="0"/>
     </bean>
 
-    <bean id="demoMessageHandler" class="com.boneix.base.jms.test.handler.AMQDemoMessageHandler" init-method="init"/>
-    <bean id="activeMQQueue" class="com.boneix.base.jms.test.constants.ActiveMQQueue">
+    <bean id="demoMessageHandler" class="com.boneix.base.jms.test.activemq.handler.AMQDemoMessageHandler"
+          init-method="init"/>
+    <bean id="activeMQQueue" class="com.boneix.base.jms.test.activemq.constants.ActiveMQQueue">
         <property name="demoQueue" value="${demo.action.amq.queue.name}"/>
     </bean>
 

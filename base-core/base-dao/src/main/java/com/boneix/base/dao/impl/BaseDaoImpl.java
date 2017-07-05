@@ -24,11 +24,9 @@ import java.util.Map;
  * @version [1.0, 2014年12月8日]
  */
 public abstract class BaseDaoImpl<T extends Identifiable> implements BaseDao<T> {
+    public static final String SQLNAME_SEPARATOR = ".";
     @Resource
     protected SqlSession sqlSessionTemplate;
-
-    public static final String SQLNAME_SEPARATOR = ".";
-
     /**
      * @fields sqlNamespace SqlMapping命名空间
      */

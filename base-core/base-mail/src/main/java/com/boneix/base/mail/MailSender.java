@@ -84,16 +84,16 @@ public class MailSender {
         return javaMailSender;
     }
 
+    public void setJavaMailSender(JavaMailSender javaMailSender) {
+        this.javaMailSender = javaMailSender;
+    }
+
     public String getFromAddress() {
         return fromAddress;
     }
 
     public void setFromAddress(String fromAddress) {
         this.fromAddress = fromAddress;
-    }
-
-    public void setJavaMailSender(JavaMailSender javaMailSender) {
-        this.javaMailSender = javaMailSender;
     }
 
 }

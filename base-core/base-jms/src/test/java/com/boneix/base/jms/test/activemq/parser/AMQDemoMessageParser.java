@@ -1,4 +1,4 @@
-package com.boneix.base.jms.test.parser;
+package com.boneix.base.jms.test.activemq.parser;
 
 import com.boneix.base.jms.consumer.IMessageParser;
 import com.boneix.base.jms.entity.JmsAction;

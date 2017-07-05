@@ -11,8 +11,8 @@ import javax.annotation.Resource;
 /**
  * Created by rzhang on 2017/7/3.
  */
-public class DemoTest extends BaseSpringTest {
-    private static final Logger logger = LoggerFactory.getLogger(DemoTest.class);
+public class DemoRMQTest extends BaseSpringTest {
+    private static final Logger logger = LoggerFactory.getLogger(DemoRMQTest.class);
 
     @Resource
     private IJmsBaseProducer iJmsBaseProducer;

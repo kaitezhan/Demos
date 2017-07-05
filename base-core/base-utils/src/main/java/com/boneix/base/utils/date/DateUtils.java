@@ -14,18 +14,14 @@ import java.util.Date;
  */
 public class DateUtils {
 
-    private DateUtils() {
-    }
-
+    public static final long MILLIS_PER_SECOND = 1000L;
+    public static final long MILLIS_PER_MINUTE = 60000L;
+    public static final long MILLIS_PER_HOUR = 3600000L;
+    public static final long MILLIS_PER_DAY = 86400000L;
     private static final Logger LOG = LoggerFactory.getLogger(DateUtils.class);
 
-    public static final long MILLIS_PER_SECOND = 1000L;
-
-    public static final long MILLIS_PER_MINUTE = 60000L;
-
-    public static final long MILLIS_PER_HOUR = 3600000L;
-
-    public static final long MILLIS_PER_DAY = 86400000L;
+    private DateUtils() {
+    }
 
     public static Date addYears(Date date, int amount) {
         return add(date, 1, amount);

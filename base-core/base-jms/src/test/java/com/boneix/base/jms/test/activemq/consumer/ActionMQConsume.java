@@ -1,4 +1,4 @@
-package com.boneix.base.jms.test.consumer;
+package com.boneix.base.jms.test.activemq.consumer;
 
 import org.springframework.jms.listener.DefaultMessageListenerContainer;
 

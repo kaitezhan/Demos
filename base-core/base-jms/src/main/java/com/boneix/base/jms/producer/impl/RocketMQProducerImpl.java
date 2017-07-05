@@ -33,11 +33,12 @@ public abstract class RocketMQProducerImpl implements IJmsBaseProducer {
             jmsSendResult.setMessageId(sendResult.getMessageId());
             jmsSendResult.setDestination(sendResult.getTopic());
             jmsSendResult.setStatus(true);
+            return jmsSendResult;
         } catch (Exception e) {
             logger.error("RocketMQProducerImpl send {} , Exception:{}", message, e);
             jmsSendResult.setStatus(false);
+            return jmsSendResult;
         }
-        return jmsSendResult;
     }
 
 }

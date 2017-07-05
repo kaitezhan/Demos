@@ -1,9 +1,9 @@
-package com.boneix.base.jms.test.constants;
+package com.boneix.base.jms.test.rabbitmq.constants;
 
 /**
- * Created by rzhang on 2017/7/4.
+ * Created by rzhang on 2017/7/5.
  */
-public class ActiveMQQueue {
+public class RabbitMQQueue {
     private String demoQueue;
 
     public String getDemoQueue() {

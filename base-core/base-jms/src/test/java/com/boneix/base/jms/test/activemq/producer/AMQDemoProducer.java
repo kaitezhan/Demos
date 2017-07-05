@@ -1,4 +1,4 @@
-package com.boneix.base.jms.test.producer;
+package com.boneix.base.jms.test.activemq.producer;
 
 import com.boneix.base.jms.producer.impl.ActiveMQProducerImpl;
 

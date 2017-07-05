@@ -32,29 +32,30 @@ public abstract class ActiveMQProducerImpl implements IJmsBaseProducer {
         if (null == getDestination()) {
             logger.error("ActiveMQProducerImpl's destination is null !");
             jmsSendResult.setStatus(false);
-        } else {
-            try {
-                Destination destination = getDestination();
-                String destinationName = "";
-                if (destination instanceof Queue) {
-                    destinationName = ((Queue) destination).getQueueName();
-                } else if (destination instanceof Topic) {
-                    destinationName = ((Topic) destination).getTopicName();
-                }
-                if (StringUtils.isEmpty(destinationName)) {
-                    logger.warn("Only Queue and Topic support.");
-                    jmsSendResult.setStatus(false);
-                } else {
-                    Message msgReceive = jmsTemplate.sendAndReceive(destination, session -> session.createTextMessage(JsonUtils.toString(message)));
-                    jmsSendResult.setMessageId(msgReceive.getJMSMessageID());
-                    jmsSendResult.setDestination(destinationName);
-                    jmsSendResult.setStatus(true);
-                }
-            } catch (Exception e) {
-                logger.error("ActiveMQProducerImpl  Exception:{}", e);
-                jmsSendResult.setStatus(false);
-            }
+            return jmsSendResult;
         }
-        return jmsSendResult;
+        try {
+            Destination destination = getDestination();
+            String destinationName = "";
+            if (destination instanceof Queue) {
+                destinationName = ((Queue) destination).getQueueName();
+            } else if (destination instanceof Topic) {
+                destinationName = ((Topic) destination).getTopicName();
+            }
+            if (StringUtils.isEmpty(destinationName)) {
+                logger.warn("Only Queue and Topic support.");
+                jmsSendResult.setStatus(false);
+                return jmsSendResult;
+            }
+            Message msgReceive = jmsTemplate.sendAndReceive(destination, session -> session.createTextMessage(JsonUtils.toString(message)));
+            jmsSendResult.setMessageId(msgReceive.getJMSMessageID());
+            jmsSendResult.setDestination(destinationName);
+            jmsSendResult.setStatus(true);
+            return jmsSendResult;
+        } catch (Exception e) {
+            logger.error("ActiveMQProducerImpl  Exception:{}", e);
+            jmsSendResult.setStatus(false);
+            return jmsSendResult;
+        }
     }
 }

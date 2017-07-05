@@ -176,71 +176,6 @@ public class StringUtils {
         return upperCase(cs).contains(upperCase(search));
     }
 
-    public String substring(String str, int start) {
-        return str.substring(start);
-    }
-
-    public String substring(String str, int start, int end) {
-        return str.substring(start, end);
-    }
-
-    public String left(String str, int length) {
-        if (null == str) {
-            return null;
-        }
-
-        if (length < 0) {
-            return "";
-        }
-
-        return str.substring(0, length);
-    }
-
-    public String right(String str, int length) {
-        if (null == str) {
-            return null;
-        }
-
-        if (length < 0) {
-            return "";
-        }
-
-        int len = str.length();
-        if (length > len) {
-            return str;
-        }
-
-        return str.substring(len - length);
-    }
-
-    public String substringBefore(String str, String separator) {
-        if ((isEmpty(str)) || (isEmpty(separator))) {
-            return str;
-        }
-
-        int end = indexOf(str, separator);
-        if (end == -1) {
-            return str;
-        }
-
-        return str.substring(0, end);
-    }
-
-    public String substringAfter(String str, String separator) {
-        if ((isEmpty(str)) || (isEmpty(separator))) {
-            return str;
-        }
-
-        int start = indexOf(str, separator);
-        if (start == -1) {
-            return str;
-        }
-
-        int length = separator.length();
-
-        return str.substring(start + length);
-    }
-
     public static int length(CharSequence cs) {
         return ((cs == null) ? 0 : cs.length());
     }
@@ -261,59 +196,6 @@ public class StringUtils {
         return ((null == str) ? null : str.toUpperCase(locale));
     }
 
-    public String reverse(String str) {
-        if (isEmpty(str)) {
-            return str;
-        }
-
-        return new StringBuilder(str).reverse().toString();
-    }
-
-    public boolean startWith(CharSequence cs1, CharSequence cs2) {
-        return startWith(cs1, cs2, false);
-    }
-
-    public boolean startWithIgnoreCase(CharSequence cs1, CharSequence cs2) {
-        return startWith(cs1, cs2, true);
-    }
-
-    public boolean startWith(CharSequence cs1, CharSequence cs2, boolean isIgnoreCase) {
-        if ((cs1 == null) || (cs2 == null)) {
-            return ((cs1 == null) && (cs2 == null));
-        }
-        if (cs2.length() > cs1.length()) {
-            return false;
-        }
-
-        if ((cs1 instanceof String) && (cs2 instanceof String)) {
-            return ((String) cs1).regionMatches(isIgnoreCase, 0, (String) cs2, 0, cs2.length());
-        }
-        return cs1.toString().regionMatches(isIgnoreCase, 0, cs2.toString(), 0, cs2.length());
-    }
-
-    public boolean endWith(CharSequence cs1, CharSequence cs2) {
-        return endWith(cs1, cs2, false);
-    }
-
-    public boolean endWithIgnoreCase(CharSequence cs1, CharSequence cs2) {
-        return endWith(cs1, cs2, true);
-    }
-
-    public boolean endWith(CharSequence cs1, CharSequence cs2, boolean isIgnoreCase) {
-        if ((cs1 == null) || (cs2 == null)) {
-            return ((cs1 == null) && (cs2 == null));
-        }
-        if (cs2.length() > cs1.length()) {
-            return false;
-        }
-
-        int start = cs1.length() - cs2.length();
-        if ((cs1 instanceof String) && (cs2 instanceof String)) {
-            return ((String) cs1).regionMatches(isIgnoreCase, start, (String) cs2, 0, cs2.length());
-        }
-        return cs1.toString().regionMatches(isIgnoreCase, start, cs2.toString(), 0, cs2.length());
-    }
-
     public static String deleteWhitespace(String str) {
         if (isEmpty(str)) {
             return str;
@@ -330,24 +212,6 @@ public class StringUtils {
             return str;
         }
         return new String(chs, 0, count);
-    }
-
-    public String toString(byte[] buf)
-            throws UnsupportedEncodingException {
-        return toString(buf, null);
-    }
-
-    public String toString(byte[] buf, String charset)
-            throws UnsupportedEncodingException {
-        return new String(buf, charset);
-    }
-
-    public String replace(String str, char oldChar, char newChar) {
-        if ((isEmpty(str)) || (oldChar == newChar)) {
-            return str;
-        }
-
-        return str.replace(oldChar, newChar);
     }
 
     public static String replace(String str, String oldString, String newString) {
@@ -421,5 +285,141 @@ public class StringUtils {
             }
         }
         return sb.toString();
+    }
+
+    public String substring(String str, int start) {
+        return str.substring(start);
+    }
+
+    public String substring(String str, int start, int end) {
+        return str.substring(start, end);
+    }
+
+    public String left(String str, int length) {
+        if (null == str) {
+            return null;
+        }
+
+        if (length < 0) {
+            return "";
+        }
+
+        return str.substring(0, length);
+    }
+
+    public String right(String str, int length) {
+        if (null == str) {
+            return null;
+        }
+
+        if (length < 0) {
+            return "";
+        }
+
+        int len = str.length();
+        if (length > len) {
+            return str;
+        }
+
+        return str.substring(len - length);
+    }
+
+    public String substringBefore(String str, String separator) {
+        if ((isEmpty(str)) || (isEmpty(separator))) {
+            return str;
+        }
+
+        int end = indexOf(str, separator);
+        if (end == -1) {
+            return str;
+        }
+
+        return str.substring(0, end);
+    }
+
+    public String substringAfter(String str, String separator) {
+        if ((isEmpty(str)) || (isEmpty(separator))) {
+            return str;
+        }
+
+        int start = indexOf(str, separator);
+        if (start == -1) {
+            return str;
+        }
+
+        int length = separator.length();
+
+        return str.substring(start + length);
+    }
+
+    public String reverse(String str) {
+        if (isEmpty(str)) {
+            return str;
+        }
+
+        return new StringBuilder(str).reverse().toString();
+    }
+
+    public boolean startWith(CharSequence cs1, CharSequence cs2) {
+        return startWith(cs1, cs2, false);
+    }
+
+    public boolean startWithIgnoreCase(CharSequence cs1, CharSequence cs2) {
+        return startWith(cs1, cs2, true);
+    }
+
+    public boolean startWith(CharSequence cs1, CharSequence cs2, boolean isIgnoreCase) {
+        if ((cs1 == null) || (cs2 == null)) {
+            return ((cs1 == null) && (cs2 == null));
+        }
+        if (cs2.length() > cs1.length()) {
+            return false;
+        }
+
+        if ((cs1 instanceof String) && (cs2 instanceof String)) {
+            return ((String) cs1).regionMatches(isIgnoreCase, 0, (String) cs2, 0, cs2.length());
+        }
+        return cs1.toString().regionMatches(isIgnoreCase, 0, cs2.toString(), 0, cs2.length());
+    }
+
+    public boolean endWith(CharSequence cs1, CharSequence cs2) {
+        return endWith(cs1, cs2, false);
+    }
+
+    public boolean endWithIgnoreCase(CharSequence cs1, CharSequence cs2) {
+        return endWith(cs1, cs2, true);
+    }
+
+    public boolean endWith(CharSequence cs1, CharSequence cs2, boolean isIgnoreCase) {
+        if ((cs1 == null) || (cs2 == null)) {
+            return ((cs1 == null) && (cs2 == null));
+        }
+        if (cs2.length() > cs1.length()) {
+            return false;
+        }
+
+        int start = cs1.length() - cs2.length();
+        if ((cs1 instanceof String) && (cs2 instanceof String)) {
+            return ((String) cs1).regionMatches(isIgnoreCase, start, (String) cs2, 0, cs2.length());
+        }
+        return cs1.toString().regionMatches(isIgnoreCase, start, cs2.toString(), 0, cs2.length());
+    }
+
+    public String toString(byte[] buf)
+            throws UnsupportedEncodingException {
+        return toString(buf, null);
+    }
+
+    public String toString(byte[] buf, String charset)
+            throws UnsupportedEncodingException {
+        return new String(buf, charset);
+    }
+
+    public String replace(String str, char oldChar, char newChar) {
+        if ((isEmpty(str)) || (oldChar == newChar)) {
+            return str;
+        }
+
+        return str.replace(oldChar, newChar);
     }
 }

@@ -1,8 +1,8 @@
-package com.boneix.base.jms.test.handler;
+package com.boneix.base.jms.test.activemq.handler;
 
 import com.boneix.base.jms.consumer.MessageHandlerSupport;
-import com.boneix.base.jms.test.constants.ActiveMQQueue;
-import com.boneix.base.jms.test.parser.AMQDemoMessageParser;
+import com.boneix.base.jms.test.activemq.constants.ActiveMQQueue;
+import com.boneix.base.jms.test.activemq.parser.AMQDemoMessageParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

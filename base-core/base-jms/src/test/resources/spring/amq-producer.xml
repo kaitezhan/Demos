@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="
     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
 
@@ -25,6 +25,6 @@
         <property name="timeToLive" value="${amq.producer.jmsTimeToLive}"/>
     </bean>
 
-    <bean id="amqDemoProducer" class="com.boneix.base.jms.test.producer.AMQDemoProducer"/>
+    <bean id="amqDemoProducer" class="com.boneix.base.jms.test.activemq.producer.AMQDemoProducer"/>
 
 </beans>

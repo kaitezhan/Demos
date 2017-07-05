@@ -18,17 +18,14 @@ public class DateFormatUtils {
     private static final Logger LOG = LoggerFactory.getLogger(DateFormatUtils.class);
 
     private static final ThreadLocal<HashMap<String, SimpleDateFormat>> DATE_LOCAL = new ThreadLocal<>();
+    @SuppressWarnings("unused")
+    private static final String DEFAULT_DATEFORMAT = "yyyy-MM-dd";
+    private static final String MONTH_DATEFORMAT = "yyyy-MM";
+    @SuppressWarnings("unused")
+    private static final String DEFAULT_DATETIMEFORMAT = "yyyy-MM-dd HH:mm:ss";
 
     private DateFormatUtils() {
     }
-
-    @SuppressWarnings("unused")
-    private static final String DEFAULT_DATEFORMAT = "yyyy-MM-dd";
-
-    private static final String MONTH_DATEFORMAT = "yyyy-MM";
-
-    @SuppressWarnings("unused")
-    private static final String DEFAULT_DATETIMEFORMAT = "yyyy-MM-dd HH:mm:ss";
 
     private static SimpleDateFormat getDateFormat(String format) {
         SimpleDateFormat sdf = null;
