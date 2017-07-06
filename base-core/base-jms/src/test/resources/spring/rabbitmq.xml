@@ -43,4 +43,6 @@
 
     <bean id="rmqDemoProducer" class="com.boneix.base.jms.test.rabbitmq.producer.RabbitProducer"/>
 
+    <bean id="protoStuffSerializer" class="com.boneix.base.utils.serializer.impl.ProtoStuffSerializer"/>
+
 </beans>

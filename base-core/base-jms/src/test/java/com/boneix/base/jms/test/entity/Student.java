@@ -32,4 +32,11 @@ public class Student implements Serializable {
     public void setStdName(String stdName) {
         this.stdName = stdName;
     }
+
+    @Override
+    public String toString() {
+
+
+        return " {\"stdId\":" + stdId + ",\"stdName\":\"" + stdName + "\"}";
+    }
 }
