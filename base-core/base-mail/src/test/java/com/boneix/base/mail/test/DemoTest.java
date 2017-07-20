@@ -33,7 +33,7 @@ public class DemoTest extends BaseSpringTest {
     public void demoTestSendEmail() {
         String filePath = "demo.vm";
         Map<String, Object> model = new HashedMap();
-        model.put("userName", "rzhang@mo9.com");
+        model.put("userName", "大家好");
         String htmlText = htmlVelocityEngine.customizeMailHtmlText(filePath, model);
         String toAddress = "rzhang@mo9.com";
         String subject = "发送邮件内容为html模板";
