@@ -1,4 +1,4 @@
-#!/user/bin/env python3
+#!/user/bin/env python3 
 # -*- coding: utf-8 -*-
 def my_abs(x):
 	if not isinstance(x,(int,float)):
