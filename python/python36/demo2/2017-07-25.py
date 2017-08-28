@@ -320,7 +320,7 @@ def get_ticket():
 		'Content-Type':'application/json',
 		'Project-Id':projectId
 		}
-	data=r'{"username":"terryzhou","password":"mo92017"}'
+	data=r'{"username":"张嵘","password":"mo92017"}'
 	hc=SimpleHttpClient(url,method,headers,data)
 	hs=hc.execute()
 	if(hs.reason==True and hs.status==200):
