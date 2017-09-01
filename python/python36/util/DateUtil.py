@@ -69,7 +69,17 @@ class DateParser(object):
     # 获取当前时间
     @staticmethod
     def now():
-        return time.localtime()
+        return datetime.datetime.now()
+
+    # 获取当前时间
+    @staticmethod
+    def now_date():
+        return DateParser.format_date(DateParser.now())
+
+    # 获取当前时间
+    @staticmethod
+    def now_date_time():
+        return DateParser.format_date_time(DateParser.now())
 
 
 # 时间操作类
@@ -83,6 +93,16 @@ class DateOperator(object):
             raise ValueError('days_range can\'t handle type  %s  ' % type(end_date))
         delta = start_date - end_date
         return abs(delta.days)
+
+    # 获取两个日期间的秒数 datetime#datetime
+    @staticmethod
+    def seconds_range(start_date, end_date):
+        if type(start_date) is not datetime.datetime:
+            raise ValueError('days_range can\'t handle type  %s  ' % type(start_date))
+        if type(end_date) is not datetime.datetime:
+            raise ValueError('days_range can\'t handle type  %s  ' % type(end_date))
+        delta = start_date - end_date
+        return abs(delta.total_seconds())
 
     # 日期小时增减操作
     @staticmethod
