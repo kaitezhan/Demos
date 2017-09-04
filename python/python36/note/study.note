@@ -4,3 +4,9 @@ sys._getframe().f_code.co_name
 
 获取unittest.TestCase的case方法名
 self._testMethodName
+
+使用unittest可用的注解
+unittest.skip(reason)	强制跳转。reason是跳转原因
+unittest.skipIf(condition, reason)	条件跳转，如果condition是True则跳转
+unittest.skipUnless(condition, reason)	除非condition为True，才进行调整
+unittest.expectedFailure()	标记该测试预期为失败 ，如果该测试方法运行失败，则该测试不算做失败
