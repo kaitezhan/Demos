@@ -97,7 +97,7 @@ class ProcessTest(unittest.TestCase):
 
     def test_04(self):
         list = []
-        for i in range(2):
+        for i in range(100):
             user_id = i + 1
             access_token = DateUtil.DateParser.parse_stamp_second(DateUtil.DateParser.now()) + user_id + random.randint(
                 10, 99)
