@@ -137,8 +137,14 @@ class ProxyZeroMainWindow(object):
 
     def _reload_data_(self):
         tmp_btn = QtWidgets.QCheckBox()
-        self.widget_data.setIndexWidget(self.model.index(0, 0), tmp_btn)
+        tmp_widget = QtWidgets.QWidget()
+        tmp_layout = QtWidgets.QHBoxLayout()
+        tmp_layout.addWidget(tmp_btn)
+        tmp_layout.setAlignment(QtCore.Qt.AlignCenter)
+        tmp_widget.setLayout(tmp_layout)
+        self.widget_data.setIndexWidget(self.model.index(0, 0), tmp_widget)
         self.model.setItem(0, 1, QtGui.QStandardItem('11'))
+
         self.widget_data.setModel(self.model)
 
     def _ui_server_opt_(self):
