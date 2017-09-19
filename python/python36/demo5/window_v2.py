@@ -10,7 +10,7 @@ from PyQt5.QtCore import QTimer, QRegExp, Qt
 from PyQt5.QtGui import QRegExpValidator, QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import (QApplication, QCheckBox, QComboBox, QDialog, QGridLayout, QGroupBox, QHBoxLayout, QLabel,
                              QProgressBar, QPushButton, QStyleFactory, QFormLayout, QLineEdit, QTableView,
-                             QWidget)
+                             QWidget, QTextEdit)
 
 from demo5.data_class import PropertyData
 from demo5.file_opt import FileOpt
@@ -22,6 +22,8 @@ class WidgetProxyZero(QDialog):
         if len(path.strip()) <= 0:
             path = os.path.join(os.getcwd(), 'data.cfg')
         self.filePath = path
+        self.propertyData = []
+        self.addDataChildWindow = None
         # 创建样式操作控件
         self._create_style_change_layout()
 
@@ -135,13 +137,64 @@ class WidgetProxyZero(QDialog):
         self.btnDisable.setDisabled(True)
 
         # TODO 绑定事件
+        self.btnReload.clicked.connect(self._reload_data_)
+        self.btnAdd.clicked.connect(self._add_data)
+        self.btnRemove.clicked.connect(self._remove_data)
+        self.btnEnable.clicked.connect(self._enable_data)
+        self.btnDisable.clicked.connect(self._disable_data)
 
-        layout = QFormLayout()
-        layout.addRow(self.btnStart, self.btnStop)
-        layout.addRow(self.btnReload, self.btnRestart)
-        layout.addRow(self.btnAdd, self.btnRemove)
-        layout.addRow(self.btnEnable, self.btnDisable)
+        layout = QGridLayout()
+        layout.addWidget(self.btnStart, 0, 0)
+        layout.addWidget(self.btnStop, 0, 1)
+        layout.addWidget(self.btnReload, 1, 0)
+        layout.addWidget(self.btnRestart, 1, 1)
+        layout.addWidget(self.btnAdd, 2, 0)
+        layout.addWidget(self.btnRemove, 2, 1)
+        layout.addWidget(self.btnEnable, 3, 0)
+        layout.addWidget(self.btnDisable, 3, 1)
         self.topRightGroupBox.setLayout(layout)
+
+    def _opt_btn_init(self, bool_value):
+        self.btnRemove.setDisabled(bool_value)
+        self.btnEnable.setDisabled(bool_value)
+        self.btnDisable.setDisabled(bool_value)
+
+    def _add_data(self):
+        self.addDataChildWindow = AddDataChildWindow(self)
+        self.addDataChildWindow.show()
+
+    def _remove_data(self):
+        if len(self.propertyData) <= 0 or len(self.selectCodes) <= 0:
+            return
+        for x in self.propertyData:
+            for y in self.selectCodes:
+                if x.code == y:
+                    self.propertyData.remove(x)
+        self._rewrite_data_()
+        self._reload_data_()
+        self._opt_btn_init(True)
+
+    def _enable_data(self):
+        if len(self.propertyData) <= 0 or len(self.selectCodes) <= 0:
+            return
+        for x in self.propertyData:
+            for y in self.selectCodes:
+                if x.code == y:
+                    x.status = True
+        self._rewrite_data_()
+        self._reload_data_()
+        self._opt_btn_init(True)
+
+    def _disable_data(self):
+        if len(self.propertyData) <= 0 or len(self.selectCodes) <= 0:
+            return
+        for x in self.propertyData:
+            for y in self.selectCodes:
+                if x.code == y:
+                    x.status = False
+        self._rewrite_data_()
+        self._reload_data_()
+        self._opt_btn_init(True)
 
     # 创建底部表单控件
     def _create_bottom_tab(self):
@@ -157,9 +210,9 @@ class WidgetProxyZero(QDialog):
         # 设置表头
         self.model.setHeaderData(0, Qt.Horizontal, '')
         self.model.setHeaderData(1, Qt.Horizontal, 'Path')
-        self.model.setHeaderData(2, Qt.Horizontal, 'Method')
-        self.model.setHeaderData(3, Qt.Horizontal, 'Head')
-        self.model.setHeaderData(4, Qt.Horizontal, 'Status')
+        self.model.setHeaderData(2, Qt.Horizontal, 'Status')
+        self.model.setHeaderData(3, Qt.Horizontal, 'Method')
+        self.model.setHeaderData(4, Qt.Horizontal, 'Head')
         self.model.setHeaderData(5, Qt.Horizontal, 'Remark')
         # self.model.setHeaderData(6, Qt.Horizontal, 'Operate')
         self.widget_data.setModel(self.model)
@@ -176,16 +229,31 @@ class WidgetProxyZero(QDialog):
         self.bottomTabWidget.setLayout(table_box)
 
     def _do_reload_data_(self):
-        str_data= FileOpt.read_data_from_file()
-        return str_data.split()
+        str_data = FileOpt.read_data_from_file(self.filePath)
+        if len(str_data) <= 0:
+            return
+        lit = json.loads(str_data)
+        result = []
+        for x in lit:
+            data = PropertyData.dict2data(x)
+            result.append(data)
+        tmp_result = []
+        for x in result:
+            if x.status:
+                tmp_result.append(x)
+        for x in result:
+            if not x.status:
+                tmp_result.append(x)
+        return tmp_result
+
+    def _rewrite_data_(self):
+        str_data = json.dumps(self.propertyData, default=PropertyData.data2dict)
+        FileOpt.write_data_from_file(self.filePath, bytes(str_data, encoding="utf8"))
 
     def _reload_data_(self):
         self.tableData = []
-        self.selectCodes = []
-
-        # TODO 读取数据
-        property_data = self._do_reload_data_()
-        table_len = len(property_data)
+        self.propertyData = self._do_reload_data_()
+        table_len = len(self.propertyData)
         if table_len <= 0:
             return
 
@@ -193,11 +261,7 @@ class WidgetProxyZero(QDialog):
         self.model.setRowCount(table_len)
 
         # 迭代数据
-        for i, value in enumerate(property_data):
-            # TODO 反序列化value
-            # json.dumps(value,default=PropertyData.data2dict)
-            data = json.loads(value, default=PropertyData.dict2data)
-
+        for i, data in enumerate(self.propertyData):
             # 配置 第一列的checkbox
             tmp_check_box = QCheckBox()
             tmp_widget = QWidget()
@@ -211,28 +275,28 @@ class WidgetProxyZero(QDialog):
             self.widget_data.setIndexWidget(self.model.index(i, 0), tmp_widget)
 
             # 配置 其他数据
-            self.model.setItem(i, 1, QStandardItem(data.path))
-            self.model.setItem(i, 2, QStandardItem(json.dumps(data.method)))
-            self.model.setItem(i, 3, QStandardItem(json.dumps(data.head)))
-            self.model.setItem(i, 4, QStandardItem(str(data.status)))
-            self.model.setItem(i, 5, QStandardItem(data.remark))
+            tmp_item = QStandardItem(data.path)
+            tmp_item.setEditable(False)
+            self.model.setItem(i, 1, tmp_item)
+            tmp_item = QStandardItem(str(data.status))
+            tmp_item.setTextAlignment(Qt.AlignCenter)
+            tmp_item.setEditable(False)
+            self.model.setItem(i, 2, tmp_item)
+            tmp_item = QStandardItem(json.dumps(data.method))
+            tmp_item.setTextAlignment(Qt.AlignCenter)
+            tmp_item.setEditable(False)
+            self.model.setItem(i, 3, tmp_item)
+            tmp_item = QStandardItem(json.dumps(data.head))
+            tmp_item.setEditable(False)
+            self.model.setItem(i, 4, tmp_item)
+            tmp_item = QStandardItem(data.remark)
+            tmp_item.setEditable(False)
+            self.model.setItem(i, 5, tmp_item)
 
             # 事件相关逻辑
             tmp_check_box.toggled.connect(self._check_box_selected)
 
             self.tableData.append(tmp_check_box)
-
-        # tmp_btn_disable = QPushButton()
-        # tmp_btn_disable.setText("Disable")
-        # tmp_btn_remove = QPushButton()
-        # tmp_btn_remove.setText("Remove")
-        # opt_widget = QWidget()
-        # opt_layout = QHBoxLayout()
-        # opt_layout.addWidget(tmp_btn_disable)
-        # opt_layout.addWidget(tmp_btn_remove)
-        # opt_layout.setContentsMargins(5, 5, 5, 5)
-        # opt_widget.setLayout(opt_layout)
-        # self.widget_data.setIndexWidget(self.model.index(0, 6), opt_widget)
 
         self.widget_data.setModel(self.model)
 
@@ -240,17 +304,16 @@ class WidgetProxyZero(QDialog):
     def _check_box_selected(self):
         if len(self.tableData) <= 0:
             return
-
+        self.selectCodes = []
         for x in self.tableData:
             if x.isChecked():
                 self.selectCodes.append(x.objectName())
 
         if len(self.selectCodes) <= 0:
+            self._opt_btn_init(True)
             return
 
-        self.btnRemove.setDisabled(False)
-        self.btnEnable.setDisabled(False)
-        self.btnDisable.setDisabled(False)
+        self._opt_btn_init(False)
 
     # 创建进度条
     def _create_progress_bar(self):
@@ -278,6 +341,136 @@ class WidgetProxyZero(QDialog):
         main_layout.setColumnStretch(0, 1)
         main_layout.setColumnStretch(1, 1)
         self.setLayout(main_layout)
+
+
+class AddDataChildWindow(QDialog):
+    def __init__(self, parent=None):
+        super(AddDataChildWindow, self).__init__(parent)
+        self.filePath = parent.filePath
+        # 布局主体
+        self._layout_main_window()
+
+        # 设置应用头部标题
+        self.setWindowTitle("WidgetProxyZero Add Properties")
+
+    def _layout_main_window(self):
+        main_layout = QFormLayout()
+        lab_path = QLabel("Path:")
+        lab_method = QLabel("Method:")
+        lab_head = QLabel("Head:")
+        lab_remark = QLabel("Remark:")
+        self.editPath = QLineEdit()
+        self.editMethod = QLineEdit()
+        method_layout = QHBoxLayout()
+        self.ck_all = QCheckBox("ALL")
+        self.ck_get = QCheckBox("GET")
+        self.ck_post = QCheckBox("POST")
+        self.ck_put = QCheckBox("PUT")
+        self.ck_delete = QCheckBox("DELETE")
+        self.ck_all.toggled.connect(self._select_all)
+        method_layout.addWidget(self.ck_all)
+        method_layout.addWidget(self.ck_get)
+        method_layout.addWidget(self.ck_post)
+        method_layout.addWidget(self.ck_put)
+        method_layout.addWidget(self.ck_delete)
+
+        self.editHead = QTextEdit()
+        self.editHead.setText("{}")
+        self.editRemark = QTextEdit()
+        main_layout.addRow(lab_path, self.editPath)
+        main_layout.addRow(lab_method, method_layout)
+        main_layout.addRow(lab_head, self.editHead)
+        main_layout.addRow(lab_remark, self.editRemark)
+        self.message = QLabel()
+        self.message.setStyleSheet("color:red")
+        main_layout.addRow(QLabel(), self.message)
+        opt_layout = QHBoxLayout()
+        btn_submit = QPushButton("Submit")
+        btn_submit.clicked.connect(self._add_data)
+        opt_layout.addWidget(btn_submit)
+        main_layout.addRow(QLabel(), opt_layout)
+        self.setLayout(main_layout)
+
+    def _select_all(self):
+        if self.ck_all.isChecked():
+            self.ck_get.setChecked(True)
+            self.ck_post.setChecked(True)
+            self.ck_put.setChecked(True)
+            self.ck_delete.setChecked(True)
+            return
+        self.ck_get.setChecked(False)
+        self.ck_post.setChecked(False)
+        self.ck_put.setChecked(False)
+        self.ck_delete.setChecked(False)
+
+    def _add_data(self):
+        self.path = self.editPath.text().strip()
+        if len(self.path) <= 0:
+            self.message.setText("Path must not empty！")
+            return
+        if self._check_conflict():
+            self.message.setText("Path has existed！")
+            return
+        if not self._check_method():
+            self.message.setText("Method hasn't selected！")
+            return
+        if not self._check_head():
+            self.message.setText("Head must be json！")
+            return
+        self._do_add_data()
+
+    def _do_add_data(self):
+        pd = PropertyData(None, self.path, self.method_list, self.head, False, self.editRemark.toPlainText())
+        self.data.append(pd)
+        str_data = json.dumps(self.data, default=PropertyData.data2dict)
+        FileOpt.write_data_from_file(self.filePath, bytes(str_data, encoding="utf8"))
+        self.close()
+        self.reject()
+        self.parent()._reload_data_()
+
+    def _check_conflict(self):
+        self.data = self._do_reload_data_()
+        if len(self.data) <= 0:
+            return
+        path = self.editPath.text().strip()
+        for x in self.data:
+            if x.path == path:
+                return True
+        return False
+
+    def _check_method(self):
+        self.method_list = []
+        if self.ck_get.isChecked():
+            self.method_list.append(self.ck_get.text())
+        if self.ck_post.isChecked():
+            self.method_list.append(self.ck_post.text())
+        if self.ck_put.isChecked():
+            self.method_list.append(self.ck_put.text())
+        if self.ck_delete.isChecked():
+            self.method_list.append(self.ck_delete.text())
+        return len(self.method_list) > 0
+
+    def _check_head(self):
+        self.head = {}
+        head = self.editHead.toPlainText().strip()
+        if len(head) <= 0:
+            return False
+        try:
+            self.head = json.loads(head, encoding='utf-8')
+        except ValueError:
+            return False
+        return True
+
+    def _do_reload_data_(self):
+        str_data = FileOpt.read_data_from_file(self.filePath)
+        if len(str_data) <= 0:
+            return
+        lit = json.loads(str_data)
+        result = []
+        for x in lit:
+            data = PropertyData.dict2data(x)
+            result.append(data)
+        return result
 
 
 if __name__ == '__main__':
