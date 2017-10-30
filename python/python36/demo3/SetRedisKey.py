@@ -17,7 +17,7 @@ def set_register_verify_code(mobile, code):
     r.set('sheep_validate_code_mobile_1.0_' + str(mobile), code)
 
 
-set_register_verify_code(18066071135, 321123)
+set_register_verify_code(18066078829, 321123)
 # dateStr = "1988-05-08 10:11:22"
 # date = time.strptime(dateStr, "%Y-%m-%d %H:%M:%S")
 # # print(type(time.localtime()))

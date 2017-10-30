@@ -13,6 +13,8 @@ from demo5.file_opt import FileOpt
 def aaa():
     pd = PropertyData(None, "/index.html", "GET", "aaa", False, "aaa")
     pd2 = PropertyData(None, "/index2.html", "GET", "aaa", True, "aaa")
+
+    print(type(pd2)==PropertyData)
     lit = [pd, pd2]
     return json.dumps(lit, default=PropertyData.data2dict)
 
@@ -31,4 +33,4 @@ def ccc():
     FileOpt.write_data_from_file(path, bytes(aaa(), encoding="utf8"))
 
 
-ccc()
+aaa()
