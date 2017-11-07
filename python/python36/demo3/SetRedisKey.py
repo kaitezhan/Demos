@@ -12,7 +12,7 @@ def get_timestamp(dateStr):
 
 
 def set_register_verify_code(mobile, code):
-    r = redis.Redis(host='118.178.230.176', port=6379, db=30, password="dev@Mo9.com")
+    r = redis.Redis(host='118.31.42.204', port=6379, db=30, password="dev@Mo9.com")
     code = {'validateCode': code, 'createTime': get_timestamp("2017-09-13 14:31:22")}
     r.set('sheep_validate_code_mobile_1.0_' + str(mobile), code)
 

@@ -13,7 +13,12 @@ from tornado.web import RequestHandler, Application
 
 class MainHandler(RequestHandler):
     def get(self):
-        self.write("this is a main page")
+        try:
+            name = self.get_argument('name', True)
+            self.write("this is a main page %s" % name)
+            # will do some searching
+        except AssertionError:
+            self.write("no params")
 
 
 class DemoHandler(RequestHandler):
@@ -41,11 +46,11 @@ if __name__ == '__main__':
     app = Application([(r"/", MainHandler), (r"/atr/([0-9]+)", DemoHandler)])
     app.listen(8088)
     loop = IOLoop.instance()
-    # 启动一个线程
-    t1 = threading.Thread(target=stop, args=(loop,))
-    t1.setDaemon(True)
-    t1.start()
-    # async_method(ioloop=loop, callback=loop.stop)
+    # # 启动一个线程
+    # t1 = threading.Thread(target=stop, args=(loop,))
+    # t1.setDaemon(True)
+    # t1.start()
+    # # async_method(ioloop=loop, callback=loop.stop)
 
     print("loop init finish")
     loop.start()
