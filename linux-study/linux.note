@@ -1,0 +1,81 @@
+【ifconfig命令后，看不到ip，也无法ping通其他ip】
+原因: 网卡没有启动
+
+1. vi /etc/sysconfig/network-script/ifcfg-ens33
+2. 修改ONBOOT项，将no改为yes保存退出                
+3. systemctl restart network.service                --重启网卡     
+
+【vim 命令无效】
+1.rpm -qa|grep vim 查看是否有下面的文件
+vim-enhanced-7.0.109-7.el5
+vim-minimal-7.0.109-7.el5
+vim-common-7.0.109-7.el5
+
+2.若无则  yum -y install vim*
+
+【安装vmtools 时提示The path "" is not a valid path to the 3.10.0-229.el7.x86_64 kernel headers. Would you like to change it?[yes]】
+1.yum -y update  
+2.yum -y install kernel-headers kernel-devel gcc
+3.reboot
+
+
+00:0c:29:1b:22:1c
+
+【安装jdk】
+1.下载 jdk.rpm
+2.yum -y install lrzsz 
+3.切换到存放的目录 
+4.rz                 -- 传输失败可能是权限问题 需要加sudo
+5.vim /etc/profile
+添加配置：
+#set java environment
+JAVA_HOME=/usr/java/jdk1.8.0_151
+JRE_HOME=/usr/java/jdk1.8.0_151/jre
+CLASS_PATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib
+PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
+export JAVA_HOME JRE_HOME CLASS_PATH PATH
+
+6.source /etc/profile   -- 不进行有时候也可以
+7.java -version
+
+【安装python】
+1.sudo yum install openssl-devel bzip2-devel expat-devel gdbm-devel readline-devel sqlite-devel         ----可能的依赖
+2.sudo yum install gcc-c++                   ----可能的依赖
+2.下载https://www.python.org  的源码 python.tgz
+3.tar -zxvf Python-3.5.0.tgz
+
+4.sudo mkdir /usr/local/python3
+  cd Python-3.5.0
+5.sudo ./configure --prefix=/usr/local/python3
+6.sudo make
+7.sudo make install
+8.sudo mv python python.bak
+9.sudo ln -s /usr/local/python3/bin/python3  /usr/bin/python
+10.sudo vim /usr/bin/yum    将第一行指定的python版本改为python2.7(#!/usr/bin/python 改为 #!/usr/bin/python2.7)
+
+【redis 安装】
+1. ps -ef|grep redis                                                              ---- 查看redis状态
+2.sudo redis-server /usr/local/redis/bin/redis.conf                               ---- 启动服务
+3.sudo /usr/local/redis/bin/redis-cli -p 6379 -a boneix@1992 shutdown             ---- 停止服务
+
+【elastic 安装】
+一.出现 can't run as root
+原因：不能使用root执行
+解决方式：
+1.创建新账号
+2.改变目录所有权，包括日志所在地址    sudo chown -R boneix ./elastic
+
+【开机服务启动】
+$ /usr/local/elastic/elasticsearch-6.0.0-9200/bin/elasticsearch -d
+$ /usr/local/elastic/elasticsearch-6.0.0-9201/bin/elasticsearch -d
+$ sudo redis-server /usr/local/redis/bin/redis.conf
+$ sudo /usr/local/zookeeper/zookeeper-3.4.11/bin/zkServer.sh start
+$ sudo /usr/local/zookeeper/zookeeper-3.4.11-2184/bin/zkServer.sh start
+$ sudo /usr/local/kafka/kafka_2.11-1.0.0/bin/zookeeper-server-start.sh  /usr/local/kafka/kafka_2.11-1.0.0/config/zookeeper.properties &
+$ sudo /usr/local/kafka/kafka_2.11-1.0.0/bin/kafka-server-start.sh  /usr/local/kafka/kafka_2.11-1.0.0/config/server.properties &
+
+【常用命令】
+netstat -apn |grep  {port}
+free -h
+ps -aux |grep elasticsearch
+chmod +x sys-start.sh
