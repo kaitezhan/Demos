@@ -1,6 +1,7 @@
 # 忽略Idea生成的项目文件
 *.iml
 **/.idea/
+**/*.iml
 
 # 忽略eclipse的项目文件
 **/.project/
