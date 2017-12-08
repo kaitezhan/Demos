@@ -2,11 +2,11 @@ package com.boneix.client.controller;
 
 import com.boneix.client.annotation.ApiCode;
 import com.boneix.client.annotation.ApiScanner;
+import com.boneix.client.entity.ApiDetailVO;
 import com.boneix.client.result.Results;
 import com.boneix.client.result.base.ResultEntity;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.net.InetAddress;
@@ -26,10 +26,15 @@ public class DemoController {
     @RequestMapping("/hello")
     public ResultEntity home(HttpServletRequest request) {
         String ipAddress = getRemoteHost(request);
-        request.getHeaderNames();
-        log.info("请求头：{}", request.getHeaderNames().toString());
         log.info("{} 请求访问服务器 ", ipAddress);
         return Results.newEmptyResultEntity();
+    }
+
+    @ApiCode(value = "demo.hello3", skip = true)
+    @PostMapping("/hello3/{type}")
+    public ResultEntity home3(HttpServletRequest request, @RequestBody ApiDetailVO vo,@PathVariable String type) {
+        log.info("type is {} ", type);
+        return Results.newSingleResultEntity(vo);
     }
 
     @ApiCode(value = "demo.hello2")

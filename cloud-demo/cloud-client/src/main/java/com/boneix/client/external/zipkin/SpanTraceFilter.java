@@ -1,5 +1,6 @@
 package com.boneix.client.external.zipkin;
 
+import com.boneix.client.external.zipkin.stream.BufferedServletRequestWrapper;
 import com.boneix.client.tools.JSONUtils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +19,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Enumeration;
 import java.util.Map;
@@ -45,8 +47,10 @@ public class SpanTraceFilter extends TraceFilter {
         if (!(servletRequest instanceof HttpServletRequest) || !(servletResponse instanceof HttpServletResponse)) {
             throw new ServletException("Filter just supports HTTP requests");
         }
+        // 复制request
+        HttpServletRequest bufferedWrapper = new BufferedServletRequestWrapper((HttpServletRequest) servletRequest);
         // 切入
-        ContentCachingRequestWrapper requestWrapper = new ContentCachingRequestWrapper((HttpServletRequest) servletRequest);
+        ContentCachingRequestWrapper requestWrapper = new ContentCachingRequestWrapper(bufferedWrapper);
         ContentCachingResponseWrapper responseWrapper = new ContentCachingResponseWrapper((HttpServletResponse) servletResponse);
 
         // 截取request值
@@ -57,8 +61,17 @@ public class SpanTraceFilter extends TraceFilter {
             requestHeaders.add(headerName, requestWrapper.getHeader(headerName));
         }
         Map<String, String[]> requestParams = requestWrapper.getParameterMap();
-        String requestBody = IOUtils.toString(requestWrapper.getInputStream(), StandardCharsets.UTF_8);
-
+        String requestBody = "";
+        InputStream inputStream = null;
+        try {
+            inputStream = requestWrapper.getInputStream();
+            requestBody = IOUtils.toString(requestWrapper.getInputStream(), StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            logger.error("获取请求body失败{}", e);
+        } finally {
+            // 由于inputStream是复制出来的，所以需要关闭
+            IOUtils.closeQuietly(inputStream);
+        }
         try {
             new SpanExtraInfo
                     .SpanExtraInfoBuild()
@@ -70,8 +83,8 @@ public class SpanTraceFilter extends TraceFilter {
             log.warn("request info analyze error! {}", exc);
         }
 
-        // 调用父
-        super.doFilter(requestWrapper, responseWrapper, filterChain);
+        // 调用父，这里的需传入bufferedWrapper
+        super.doFilter(bufferedWrapper, responseWrapper, filterChain);
     }
 
     @Override
@@ -96,7 +109,7 @@ public class SpanTraceFilter extends TraceFilter {
             try {
                 String responseBody = IOUtils.toString(responseWrapper.getContentInputStream(), StandardCharsets.UTF_8);
                 tracer.addTag("responseBody", responseBody);
-                // 最后需要重新写下servletResponse
+                // 最后需要回写下servletResponse，否则会返回一个空的servletResponse
                 responseWrapper.copyBodyToResponse();
             } catch (IOException exc) {
                 log.warn("responseBody analyze error! {}", exc);
