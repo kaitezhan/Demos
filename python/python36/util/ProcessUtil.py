@@ -44,5 +44,6 @@ class TaskProcess(object):
         # 封装请求结果
         results = []
         for res in apply_results:
+
             results.append(res.get())
         return results
