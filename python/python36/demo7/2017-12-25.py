@@ -107,17 +107,46 @@
 # print(driver.find_element_by_id('content').text)
 # driver.close()
 # ----------------------------------
+# from selenium import webdriver
+# from selenium.webdriver.common.by import By
+# from selenium.webdriver.support import expected_conditions as EC
+# from selenium.webdriver.support.wait import WebDriverWait
+#
+# path = 'D:/Program Files/phantomjs-2.1.1-windows/bin/phantomjs'
+# driver = webdriver.PhantomJS(executable_path=path)
+# driver.get("http://pythonscraping.com/pages/javascript/ajaxDemo.html")
+# try:
+#     element = WebDriverWait(driver, 10).until(
+#         EC.presence_of_element_located((By.ID, "loadedButton")))
+# finally:
+#     print(driver.find_element_by_id("content").text)
+#     driver.close()
+# ----------------------------------
+import time
+
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.wait import WebDriverWait
+from selenium.common.exceptions import StaleElementReferenceException
+
+
+def waitForLoad(driver):
+    elem = driver.find_element_by_tag_name("html")
+    count = 0
+    while True:
+        count += 1
+        if count > 20:
+            print("Timing out after 10 seconds and returning")
+            return
+        time.sleep(.5)
+        try:
+            elem == driver.find_element_by_tag_name("html")
+        except StaleElementReferenceException:
+            return
+
 
 path = 'D:/Program Files/phantomjs-2.1.1-windows/bin/phantomjs'
 driver = webdriver.PhantomJS(executable_path=path)
-driver.get("http://pythonscraping.com/pages/javascript/ajaxDemo.html")
-try:
-    element = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.ID, "loadedButton")))
-finally:
-    print(driver.find_element_by_id("content").text)
-    driver.close()
+driver.get("http://pythonscraping.com/pages/javascript/redirectDemo1.html")
+print(driver.page_source)
+print("=======================")
+waitForLoad(driver)
+print(driver.page_source)
