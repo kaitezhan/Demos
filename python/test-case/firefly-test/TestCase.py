@@ -194,8 +194,8 @@ class DemoTest(unittest.TestCase):
         print('============================= %s had finished...' % self._testMethodName)
 
     def login_check(self):
-        # url = 'https://idnclone.mo9.com/fireflyApi/api/firefly/v1'
-        url = 'http://localhost:8082/api/firefly/v1'
+        url = 'https://idnclone.mo9.com/fireflyApi/api/firefly/v1'
+        # url = 'http://localhost:8082/api/firefly/v1'
         private_key = 'DBD8429F5BEF1C0B50AA7E2CB1EFE65A'
         # mobile = '008615702632794'
         # password = '123'
@@ -227,7 +227,6 @@ class DemoTest(unittest.TestCase):
         self.account_code = account_code
         self.access_token = access_token
 
-    @unittest.skip('has test')
     def test_01(self):
         # 获取银行卡
         self.firefly.query_bank_card_list(self.account_code, self.access_token)
@@ -263,6 +262,7 @@ class DemoTest(unittest.TestCase):
             return
         self.firefly.member_recharge(self.account_code, self.access_token, first_template['memberCardTemplateId'])
 
+    @unittest.skip('has test')
     def test_03(self):
         order_no = '3128557916029452288'
         self.firefly.repay(self.account_code, self.access_token, order_no)
