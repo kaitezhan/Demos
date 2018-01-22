@@ -6,16 +6,16 @@ from util.HttpUtil import SimpleHttpClient
 
 
 class SpiderHandler(object):
-
     @staticmethod
-    def demo1(url, timeout=None):
-        shClient=SimpleHttpClient(url,timeout)
-        shClient.execute()
+    def demo1(url):
+        shClient = SimpleHttpClient(url)
+        return shClient.execute()
 
 
-
-
-url = 'https://www.whatismybrowser.com/'
-handler = SpiderHandler(url)
-result = handler.execute()
-print(result.data)
+# url = 'https://www.whatismybrowser.com/'
+url = 'https://movie.douban.com/explore'
+handler = SpiderHandler()
+result = handler.demo1(url)
+filename = 'douban-movie.html'
+with open(filename, 'wb') as f:
+    f.write(bytes(result.data, encoding="utf8"))

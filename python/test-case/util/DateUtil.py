@@ -46,7 +46,16 @@ class DateParser(object):
     # 返回豪秒级的时间戳
     @staticmethod
     def parse_stamp(date):
-        return int(DateParser.parse_stamp_second(date) * 1000)
+        if date is None:
+            raise ValueError('date can\'t be None')
+        if type(date) is str:
+            return time.mktime(DateParser.parse_date_time_millisecond(date).timetuple())
+        if type(date) is time.struct_time:
+            return int(round(time.time() * 1000))
+        if type(date) is datetime.datetime:
+            timestamp = int(time.mktime(date.timetuple()) * 1000.0 + date.microsecond / 1000.0)
+            return timestamp
+        raise ValueError('parse_stamp_second can\'t handle type  %s ' % type(date))
 
     # 字符串转时间对象  datetime#datetime 可通过 timetuple() 转化为 time#struct_time
     @staticmethod
@@ -66,6 +75,16 @@ class DateParser(object):
             raise ValueError('parse_date_time can\'t handle type  %s ,only str support ' % type(date))
         return datetime.datetime.strptime(date, '%Y-%m-%d %H:%M:%S')
 
+        # 字符串转时间对象  datetime#datetime 可通过 timetuple() 转化为 time#struct_time
+
+    @staticmethod
+    def parse_date_time_millisecond(date):
+        if date is None:
+            raise ValueError('date can\'t be None')
+        if type(date) is not str:
+            raise ValueError('parse_date_time can\'t handle type  %s ,only str support ' % type(date))
+        return datetime.datetime.strptime(date, '%Y-%m-%d %H:%M:%S.%f')
+
     # 获取当前时间
     @staticmethod
     def now():
@@ -80,6 +99,11 @@ class DateParser(object):
     @staticmethod
     def now_date_time():
         return DateParser.format_date_time(DateParser.now())
+
+    # 获取当前时间戳
+    @staticmethod
+    def now_timestamp():
+        return DateParser.parse_stamp(DateParser.now())
 
 
 # 时间操作类
