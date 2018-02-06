@@ -8,4 +8,6 @@ import com.boneix.netty.proto.RichManProto;
  */
 public interface UserInfoService {
     RichManProto.RichMan findOneRichMan(RequestRichManProto.RequestRichMan arg0);
+
+
 }
