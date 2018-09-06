@@ -57,12 +57,13 @@ class SimpleHttpClient(object):
         return requests.get(self.url, headers=self.headers, params=self.data, timeout=self.timeout)
 
     def _post_data_by_url(self):
-        if self.data is not None:
-            if type(self.data) is not str:
-                if type(self.data) is dict:
-                    self.data = json.dumps(self.data, ensure_ascii=False)
-                else:
-                    self.data = str(self.data)
+        if self.headers.get('Content-Type') == 'application/json' \
+                and self.data is not None \
+                and type(self.data) is not str:
+            if type(self.data) is dict:
+                self.data = json.dumps(self.data, ensure_ascii=False)
+            else:
+                self.data = str(self.data)
             self.data = self.data.encode('utf-8')
         return requests.post(self.url, headers=self.headers, data=self.data, timeout=self.timeout)
 
